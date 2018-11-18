@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class PizzaBehaviour : MonoBehaviour
 {
-    private void OnMouseDown()
+    private ToppingSwitcher _toppingSwitcher;
+
+    private void Start()
     {
-        //Need functionality to find out who clicked ya
-        //
+        _toppingSwitcher = GameObject.Find("ToppingSwitcher").GetComponent<ToppingSwitcher>();
     }
 
-    public void AddTopping(GameObject g)
+    private void OnMouseDown()
     {
-        g.transform.parent = transform;
+        AddTopping(_toppingSwitcher.GetPlayer1Topping());
+    }
+
+    public void AddTopping(ToppingSwitcher.Toppings toppingAdded)
+    {
+        //gets a string that tells us which topping to spawn onto it
+        string toppingName = _toppingSwitcher.getToppingObject((int)toppingAdded);
+
+        GameObject toppingToAdd = ObjectPooler.instance.SpawnFromPool(toppingName, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f), Quaternion.identity);
+
+        toppingToAdd.transform.parent = transform;
     }
 }

@@ -13,12 +13,35 @@ public class ToppingSwitcher : MonoBehaviour
         BlackOlive
     }
 
-    public GameObject[] toppingObjects;
+    public string[] toppings;
 
-    public Toppings topping;
+    private Toppings p1Topping;
+    private Toppings p2Topping;
 
-    public void SwitchTopping(Toppings toppingToSwitch)
+    public void SwitchPlayer1Topping(Toppings toppingToSwitch)
     {
-        topping = toppingToSwitch;
+        p1Topping = toppingToSwitch;
     }
+
+    public void SwitchPlayer2Toppin(Toppings toppingToSwitch)
+    {
+        p2Topping = toppingToSwitch;
+    }
+
+    public Toppings GetPlayer1Topping()
+    {
+        return p1Topping;
+    }
+
+    public Toppings GetPlayer2Topping()
+    {
+        return p2Topping;
+    }
+
+    public string getToppingObject (int toppingNeeded)
+    {
+        return toppings[toppingNeeded];
+    }
+
+
 }
