@@ -18,14 +18,19 @@ public class ToppingSwitcher : MonoBehaviour
     private Toppings p1Topping;
     private Toppings p2Topping;
 
-    public void SwitchPlayer1Topping(Toppings toppingToSwitch)
+    public void SwitchPlayer1Topping(int toppingToSwitch)
     {
-        p1Topping = toppingToSwitch;
+        p1Topping = (Toppings)toppingToSwitch;
     }
 
-    public void SwitchPlayer2Toppin(Toppings toppingToSwitch)
+    public void SwitchPlayer2Toppin(int toppingToSwitch)
     {
-        p2Topping = toppingToSwitch;
+        p2Topping = (Toppings)toppingToSwitch;
+    }
+
+    public void sayHi()
+    {
+
     }
 
     public Toppings GetPlayer1Topping()

@@ -5,15 +5,19 @@ using UnityEngine;
 public class PizzaBehaviour : MonoBehaviour
 {
     private ToppingSwitcher _toppingSwitcher;
+    private GameManager _manager;
 
     private void Start()
     {
         _toppingSwitcher = GameObject.Find("ToppingSwitcher").GetComponent<ToppingSwitcher>();
+        _manager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void OnMouseDown()
     {
         AddTopping(_toppingSwitcher.GetPlayer1Topping());
+        _manager.setPlayer1Score(_manager.getPlayer1Score() + 100);
+
     }
 
     public void AddTopping(ToppingSwitcher.Toppings toppingAdded)

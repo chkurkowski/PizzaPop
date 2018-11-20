@@ -15,8 +15,33 @@ public class GameManager : MonoBehaviour
     private Text player1ScoreText;
 
     [SerializeField]
+    private Text player2ScoreText;
+
+    [SerializeField]
     private Text timer;
 
+    [HideInInspector]
+    public bool gameStarted = false;
+
+    public GameObject endGamePanel;
+
+    public static GameManager manager;
+
+    private void Awake()
+    {
+        manager = this;
+    }
+
+    public void StartGame()
+    {
+        gameStarted = true;
+    }
+
+    public void EndGame()
+    {
+        gameStarted = false;
+        endGamePanel.SetActive(true);
+    }
 
 
     public void setPlayer1Score(int score)
@@ -29,15 +54,30 @@ public class GameManager : MonoBehaviour
         return player1Score;
     }
 
-	void Start () 
+    public void setPlayer2Score(int score)
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () 
+        player2Score = score;
+    }
+
+    public int getPlayer2Score()
     {
-        timeLeft -= Time.deltaTime;
-        Debug.Log((int)timeLeft);
+        return player2Score;
+    }
+
+
+
+    // Update is called once per frame
+    void Update () 
+    {
+        if (gameStarted)
+        {
+            timeLeft -= Time.deltaTime;
+            timer.text = ((int)timeLeft).ToString();
+
+            player1ScoreText.text = "Player 1: " + player1Score.ToString();
+
+            if (timeLeft <= 0)
+                EndGame();
+        }
 	}
 }

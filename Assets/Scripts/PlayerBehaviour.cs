@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour 
 {
@@ -9,7 +10,7 @@ public class PlayerBehaviour : MonoBehaviour
 
 
     [SerializeField]
-    private GameObject cursorSprite;
+    private Image cursorSprite;
 
     private Cursor cursor;
 
@@ -23,6 +24,6 @@ public class PlayerBehaviour : MonoBehaviour
 	void Update () 
     {
         Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f);
-        cursorSprite.transform.position = mousePos;
+        cursorSprite.rectTransform.position = Input.mousePosition;
 	}
 }

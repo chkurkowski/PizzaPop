@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1393211284279982}
+  m_IsPrefabAsset: 1
+--- !u!1 &1393211284279982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4598310137304674}
+  - component: {fileID: 114882384240320162}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4598310137304674
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393211284279982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0591823, y: 1.0244756, z: -0.09498182}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114882384240320162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393211284279982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac76b3748df64a8980cb3fa86f174e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Pepparoni
+    prefab: {fileID: 1020580104650164, guid: 9f3119d0bec4e467bbe94f324637477e, type: 2}
+    size: 10
+  - tag: GreenPepper
+    prefab: {fileID: 1241372484050592, guid: bbc427a3a909449d99c0e499a8622bb3, type: 2}
+    size: 10
+  - tag: Mushroom
+    prefab: {fileID: 1035273168592882, guid: 1b9ff0ca5ff0446db8e9e4192ca3d23e, type: 2}
+    size: 10
+  - tag: Onion
+    prefab: {fileID: 1954705517002462, guid: fdbd453c02c7d44ce850c0257a2a9d07, type: 2}
+    size: 10
+  - tag: BlackOlive
+    prefab: {fileID: 1302544692025706, guid: 3afafe05af27c49238e60919a74541a9, type: 2}
+    size: 10
+  - tag: pizza
+    prefab: {fileID: 1132295403853470, guid: d896d80253407463d88dc9ea5011c96b, type: 2}
+    size: 10
