@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212156997652455786}
   - component: {fileID: 58445808188534442}
   - component: {fileID: 114872566617448120}
+  - component: {fileID: 114211903135062556}
   - component: {fileID: 50721592091539078}
   m_Layer: 4
   m_Name: Pizza
@@ -29,7 +30,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4604887300560986
 Transform:
   m_ObjectHideFlags: 1
@@ -57,7 +58,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.8
+  m_GravityScale: 0.6
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -78,6 +79,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.8
+--- !u!114 &114211903135062556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132295403853470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f73d61908244e72949a3e62884bc09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 500
 --- !u!114 &114872566617448120
 MonoBehaviour:
   m_ObjectHideFlags: 1

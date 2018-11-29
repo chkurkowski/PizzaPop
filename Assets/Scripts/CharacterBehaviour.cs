@@ -69,6 +69,6 @@ public class CharacterBehaviour : MonoBehaviour
 
     Vector2 randomPush()
     {
-        return new Vector2(Random.Range(-2.5f, 2.5f), Random.Range(10.0f, 12f));
+        return new Vector2(Random.Range(-2.5f, 2.5f), Random.Range(8.0f, 10.0f));
     }
 }
