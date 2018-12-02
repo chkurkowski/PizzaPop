@@ -1,23 +1,32 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using RavingBots.MultiInput;
+
 
 public class PlayerBehaviour : MonoBehaviour 
 {
+    InputState inputState;
+
     public enum Players { Player1, Player2 };
     public Players player;
 
+    
 
     [SerializeField]
     private Image cursorSprite;
 
     private Cursor cursor;
 
-	// Use this for initialization
-	void Start () 
+    IDevice mouse1;
+
+
+    // Use this for initialization
+    void Start () 
     {
+        
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
-	}
+    }
 	
 	void Update () 
     {
