@@ -1,24 +1,44 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PizzaBehaviour : MonoBehaviour
+public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 {
     private ToppingSwitcher _toppingSwitcher;
     private GameManager _manager;
     private List<GameObject> toppings;
+    private PizzaOrder _pizzaOrder;
 
-    private void Start()
+    private void Awake()
     {
+        _pizzaOrder = GetComponent<PizzaOrder>();
         _toppingSwitcher = GameObject.Find("ToppingSwitcher").GetComponent<ToppingSwitcher>();
         _manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         toppings = new List<GameObject>();
     }
 
+    private void Start()
+    {
+
+
+    }
+
     private void OnMouseDown()
     {
-        AddTopping(_toppingSwitcher.GetPlayer1Topping());
-        _manager.setPlayer1Score(_manager.getPlayer1Score() + 100);
+        Player1Hits();
+    }
 
+    private void Player1Hits()
+    {
+        AddTopping(_toppingSwitcher.GetPlayer1Topping());
+
+        if (_toppingSwitcher.GetPlayer1Topping() == _pizzaOrder.GetToppingNeeded())
+        {
+            _manager.setPlayer1Score(_manager.getPlayer1Score() + 300);
+        }
+        else
+        {
+            _manager.setPlayer1Score(_manager.getPlayer1Score() + 100);
+        }
     }
 
     public void AddTopping(ToppingSwitcher.Toppings toppingAdded)
@@ -43,5 +63,10 @@ public class PizzaBehaviour : MonoBehaviour
             }
             toppings.Clear();
         }
+    }
+
+    public void OnSpawnedByPooler()
+    {
+        _pizzaOrder.AssignRandomTopping();
     }
 }

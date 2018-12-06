@@ -1,12 +1,7 @@
 fileFormatVersion: 2
-guid: a60ed4999b604a04b8498c314aef946c
+guid: cb2c6c3040d614714af2a2d6f2fffcc9
 ScriptedImporter:
-  fileIDToRecycleName:
-    100000: gameObject/red pepper
-    400000: gameObject/red pepper/Transform
-    21200000: gameObject/red pepper/SpriteRenderer
-    21300000: sprite
-    100100000: gameObject
+  fileIDToRecycleName: {}
   externalObjects: {}
   userData: 
   assetBundleName: 
@@ -51,5 +46,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: 56db9da1bcb9c804fb06082d6472850e
+      spriteID: 
     PhysicsOutlines: []

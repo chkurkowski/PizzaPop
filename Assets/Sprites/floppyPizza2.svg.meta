@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b8a29ebff03a04444a598765ba07bbaa
+guid: a1186b91ae6854abd98592106d67b79f
 ScriptedImporter:
   fileIDToRecycleName:
-    100002: gameObject/barrels 1
-    400002: gameObject/barrels 1/Transform
-    21200002: gameObject/barrels 1/SpriteRenderer
+    100000: gameObject/floppyPizza2
+    400000: gameObject/floppyPizza2/Transform
+    21200000: gameObject/floppyPizza2/SpriteRenderer
     21300000: sprite
     100100000: gameObject
   externalObjects: {}
@@ -15,17 +15,17 @@ ScriptedImporter:
   svgType: 0
   texturedSpriteMeshType: 0
   svgPixelsPerUnit: 100
-  gradientResolution: 200
+  gradientResolution: 128
   alignment: 0
   customPivot: {x: 0, y: 0}
   generatePhysicsShape: 0
   preserveViewport: 0
-  advancedMode: 1
+  advancedMode: 0
   predefinedResolutionIndex: 1
   targetResolution: 1080
   resolutionMultiplier: 1
-  stepDistance: 1
-  samplingStepDistance: 1000
+  stepDistance: 10
+  samplingStepDistance: 100
   maxCordDeviationEnabled: 0
   maxCordDeviation: 1
   maxTangentAngleEnabled: 0
@@ -40,16 +40,16 @@ ScriptedImporter:
   spriteData:
     TessellationDetail: 0
     SpriteRect:
-      name: barrelsSprite
+      name: 
       originalName: 
-      pivot: {x: 0.50006366, y: 0.50219506}
+      pivot: {x: 0, y: 0}
       alignment: 0
       border: {x: 0, y: 0, z: 0, w: 0}
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 100
-        height: 62
-      spriteID: eb5b13fbaf0fc8743809e1a03304b322
+        width: 0
+        height: 0
+      spriteID: 79f82fc5ee8844c6d922362ac707e4fd
     PhysicsOutlines: []

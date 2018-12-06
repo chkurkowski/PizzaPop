@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToppingSwitcher : MonoBehaviour 
 {
@@ -13,6 +14,13 @@ public class ToppingSwitcher : MonoBehaviour
         BlackOlive
     }
 
+    [SerializeField]
+    private Image p1ToppingDisplay;
+
+    [SerializeField]
+    private Image p2ToppingDisplay;
+
+    public Sprite[] toppingSprites;
     public string[] toppings;
 
     private Toppings p1Topping;
@@ -21,17 +29,15 @@ public class ToppingSwitcher : MonoBehaviour
     public void SwitchPlayer1Topping(int toppingToSwitch)
     {
         p1Topping = (Toppings)toppingToSwitch;
+        p1ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
     }
 
-    public void SwitchPlayer2Toppin(int toppingToSwitch)
+    public void SwitchPlayer2Topping(int toppingToSwitch)
     {
         p2Topping = (Toppings)toppingToSwitch;
+        p2ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
     }
 
-    public void sayHi()
-    {
-
-    }
 
     public Toppings GetPlayer1Topping()
     {

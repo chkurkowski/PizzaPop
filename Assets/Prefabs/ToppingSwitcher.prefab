@@ -51,6 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85dfd55414014a2088a8bd0219fa4ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toppingSprites:
+  - {fileID: 21300000, guid: 2d8b53d93e8da0d459247ac20392d08a, type: 3}
+  - {fileID: 21300000, guid: ddf5e9d2313225447a92364eaf686218, type: 3}
+  - {fileID: 21300000, guid: 4237f8ba24af3564096a551e53e87c01, type: 3}
+  - {fileID: 21300000, guid: cd5f5fbebecb0c5418ab573d8149039f, type: 3}
+  - {fileID: 21300000, guid: c21b4c19ad263e341a8d6a15f0e15d9b, type: 3}
   toppings:
   - Pepparoni
   - GreenPepper

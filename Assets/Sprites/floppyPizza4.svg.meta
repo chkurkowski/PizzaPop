@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 08684c99436c5024f970b3708cd41e5d
+guid: 83c382fcf7c2f42b9adcddbfea4f6bcb
 ScriptedImporter:
   fileIDToRecycleName:
-    100000: gameObject/barrels
-    400000: gameObject/barrels/Transform
-    21200000: gameObject/barrels/SpriteRenderer
+    100000: gameObject/floppyPizza4
+    400000: gameObject/floppyPizza4/Transform
+    21200000: gameObject/floppyPizza4/SpriteRenderer
     21300000: sprite
     100100000: gameObject
   externalObjects: {}
@@ -20,7 +20,7 @@ ScriptedImporter:
   customPivot: {x: 0, y: 0}
   generatePhysicsShape: 0
   preserveViewport: 0
-  advancedMode: 1
+  advancedMode: 0
   predefinedResolutionIndex: 1
   targetResolution: 1080
   resolutionMultiplier: 1
@@ -51,5 +51,5 @@ ScriptedImporter:
         y: 0
         width: 0
         height: 0
-      spriteID: eb5b13fbaf0fc8743809e1a03304b322
+      spriteID: a6c8b96bf736745c8b4d2eae819368cc
     PhysicsOutlines: []
