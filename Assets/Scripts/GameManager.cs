@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
             timer.text = ((int)timeLeft).ToString();
 
             player1ScoreText.text = "Player 1: " + player1Score.ToString();
+            player2ScoreText.text = "Player 2: " + player2Score.ToString();
 
             if (timeLeft <= 0)
                 EndGame();

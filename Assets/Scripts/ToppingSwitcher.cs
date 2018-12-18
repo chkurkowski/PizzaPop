@@ -71,6 +71,4 @@ public class ToppingSwitcher : MonoBehaviour
     {
         return toppings[toppingNeeded];
     }
-
-
 }

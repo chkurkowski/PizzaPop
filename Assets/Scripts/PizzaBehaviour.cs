@@ -35,6 +35,19 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         }
     }
 
+    private void Player2Hits()
+    {
+        if (_toppingSwitcher.GetPlayer2Topping() == _pizzaOrder.GetToppingNeeded())
+        {
+            _manager.setPlayer2Score(_manager.getPlayer2Score() + 300);
+        }
+        else
+        {
+            _manager.setPlayer2Score(_manager.getPlayer2Score() + 100);
+        }
+    }
+
+
     public void AddTopping(GameObject toppingToAdd)
     {
         //gets a string that tells us which topping to spawn onto it
@@ -45,6 +58,10 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         if (toppingToAdd.GetComponent<ToppingScript>().playerShooter == PlayerBehaviour.Players.Player1)
         {
             Player1Hits();
+        }
+        else if (toppingToAdd.GetComponent<ToppingScript>().playerShooter == PlayerBehaviour.Players.Player2)
+        {
+            Player2Hits();
         }
 
         toppings.Add(toppingToAdd);
