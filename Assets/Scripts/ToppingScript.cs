@@ -26,6 +26,10 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
         }
 
         //TODO: have the toppings fall/dissapear in some way after hitting the wall
+        if (transform.localScale.x < 0.9f)
+        {
+            gameObject.SetActive(false);
+        }
 	}
 
     public void SetDestination(Vector3 desToSet)

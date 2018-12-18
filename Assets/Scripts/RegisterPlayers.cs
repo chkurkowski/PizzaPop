@@ -87,12 +87,22 @@ public class RegisterPlayers : MonoBehaviour
 
     public IDevice Mouse1()
     {
-        return player1Device;
+        if (player1Device != null)
+        {
+            return player1Device;
+        }
+
+        return null;
     }
 
     public IDevice Mouse2()
     {
-        return player2Device;
+        if (player2Device != null)
+        {
+            return player2Device;
+        }
+
+        return null;
     }
 
     public IVirtualAxis Axis1()
