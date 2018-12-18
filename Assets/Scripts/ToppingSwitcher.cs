@@ -5,13 +5,21 @@ using UnityEngine.UI;
 
 public class ToppingSwitcher : MonoBehaviour 
 {
-    public enum Toppings 
+    public static ToppingSwitcher instance;
+
+    void Awake()
     {
-        Pepperoni,
-        GreenPepper,
-        Mushroom,
-        Onion,
-        BlackOlive
+        instance = this;
+    }
+
+
+    public enum Toppings 
+    { 
+        Pepperoni,   //topping 0
+        GreenPepper, //topping 1
+        Mushroom,    //topping 2
+        Onion,       //topping 3
+        BlackOlive   //topping 4
     }
 
     [SerializeField]
@@ -47,6 +55,16 @@ public class ToppingSwitcher : MonoBehaviour
     public Toppings GetPlayer2Topping()
     {
         return p2Topping;
+    }
+
+    public string getPlayer1ToppingName()
+    {
+        return toppings[(int)GetPlayer1Topping()];
+    }
+
+    public string getPlayer2ToppingName()
+    {
+        return toppings[(int)GetPlayer2Topping()];
     }
 
     public string getToppingObject (int toppingNeeded)

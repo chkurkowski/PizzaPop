@@ -5,32 +5,87 @@ using RavingBots.MultiInput;
 
 public class PlayerBehaviour : MonoBehaviour 
 {
-    InputState inputState;
+    public float mouseSpeed;
 
     public enum Players { Player1, Player2 };
     public Players player;
 
-    
+    private RegisterPlayers _regPlayers;
+
+    private InputState inputState;
 
     [SerializeField]
-    private Image cursorSprite;
+    private GameObject cursorSprite;
 
-    private Cursor cursor;
+    private void Awake()
+    {
+        inputState = FindObjectOfType<InputState>();
+        _regPlayers = FindObjectOfType<RegisterPlayers>();
+    }
 
-    IDevice mouse1;
+    //Two Device Objects
+    //Two IVirtual Axis
 
+    public IDevice player1Device;
 
-    // Use this for initialization
+    IVirtualAxis player1Axis;
+    IVirtualAxis player2Axis;
+
     void Start () 
     {
-        
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+
     }
 	
 	void Update () 
     {
-        Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f);
-        cursorSprite.rectTransform.position = Input.mousePosition;
-	}
+        //cursorSprite.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f);
+        Follow();
+
+
+        //player1Device = inputState.FindFirstDown();
+        //player1Axis = player1Device[InputCode.MouseLeft];
+
+        if (_regPlayers.Axis1().IsDown && player == Players.Player1 || (_regPlayers.Axis2().IsDown && player == Players.Player2))
+        {
+            Shoot();
+        }
+    }
+
+    void Follow()
+    {
+        RegisterPlayers players = _regPlayers;
+
+        if (player == Players.Player1)
+        {
+            cursorSprite.transform.position += new Vector3(players.Mouse1()[InputCode.MouseX].Value, players.Mouse1()[InputCode.MouseY].Value, 0f) * Time.deltaTime * mouseSpeed;
+        }
+        else if (player == Players.Player2)
+        {
+            cursorSprite.transform.position += new Vector3(players.Mouse2()[InputCode.MouseX].Value, players.Mouse2()[InputCode.MouseY].Value, 0f) * Time.deltaTime * mouseSpeed;
+        }
+    }
+
+    private void Shoot()
+    {
+        Vector3 ShotPos;
+        GameObject bullet;
+
+        if (player == Players.Player1)
+        {
+            ShotPos = new Vector3(-5f, -5f, 0f);
+            bullet = ObjectPooler.instance.SpawnFromPool(ToppingSwitcher.instance.getPlayer1ToppingName(), ShotPos, Quaternion.identity);
+        }
+        else
+        {
+            ShotPos = new Vector3(5f, -5f, 0f);
+            bullet = ObjectPooler.instance.SpawnFromPool(ToppingSwitcher.instance.getPlayer2ToppingName(), ShotPos, Quaternion.identity);
+        }
+            
+        bullet.GetComponent<ToppingScript>().SetDestination(transform.position);
+
+        bullet.GetComponent<ToppingScript>().playerShooter = player;
+
+        bullet.transform.localScale = new Vector3(3f, 3f, 3f);
+
+    }
 }

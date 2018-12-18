@@ -16,20 +16,14 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         toppings = new List<GameObject>();
     }
 
-    private void Start()
-    {
-
-
-    }
-
-    private void OnMouseDown()
-    {
-        Player1Hits();
-    }
+    //private void OnMouseDown()
+    //{
+    //    Player1Hits();
+    //}
 
     private void Player1Hits()
     {
-        AddTopping(_toppingSwitcher.GetPlayer1Topping());
+        //AddTopping(_toppingSwitcher.GetPlayer1Topping());
 
         if (_toppingSwitcher.GetPlayer1Topping() == _pizzaOrder.GetToppingNeeded())
         {
@@ -41,12 +35,17 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         }
     }
 
-    public void AddTopping(ToppingSwitcher.Toppings toppingAdded)
+    public void AddTopping(GameObject toppingToAdd)
     {
         //gets a string that tells us which topping to spawn onto it
-        string toppingName = _toppingSwitcher.getToppingObject((int)toppingAdded);
+        //string toppingName = _toppingSwitcher.getToppingObject((int)toppingAdded);
 
-        GameObject toppingToAdd = ObjectPooler.instance.SpawnFromPool(toppingName, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f), Quaternion.identity);
+        //GameObject toppingToAdd = ObjectPooler.instance.SpawnFromPool(toppingName, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f), Quaternion.identity);
+
+        if (toppingToAdd.GetComponent<ToppingScript>().playerShooter == PlayerBehaviour.Players.Player1)
+        {
+            Player1Hits();
+        }
 
         toppings.Add(toppingToAdd);
         toppingToAdd.transform.parent = transform;
