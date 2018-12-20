@@ -39,11 +39,20 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (transform.localScale.x < 1.1f && collision.gameObject.tag == "Pizza" && !added && Vector2.Distance(transform.position, collision.transform.position) < 1.5f)
+        if (transform.localScale.x < 1.0f && collision.gameObject.tag == "Pizza" && !added)
         {
-            Debug.Log("Hit Pizza");
-            added = true;
-            collision.gameObject.GetComponent<PizzaBehaviour>().AddTopping(gameObject);
+            PizzaBehaviour pizzaHit = collision.GetComponent<PizzaBehaviour>();
+            float distance = Vector2.Distance(transform.position, collision.transform.position);
+
+            if ((pizzaHit.pizzaSize == PizzaBehaviour.PizzaSizes.Large && distance < 1.5f)
+                || (pizzaHit.pizzaSize == PizzaBehaviour.PizzaSizes.Medium && distance < 1.0f)
+                || (pizzaHit.pizzaSize == PizzaBehaviour.PizzaSizes.Small && distance < 0.75f))
+            {
+                Debug.Log("Hit Pizza");
+                added = true;
+                pizzaHit.AddTopping(gameObject);
+            }
+
         }
     }
 

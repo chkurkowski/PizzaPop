@@ -8,6 +8,15 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private List<GameObject> toppings;
     private PizzaOrder _pizzaOrder;
 
+    public enum PizzaSizes
+    {
+        Large,
+        Medium,
+        Small
+    }
+
+    public PizzaSizes pizzaSize;
+
     private void Awake()
     {
         _pizzaOrder = GetComponent<PizzaOrder>();
@@ -27,7 +36,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         if (_toppingSwitcher.GetPlayer1Topping() == _pizzaOrder.GetToppingNeeded())
         {
-            _manager.setPlayer1Score(_manager.getPlayer1Score() + 300);
+            _manager.setPlayer1Score(_manager.getPlayer1Score() + 500);
         }
         else
         {
@@ -39,7 +48,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     {
         if (_toppingSwitcher.GetPlayer2Topping() == _pizzaOrder.GetToppingNeeded())
         {
-            _manager.setPlayer2Score(_manager.getPlayer2Score() + 300);
+            _manager.setPlayer2Score(_manager.getPlayer2Score() + 500);
         }
         else
         {

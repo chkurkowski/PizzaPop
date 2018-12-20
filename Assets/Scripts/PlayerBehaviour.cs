@@ -45,9 +45,20 @@ public class PlayerBehaviour : MonoBehaviour
         //player1Device = inputState.FindFirstDown();
         //player1Axis = player1Device[InputCode.MouseLeft];
 
-        if (_regPlayers.Axis1().IsDown && player == Players.Player1 || (_regPlayers.Axis2().IsDown && player == Players.Player2))
+        if (_regPlayers.Axis1() != null)
         {
-            Shoot();
+            if (_regPlayers.Axis1().IsDown && player == Players.Player1)
+            {
+                Shoot();
+            }
+        }
+
+        if (_regPlayers.Axis2() != null)
+        {
+            if (_regPlayers.Axis2().IsDown && player == Players.Player2)
+            {
+                Shoot();
+            }
         }
     }
 
@@ -55,11 +66,11 @@ public class PlayerBehaviour : MonoBehaviour
     {
         RegisterPlayers players = _regPlayers;
 
-        if (player == Players.Player1)
+        if (player == Players.Player1 && players.Mouse1() != null)
         {
             cursorSprite.transform.position += new Vector3(players.Mouse1()[InputCode.MouseX].Value, players.Mouse1()[InputCode.MouseY].Value, 0f) * Time.deltaTime * mouseSpeed;
         }
-        else if (player == Players.Player2)
+        else if (player == Players.Player2 && players.Mouse2() != null)
         {
             cursorSprite.transform.position += new Vector3(players.Mouse2()[InputCode.MouseX].Value, players.Mouse2()[InputCode.MouseY].Value, 0f) * Time.deltaTime * mouseSpeed;
         }
