@@ -5,8 +5,7 @@ using UnityEngine;
 public class CharacterBehaviour : MonoBehaviour
 {
 
-    //move character left and right
-    //have them toss up pizzas 
+    public ScriptedPizzaEvent[] events;
     
     public float rightLimitX;
     public float leftLimitX;
@@ -59,11 +58,14 @@ public class CharacterBehaviour : MonoBehaviour
         while (GameManager.manager.gameStarted)
         {
             yield return new WaitForSeconds(pizzaSpawnRate);
-            GameObject pizza = ObjectPooler.instance.SpawnFromPool(randomPizza(), transform.position, Quaternion.identity);
-            pizza.GetComponent<PizzaBehaviour>().RemoveToppings();
 
-            pizza.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            pizza.GetComponent<Rigidbody2D>().AddForce(randomPush(), ForceMode2D.Impulse);
+            int randomNum = Random.Range(0, 2);
+            events[randomNum].launch();
+            //GameObject pizza = ObjectPooler.instance.SpawnFromPool(randomPizza(), transform.position, Quaternion.identity);
+            //pizza.GetComponent<PizzaBehaviour>().RemoveToppings();
+
+            //pizza.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            //pizza.GetComponent<Rigidbody2D>().AddForce(randomPush(), ForceMode2D.Impulse);
         }
     }
 
@@ -81,6 +83,43 @@ public class CharacterBehaviour : MonoBehaviour
 
     Vector2 randomPush()
     {
-        return new Vector2(Random.Range(-2.5f, 2.5f), Random.Range(8.0f, 10.0f));
+        float distanceFromCenter = Mathf.Abs(transform.position.x);
+        float xforce = 0.0f;
+
+        int randomNum = Random.Range(0, 3);
+
+        if (randomNum == 0)
+        {
+            //push straight up
+            xforce = 0.0f;
+        }
+        else if (distanceFromCenter >= 5.0f)
+        {
+            //either push mildly or harshly towards the center
+            if (randomNum == 2)
+            {
+                xforce = 2.5f;
+            }
+            else
+            {
+                xforce = 5.0f;
+            }
+
+            xforce *= Mathf.Sign(transform.position.x) * -1.0f; 
+        }
+        else
+        {
+            //Push randomly left or right
+            if (randomNum == 2)
+            {
+                xforce = Random.Range(-2.5f, -5.0f);
+            }
+            else
+            {
+                xforce = Random.Range(2.5f, 5.0f);
+            }
+        }
+
+        return new Vector2(xforce, Random.Range(8.0f, 10.0f));
     }
 }

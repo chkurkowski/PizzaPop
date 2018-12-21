@@ -5,6 +5,7 @@ using UnityEngine;
 public class ToppingScript : MonoBehaviour, iPoolerObject
 {
     private bool added = false;
+    private bool touchingPizza = false;
 
     private Vector2 destination = new Vector2(0f,0f);
 
@@ -26,7 +27,7 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
         }
 
         //TODO: have the toppings fall/dissapear in some way after hitting the wall
-        if (transform.localScale.x < 0.9f)
+        if (transform.localScale.x < 0.81f && !touchingPizza)
         {
             gameObject.SetActive(false);
         }
@@ -39,7 +40,10 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (transform.localScale.x < 1.0f && collision.gameObject.tag == "Pizza" && !added)
+
+        touchingPizza = true;
+
+        if (transform.localScale.x <= 0.85f && collision.gameObject.tag == "Pizza" && !added)
         {
             PizzaBehaviour pizzaHit = collision.GetComponent<PizzaBehaviour>();
             float distance = Vector2.Distance(transform.position, collision.transform.position);
@@ -52,9 +56,18 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
                 added = true;
                 pizzaHit.AddTopping(gameObject);
             }
-
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Pizza")
+        {
+            touchingPizza = false;
+        }
+    }
+
+
 
     public void OnSpawnedByPooler()
     {

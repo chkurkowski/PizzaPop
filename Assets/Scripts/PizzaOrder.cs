@@ -11,7 +11,6 @@ public class PizzaOrder : MonoBehaviour
     private void Awake()
     {
         _toppingSwitcher = FindObjectOfType<ToppingSwitcher>();
-
     }
 
     public void AssignRandomTopping()

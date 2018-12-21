@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a6fbb16e6a04e1b8c136daead30b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pizzaSize: 2
 --- !u!114 &114347040543328050
 MonoBehaviour:
   m_ObjectHideFlags: 1

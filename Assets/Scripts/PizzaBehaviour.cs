@@ -32,28 +32,52 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
     private void Player1Hits()
     {
-        //AddTopping(_toppingSwitcher.GetPlayer1Topping());
+        int scoreToAdd = 0;
+
+        if (pizzaSize == PizzaSizes.Small)
+        {
+            scoreToAdd = 500;
+        }
+        else if (pizzaSize == PizzaSizes.Medium)
+        {
+            scoreToAdd = 200;
+        }
+        else if (pizzaSize == PizzaSizes.Large)
+        {
+            scoreToAdd = 100;
+        }
 
         if (_toppingSwitcher.GetPlayer1Topping() == _pizzaOrder.GetToppingNeeded())
         {
-            _manager.setPlayer1Score(_manager.getPlayer1Score() + 500);
+            scoreToAdd *= 2;
         }
-        else
-        {
-            _manager.setPlayer1Score(_manager.getPlayer1Score() + 100);
-        }
+
+        _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
     }
 
     private void Player2Hits()
     {
+        int scoreToAdd = 0;
+
+        if (pizzaSize == PizzaSizes.Small)
+        {
+            scoreToAdd = 500;
+        }
+        else if (pizzaSize == PizzaSizes.Medium)
+        {
+            scoreToAdd = 200;
+        }
+        else if (pizzaSize == PizzaSizes.Large)
+        {
+            scoreToAdd = 100;
+        }
+
         if (_toppingSwitcher.GetPlayer2Topping() == _pizzaOrder.GetToppingNeeded())
         {
-            _manager.setPlayer2Score(_manager.getPlayer2Score() + 500);
+            scoreToAdd *= 2;
         }
-        else
-        {
-            _manager.setPlayer2Score(_manager.getPlayer2Score() + 100);
-        }
+
+        _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
     }
 
 
@@ -93,5 +117,15 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     public void OnSpawnedByPooler()
     {
         _pizzaOrder.AssignRandomTopping();
+    }
+
+    private void Update()
+    {
+        //disable a pizza when it leaves the screen
+        if (transform.position.y < -7.0f)
+        {
+            RemoveToppings();
+            gameObject.SetActive(false);
+        }
     }
 }
