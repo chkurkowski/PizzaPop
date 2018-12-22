@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameStarted = true;
+
+        Cursor.visible = false; //makes mouse cursor invisible on start of game
     }
 
     public void EndGame()
