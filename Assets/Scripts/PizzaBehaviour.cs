@@ -130,10 +130,4 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
             gameObject.SetActive(false);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        _particles.Play();
-        Debug.Log("Particles");
-    }
 }
