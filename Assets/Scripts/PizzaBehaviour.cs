@@ -8,9 +8,12 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private List<GameObject> toppings;
     private PizzaOrder _pizzaOrder;
 
+<<<<<<< Updated upstream
     [SerializeField]
     private int pizzaLife;
 
+=======
+>>>>>>> Stashed changes
 
     [SerializeField]
     private float riseMultiplier = 1.0f;
@@ -129,11 +132,14 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
             GetComponent<Rigidbody2D>().velocity += Physics2D.gravity * (riseMultiplier - 1) * Time.deltaTime;
         }
 
+<<<<<<< Updated upstream
     }
 
     void Pop()
     {
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, 8.0f), ForceMode2D.Impulse);
+=======
+>>>>>>> Stashed changes
     }
 }
