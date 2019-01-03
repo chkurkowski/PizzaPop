@@ -156,6 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a6fbb16e6a04e1b8c136daead30b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pizzaLife: 3
+  riseMultiplier: 1
+  fallMultiplier: 1
+  pizzaSize: 0
 --- !u!212 &212156997652455786
 SpriteRenderer:
   m_ObjectHideFlags: 1

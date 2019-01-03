@@ -102,6 +102,14 @@ public class ToppingSwitcher : MonoBehaviour
         p2ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
     }
 
+    public Toppings GetPlayerTopping(int whichPlayer)
+    {
+        if (whichPlayer == 1)
+            return p1Topping;
+        else
+            return p2Topping;
+    }
+
     public Toppings GetPlayer1Topping()
     {
         return p1Topping;

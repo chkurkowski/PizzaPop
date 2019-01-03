@@ -8,6 +8,9 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private List<GameObject> toppings;
     private PizzaOrder _pizzaOrder;
 
+    [SerializeField]
+    private int pizzaLife;
+
 
     [SerializeField]
     private float riseMultiplier = 1.0f;
@@ -37,7 +40,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     //    Player1Hits();
     //}
 
-    private void Player1Hits()
+    private void PlayerHits(int whichPlayer)
     {
         int scoreToAdd = 0;
 
@@ -54,54 +57,34 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
             scoreToAdd = 100;
         }
 
-        if (_toppingSwitcher.GetPlayer1Topping() == _pizzaOrder.GetToppingNeeded())
+        if (_toppingSwitcher.GetPlayerTopping(whichPlayer) == _pizzaOrder.GetToppingNeeded())
         {
             scoreToAdd *= 2;
+
+            pizzaLife--;
+
+            if (pizzaLife <= 0)
+            {
+                Pop();
+            }
         }
 
-        _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
-    }
+        int currentplayerScore = _manager.getPlayerScore(whichPlayer);
 
-    private void Player2Hits()
-    {
-        int scoreToAdd = 0;
-
-        if (pizzaSize == PizzaSizes.Small)
-        {
-            scoreToAdd = 500;
-        }
-        else if (pizzaSize == PizzaSizes.Medium)
-        {
-            scoreToAdd = 200;
-        }
-        else if (pizzaSize == PizzaSizes.Large)
-        {
-            scoreToAdd = 100;
-        }
-
-        if (_toppingSwitcher.GetPlayer2Topping() == _pizzaOrder.GetToppingNeeded())
-        {
-            scoreToAdd *= 2;
-        }
-
-        _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
+        _manager.setPlayerScore(whichPlayer, currentplayerScore + scoreToAdd);
+                                           
     }
 
 
     public void AddTopping(GameObject toppingToAdd)
     {
-        //gets a string that tells us which topping to spawn onto it
-        //string toppingName = _toppingSwitcher.getToppingObject((int)toppingAdded);
-
-        //GameObject toppingToAdd = ObjectPooler.instance.SpawnFromPool(toppingName, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f), Quaternion.identity);
-
         if (toppingToAdd.GetComponent<ToppingScript>().playerShooter == PlayerBehaviour.Players.Player1)
         {
-            Player1Hits();
+            PlayerHits(1);
         }
         else if (toppingToAdd.GetComponent<ToppingScript>().playerShooter == PlayerBehaviour.Players.Player2)
         {
-            Player2Hits();
+            PlayerHits(2);
         }
 
         toppings.Add(toppingToAdd);
@@ -146,5 +129,11 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
             GetComponent<Rigidbody2D>().velocity += Physics2D.gravity * (riseMultiplier - 1) * Time.deltaTime;
         }
 
+    }
+
+    void Pop()
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, 8.0f), ForceMode2D.Impulse);
     }
 }

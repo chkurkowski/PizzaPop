@@ -52,7 +52,6 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
                 || (pizzaHit.pizzaSize == PizzaBehaviour.PizzaSizes.Medium && distance < 1.0f)
                 || (pizzaHit.pizzaSize == PizzaBehaviour.PizzaSizes.Small && distance < 0.75f))
             {
-                Debug.Log("Hit Pizza");
                 added = true;
                 pizzaHit.AddTopping(gameObject);
             }

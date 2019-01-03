@@ -59,14 +59,31 @@ public class CharacterBehaviour : MonoBehaviour
         {
             yield return new WaitForSeconds(pizzaSpawnRate);
 
-            int randomNum = Random.Range(0, 2);
-            events[randomNum].launch();
-            //GameObject pizza = ObjectPooler.instance.SpawnFromPool(randomPizza(), transform.position, Quaternion.identity);
-            //pizza.GetComponent<PizzaBehaviour>().RemoveToppings();
+            int randomNum = Random.Range(0, 5);
 
-            //pizza.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            //pizza.GetComponent<Rigidbody2D>().AddForce(randomPush(), ForceMode2D.Impulse);
+            if (randomNum == 1)
+            {
+                ExecutePizzaEvent(Random.Range(0, 2));
+            }
+            else
+            {
+                launchPizzaFromCharacter();
+            }
         }
+    }
+
+    private void ExecutePizzaEvent(int pizzaEvent)
+    {
+        events[pizzaEvent].launch();
+    }
+
+    private void launchPizzaFromCharacter()
+    {
+        GameObject pizza = ObjectPooler.instance.SpawnFromPool(randomPizza(), transform.position, Quaternion.identity);
+        pizza.GetComponent<PizzaBehaviour>().RemoveToppings();
+
+        pizza.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        pizza.GetComponent<Rigidbody2D>().AddForce(randomPush(), ForceMode2D.Impulse);
     }
 
     private string randomPizza()

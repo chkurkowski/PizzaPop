@@ -43,26 +43,41 @@ public class GameManager : MonoBehaviour
         endGamePanel.SetActive(true);
     }
 
-
-    public void setPlayer1Score(int score)
+    public void setPlayerScore(int whichPlayer, int score)
     {
-        player1Score = score;
+        if (whichPlayer == 1)
+            player1Score = score;
+        else
+            player2Score = score;
     }
 
-    public int getPlayer1Score()
+    public int getPlayerScore(int whichPlayer)
     {
-        return player1Score;
+        if (whichPlayer == 1)
+            return player1Score;
+        else
+            return player2Score;
     }
 
-    public void setPlayer2Score(int score)
-    {
-        player2Score = score;
-    }
+    //public void setPlayer1Score(int score)
+    //{
+    //    player1Score = score;
+    //}
 
-    public int getPlayer2Score()
-    {
-        return player2Score;
-    }
+    //public int getPlayer1Score()
+    //{
+    //    return player1Score;
+    //}
+
+    //public void setPlayer2Score(int score)
+    //{
+    //    player2Score = score;
+    //}
+
+    //public int getPlayer2Score()
+    //{
+    //    return player2Score;
+    //}
 
 
 
