@@ -9,9 +9,13 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private PizzaOrder _pizzaOrder;
     private ParticleSystem _particles;
 
+    [SerializeField]
+    private int pizzaLife;
 
-    private float fallMultiplier;
-    private float riseMultiplier;
+
+    private float fallMultiplier = 1.0f;
+
+    private float riseMultiplier = 1.0f;
 
     public enum PizzaSizes
     {
@@ -56,6 +60,10 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         if (_toppingSwitcher.GetPlayer1Topping() == _pizzaOrder.GetToppingNeeded())
         {
             scoreToAdd *= 2;
+            pizzaLife--;
+
+            if (pizzaLife <= 0)
+                Pop();
         }
 
         _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
@@ -81,6 +89,11 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         if (_toppingSwitcher.GetPlayer2Topping() == _pizzaOrder.GetToppingNeeded())
         {
             scoreToAdd *= 2;
+
+            pizzaLife--;
+
+            if (pizzaLife <= 0)
+                Pop();
         }
 
         _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
@@ -144,5 +157,11 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         {
             GetComponent<Rigidbody2D>().velocity += Physics2D.gravity * (riseMultiplier - 1) * Time.deltaTime;
         }
+    }
+
+    private void Pop()
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5.0f), ForceMode2D.Impulse);
     }
 }
