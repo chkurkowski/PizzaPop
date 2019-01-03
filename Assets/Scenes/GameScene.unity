@@ -2370,15 +2370,6 @@ Prefab:
       propertyPath: m_Name
       value: LargePizza (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1132295403853470, guid: d896d80253407463d88dc9ea5011c96b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 199880928686344240, guid: d896d80253407463d88dc9ea5011c96b,
-        type: 2}
-      propertyPath: m_MaxParticleSize
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d896d80253407463d88dc9ea5011c96b, type: 2}
   m_IsPrefabAsset: 0
