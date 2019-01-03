@@ -9,6 +9,10 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private PizzaOrder _pizzaOrder;
     private ParticleSystem _particles;
 
+
+    private float fallMultiplier;
+    private float riseMultiplier;
+
     public enum PizzaSizes
     {
         Large,
@@ -128,6 +132,17 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         {
             RemoveToppings();
             gameObject.SetActive(false);
+        }
+
+        //pizza phsyics
+
+        if (GetComponent<Rigidbody2D>().velocity.y < 0.0f)
+        {
+            GetComponent<Rigidbody2D>().velocity += Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (GetComponent<Rigidbody2D>().velocity.y > 0.0f)
+        {
+            GetComponent<Rigidbody2D>().velocity += Physics2D.gravity * (riseMultiplier - 1) * Time.deltaTime;
         }
     }
 }
