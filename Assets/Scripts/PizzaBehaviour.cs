@@ -7,6 +7,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private GameManager _manager;
     private List<GameObject> toppings;
     private PizzaOrder _pizzaOrder;
+    private ParticleSystem _particles;
 
     public enum PizzaSizes
     {
@@ -23,6 +24,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         _toppingSwitcher = GameObject.Find("ToppingSwitcher").GetComponent<ToppingSwitcher>();
         _manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         toppings = new List<GameObject>();
+        _particles = GetComponent<ParticleSystem>();
     }
 
     //private void OnMouseDown()
