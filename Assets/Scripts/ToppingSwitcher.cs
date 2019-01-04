@@ -41,6 +41,36 @@ public class ToppingSwitcher : MonoBehaviour
             SwitchPlayer1Topping(4); // Switch Player 1's topping to BlackOlive
         }
 
+        /* Player 1 Topping cycle*/
+
+        if (Input.GetKeyDown("q"))
+        {
+            if (toppings[(int)GetPlayer1Topping()] == "BlackOlive")
+            {
+                SwitchPlayer1Topping(0);
+            }
+            else if (toppings[(int)GetPlayer1Topping()] == "Pepperoni") 
+            {
+                SwitchPlayer1Topping(1);        
+            }
+            else if (toppings[(int)GetPlayer1Topping()] == "GreenPepper")
+            {
+                SwitchPlayer1Topping(2);
+            }
+            else if (toppings[(int)GetPlayer1Topping()] == "Mushroom")
+            {
+                SwitchPlayer1Topping(3);
+            }
+            else if (toppings[(int)GetPlayer1Topping()] == "Onion")
+            {
+                SwitchPlayer1Topping(4);
+            }
+            else
+            {
+                SwitchPlayer1Topping(1); // The pepperoni line wouldn't work so I added this. No idea why it didn't work to begin with.
+            }
+        }
+
         /* Buttons 6-0 on the keyboard are for Player 2*/
 
         if (Input.GetKeyDown("6"))
@@ -66,6 +96,34 @@ public class ToppingSwitcher : MonoBehaviour
         if (Input.GetKeyDown("0"))
         {
             SwitchPlayer2Topping(4); // Switch Player 2's topping to BlackOlive
+        }
+
+        if (Input.GetKeyDown("y"))
+        {
+           if (toppings[(int)GetPlayer2Topping()] == "BlackOlive")
+           {
+                SwitchPlayer2Topping(0);
+           }
+           else if (toppings[(int)GetPlayer2Topping()] == "Pepperoni")
+           {
+                SwitchPlayer2Topping(1);
+           }
+           else if (toppings[(int)GetPlayer2Topping()] == "GreenPepper")
+           {
+                SwitchPlayer2Topping(2);
+           }
+           else if (toppings[(int)GetPlayer2Topping()] == "Mushroom")
+           {
+                SwitchPlayer2Topping(3);
+           }
+           else if (toppings[(int)GetPlayer2Topping()] == "Onion")
+           {
+                SwitchPlayer2Topping(4);
+           }
+           else
+            {
+                SwitchPlayer2Topping(1);
+            }
         }
     }
 
