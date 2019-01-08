@@ -51,7 +51,7 @@ public class RegisterPlayers : MonoBehaviour
                 if (player1progress >= 1.0f)
                 {
                     player1Device = inputState.FindFirstHeld();
-                    player1Axis = player1Device[InputCode.MouseLeft];
+                    //player1Axis = player1Device[InputCode.MouseLeft];
                     instructionText.text = "Player 2 hold the mouse button";
                 }
             }
