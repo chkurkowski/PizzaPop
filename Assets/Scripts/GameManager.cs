@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameStarted = true;
+        AudioManager.instance.Play("Click");
+        AudioManager.instance.Stop("Title Music");
+        AudioManager.instance.Play("Game Music");
     }
 
     public void EndGame()
@@ -78,7 +81,11 @@ public class GameManager : MonoBehaviour
             player2ScoreText.text = "Player 2: " + player2Score.ToString();
 
             if (timeLeft <= 0)
+            {
+                AudioManager.instance.Stop("Game Music");
+                AudioManager.instance.Play("Results Music");
                 EndGame();
+            }
         }
 	}
 }
