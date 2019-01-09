@@ -12,6 +12,13 @@ public class ToppingSwitcher : MonoBehaviour
         instance = this;
     }
 
+    public void Start()
+    {
+        //players start out with pepporoni selected
+        SwitchPlayer1Topping(0); 
+        SwitchPlayer2Topping(0);
+    }
+
     public void Update() 
     {
         /* Buttons 1-5 on the keyboard are for Player 1*/
