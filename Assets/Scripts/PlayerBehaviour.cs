@@ -9,6 +9,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public enum Players { Player1, Player2 };
     public Players player;
+    public Vector2 initalPosition;
 
     private RegisterPlayers _regPlayers;
 
@@ -60,6 +61,11 @@ public class PlayerBehaviour : MonoBehaviour
                 Shoot();
             }
         }
+    }
+
+    public void resetPosition()
+    {
+        transform.position = initalPosition;
     }
 
     void Follow()

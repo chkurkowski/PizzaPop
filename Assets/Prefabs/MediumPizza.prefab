@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a6fbb16e6a04e1b8c136daead30b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pizzaLife: 2
   pizzaSize: 1
 --- !u!198 &198031552109820520
 ParticleSystem:
