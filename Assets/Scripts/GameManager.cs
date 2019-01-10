@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour 
 {
@@ -34,16 +35,41 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        timeLeft = 30f;
+
         gameStarted = true;
+        
         AudioManager.instance.Play("Click");
         AudioManager.instance.Stop("Title Music");
         AudioManager.instance.Play("Game Music");
+
+        Cursor.visible = false; //makes mouse cursor invisible on start of game
+
+        foreach (PlayerBehaviour p in FindObjectsOfType<PlayerBehaviour>())
+        {
+            p.resetPosition();
+        }
+
+        foreach (CharacterBehaviour c in FindObjectsOfType<CharacterBehaviour>())
+        {
+            c.resetCharacter();
+        }
     }
 
     public void EndGame()
     {
+        Cursor.visible = true;
         gameStarted = false;
         endGamePanel.SetActive(true);
+    }
+
+    public void ResetGame()
+    {
+        player1Score = 0;
+        player2Score = 0;
+
+        endGamePanel.SetActive(false);
+        StartGame();
     }
 
 
@@ -88,4 +114,9 @@ public class GameManager : MonoBehaviour
             }
         }
 	}
+
+    public void ResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

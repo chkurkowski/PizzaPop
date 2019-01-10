@@ -22,6 +22,11 @@ public class CharacterBehaviour : MonoBehaviour
         direction *= -1.0f;
     }
 
+    public void resetCharacter()
+    {
+        spawningStarted = false;
+    }
+
 	// Update is called once per frame
 	void Update () 
     {
@@ -59,13 +64,24 @@ public class CharacterBehaviour : MonoBehaviour
         {
             yield return new WaitForSeconds(pizzaSpawnRate);
 
-            int randomNum = Random.Range(0, 2);
-            events[randomNum].launch();
-            //GameObject pizza = ObjectPooler.instance.SpawnFromPool(randomPizza(), transform.position, Quaternion.identity);
-            //pizza.GetComponent<PizzaBehaviour>().RemoveToppings();
+            float percentage = Random.Range(0f, 1f);
+            //every 1 in 10 
 
-            //pizza.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            //pizza.GetComponent<Rigidbody2D>().AddForce(randomPush(), ForceMode2D.Impulse);
+            if (percentage <= 0.1f)
+            {
+                //event triggered every 1 in 10
+                int randomNum = Random.Range(0, 2);
+                events[randomNum].launch();
+            }
+            else
+            {
+
+                GameObject pizza = ObjectPooler.instance.SpawnFromPool(randomPizza(), transform.position, Quaternion.identity);
+                pizza.GetComponent<PizzaBehaviour>().RemoveToppings();
+
+                pizza.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                pizza.GetComponent<Rigidbody2D>().AddForce(randomPush(), ForceMode2D.Impulse);
+            }
         }
     }
 
