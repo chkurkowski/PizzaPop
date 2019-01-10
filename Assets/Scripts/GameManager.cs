@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
         timeLeft = 30f;
 
         gameStarted = true;
+        
+        AudioManager.instance.Play("Click");
+        AudioManager.instance.Stop("Title Music");
+        AudioManager.instance.Play("Game Music");
 
         Cursor.visible = false; //makes mouse cursor invisible on start of game
 
@@ -103,7 +107,11 @@ public class GameManager : MonoBehaviour
             player2ScoreText.text = "Player 2: " + player2Score.ToString();
 
             if (timeLeft <= 0)
+            {
+                AudioManager.instance.Stop("Game Music");
+                AudioManager.instance.Play("Results Music");
                 EndGame();
+            }
         }
 	}
 

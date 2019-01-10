@@ -84,6 +84,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Shoot()
     {
+        AudioManager.instance.Play("Shoot");
         Vector3 ShotPos;
         GameObject bullet;
 
