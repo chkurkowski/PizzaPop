@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        AudioManager.instance.Stop("Results Music");
         player1Score = 0;
         player2Score = 0;
 
