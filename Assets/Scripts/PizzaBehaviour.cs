@@ -43,7 +43,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private void Player1Hits()
     {
         AudioManager.instance.Play("Hit");
-    {
+    
         int scoreToAdd = 0;
 
         if (pizzaSize == PizzaSizes.Small)
@@ -74,7 +74,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private void Player2Hits()
     {
         AudioManager.instance.Play("Hit");
-    {
+    
         int scoreToAdd = 0;
 
         if (pizzaSize == PizzaSizes.Small)
