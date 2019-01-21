@@ -13,8 +13,12 @@ public class RegisterPlayers : MonoBehaviour
     private IDevice player1Device;
     private IDevice player2Device;
 
-    private IVirtualAxis player1Axis;
-    private IVirtualAxis player2Axis;
+    private IVirtualAxis player1Left;
+    private IVirtualAxis player2Left;
+
+    private IVirtualAxis player1Right;
+    private IVirtualAxis player2Right;
+
 
     private void Awake()
     {
@@ -51,7 +55,8 @@ public class RegisterPlayers : MonoBehaviour
                 if (player1progress >= 1.0f)
                 {
                     player1Device = inputState.FindFirstHeld();
-                    player1Axis = player1Device[InputCode.MouseLeft];
+                    player1Left = player1Device[InputCode.MouseLeft];
+                    player1Right = player1Device[InputCode.MouseRight];
                     instructionText.text = "Player 2 hold the mouse button";
                 }
             }
@@ -65,7 +70,8 @@ public class RegisterPlayers : MonoBehaviour
                 if (player2progress >= 1.0f)
                 {
                     player2Device = inputState.FindFirstHeld();
-                    player2Axis = player2Device[InputCode.MouseLeft];
+                    player2Left = player2Device[InputCode.MouseLeft];
+                    player2Right = player2Device[InputCode.MouseRight];
                 }
             }
             else if (player1Device != null & player2Device != null)
@@ -105,13 +111,24 @@ public class RegisterPlayers : MonoBehaviour
         return null;
     }
 
-    public IVirtualAxis Axis1()
+    public IVirtualAxis Axis1LeftClick()
     {
-        return player1Axis;
+        return player1Left;
     }
 
-    public IVirtualAxis Axis2()
+    public IVirtualAxis Axis2LeftClick()
     {
-        return player2Axis;
+        return player2Left;
     }
+
+    public IVirtualAxis Axis1RightClick()
+    {
+        return player1Right;
+    }
+
+    public IVirtualAxis Axis2RightClick()
+    {
+        return player2Right;
+    }
+
 }

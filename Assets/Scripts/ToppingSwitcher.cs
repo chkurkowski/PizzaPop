@@ -18,10 +18,9 @@ public class ToppingSwitcher : MonoBehaviour
 
         if (Input.GetKeyDown("1"))
         {
-            SwitchPlayer1Topping(0); // Switch Player 1's topping to Pepperoni
+            SwitchPlayer1Topping(0); // Switch Player 1's topping to Pepperoni}
         }
-
-        if (Input.GetKeyDown("2"))
+            if (Input.GetKeyDown("2"))
         {
             SwitchPlayer1Topping(1); // Switch Player 1's topping to GreenPepper
         }

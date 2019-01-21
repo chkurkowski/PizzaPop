@@ -36,8 +36,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
 
     }
-	
-	void Update () 
+    
+    void Update () 
     {
         //cursorSprite.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f);
         Follow();
@@ -46,21 +46,42 @@ public class PlayerBehaviour : MonoBehaviour
         //player1Device = inputState.FindFirstDown();
         //player1Axis = player1Device[InputCode.MouseLeft];
 
-        if (_regPlayers.Axis1() != null)
+        if (_regPlayers.Axis1LeftClick() != null)
         {
-            if (_regPlayers.Axis1().IsDown && player == Players.Player1)
+            if (_regPlayers.Axis1LeftClick().IsDown && player == Players.Player1)
             {
+                ToppingSwitcher.instance.SwitchPlayer1Topping(0);
                 Shoot();
             }
         }
 
-        if (_regPlayers.Axis2() != null)
+         if (_regPlayers.Axis1RightClick() != null)
         {
-            if (_regPlayers.Axis2().IsDown && player == Players.Player2)
+            if (_regPlayers.Axis1RightClick().IsDown && player == Players.Player1)
             {
+                ToppingSwitcher.instance.SwitchPlayer1Topping(1);
                 Shoot();
             }
         }
+
+        if (_regPlayers.Axis2LeftClick() != null)
+        {
+            if (_regPlayers.Axis2LeftClick().IsDown && player == Players.Player2)
+            {
+                ToppingSwitcher.instance.SwitchPlayer2Topping(0);
+                Shoot();
+            }
+        }
+
+         if (_regPlayers.Axis2RightClick() != null)
+        {
+            if (_regPlayers.Axis2RightClick().IsDown && player == Players.Player2)
+            {
+                ToppingSwitcher.instance.SwitchPlayer2Topping(1);
+                Shoot();
+            }
+        }
+
     }
 
     public void resetPosition()
