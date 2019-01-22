@@ -78,9 +78,13 @@ public class CharacterBehaviour : MonoBehaviour
 
                 GameObject pizza = ObjectPooler.instance.SpawnFromPool(randomPizza(), transform.position, Quaternion.identity);
                 pizza.GetComponent<PizzaBehaviour>().RemoveToppings();
-
                 pizza.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 pizza.GetComponent<Rigidbody2D>().AddForce(randomPush(), ForceMode2D.Impulse);
+
+                if (GameManager.manager.GetSecondsLeft() <= 20.0f)
+                {
+
+                }
             }
         }
     }

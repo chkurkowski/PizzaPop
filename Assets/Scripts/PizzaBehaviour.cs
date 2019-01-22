@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 {
@@ -69,7 +70,8 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         }
 
         _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
-    }
+        DisplayScore(scoreToAdd, transform.position, Color.red);
+        }
 
     private void Player2Hits()
     {
@@ -101,6 +103,16 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         }
 
         _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
+
+        DisplayScore(scoreToAdd, transform.position, Color.blue);
+
+    }
+
+    public void DisplayScore(int score, Vector2 position, Color fontColor)
+    {
+        TextMeshPro playerTextPopup = ObjectPooler.instance.SpawnFromPool("Text", position, Quaternion.identity).GetComponent<TextMeshPro>();
+        playerTextPopup.text = "+" + score.ToString();
+        playerTextPopup.color = fontColor;
     }
 
 

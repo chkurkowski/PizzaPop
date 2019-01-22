@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void EndGame()
+    public void EndGame() 
     {
         Cursor.visible = true;
         gameStarted = false;
@@ -94,8 +94,6 @@ public class GameManager : MonoBehaviour
         return player2Score;
     }
 
-
-
     // Update is called once per frame
     void Update () 
     {
@@ -119,5 +117,10 @@ public class GameManager : MonoBehaviour
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public float GetSecondsLeft()
+    {
+        return timeLeft;
     }
 }

@@ -54,19 +54,28 @@ MonoBehaviour:
   pools:
   - tag: Pepparoni
     prefab: {fileID: 1020580104650164, guid: 9f3119d0bec4e467bbe94f324637477e, type: 2}
-    size: 10
+    size: 200
   - tag: GreenPepper
     prefab: {fileID: 1241372484050592, guid: bbc427a3a909449d99c0e499a8622bb3, type: 2}
-    size: 10
+    size: 30
   - tag: Mushroom
     prefab: {fileID: 1035273168592882, guid: 1b9ff0ca5ff0446db8e9e4192ca3d23e, type: 2}
-    size: 10
+    size: 30
   - tag: Onion
     prefab: {fileID: 1954705517002462, guid: fdbd453c02c7d44ce850c0257a2a9d07, type: 2}
-    size: 10
+    size: 30
   - tag: BlackOlive
     prefab: {fileID: 1302544692025706, guid: 3afafe05af27c49238e60919a74541a9, type: 2}
-    size: 10
-  - tag: pizza
+    size: 30
+  - tag: LargePizza
     prefab: {fileID: 1132295403853470, guid: d896d80253407463d88dc9ea5011c96b, type: 2}
-    size: 10
+    size: 20
+  - tag: MediumPizza
+    prefab: {fileID: 1507325607630196, guid: 1abfc8f01b1eb40b68f767e1ff98ba36, type: 2}
+    size: 20
+  - tag: SmallPizza
+    prefab: {fileID: 1727130070112826, guid: cc4e448bdd7d74a9d99b50b98ad6c877, type: 2}
+    size: 20
+  - tag: Text
+    prefab: {fileID: 0}
+    size: 20
