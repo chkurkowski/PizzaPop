@@ -9,18 +9,27 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
 
     private Vector2 destination = new Vector2(0f,0f);
 
+    private int rand;
+
     [SerializeField]
     private float flySpeed;
 
     public PlayerBehaviour.Players playerShooter;
-	
-	// Update is called once per frame
-	void Update () 
+
+    private void Start()
+    {
+        rand = Random.Range(0, 2);
+    }
+
+    // Update is called once per frame
+    void Update () 
     {
         if (!added)
         {
             Vector2 launchPosition = Vector2.Lerp(transform.position, destination, flySpeed);
             Vector2 smoothedScale = Vector3.Lerp(transform.localScale, new Vector3(0.8f, 0.8f, 0.8f), flySpeed);
+
+            RotateOverTime();
 
             transform.position = launchPosition;
             transform.localScale = smoothedScale;
@@ -32,6 +41,19 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
             gameObject.SetActive(false);
         }
 	}
+
+    private void RotateOverTime()
+    { 
+
+        if(rand == 0)
+        {
+            transform.Rotate(0, 0, 4);
+        }
+        else if(rand == 1)
+        {
+            transform.Rotate(0, 0, -4);
+        }
+    }
 
     public void SetDestination(Vector3 desToSet)
     {
