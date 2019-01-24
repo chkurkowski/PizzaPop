@@ -75,7 +75,7 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
                 || (pizzaHit.pizzaSize == PizzaBehaviour.PizzaSizes.Small && distance < 0.75f))
             {
                 Debug.Log("Hit Pizza");
-                collision.GetComponent<ParticleSystem>().Play();
+                GetComponent<ParticleSystem>().Play();
                 added = true;
                 pizzaHit.AddTopping(gameObject);
             }
