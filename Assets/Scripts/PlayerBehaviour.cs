@@ -59,8 +59,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (_regPlayers.Axis1RightClick().IsDown && player == Players.Player1)
             {
-                ToppingSwitcher.instance.SwitchPlayer1Topping(1);
-                Shoot();
+                ToppingSwitcher.instance.SwitchPlayer1Topping(4);
+                Shotgun();
             }
         }
 
@@ -77,8 +77,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (_regPlayers.Axis2RightClick().IsDown && player == Players.Player2)
             {
-                ToppingSwitcher.instance.SwitchPlayer2Topping(1);
-                Shoot();
+                ToppingSwitcher.instance.SwitchPlayer2Topping(4);
+                Shotgun();
             }
         }
 
@@ -119,12 +119,48 @@ public class PlayerBehaviour : MonoBehaviour
             ShotPos = new Vector3(5f, -5f, 0f);
             bullet = ObjectPooler.instance.SpawnFromPool(ToppingSwitcher.instance.getPlayer2ToppingName(), ShotPos, Quaternion.identity);
         }
-            
+
         bullet.GetComponent<ToppingScript>().SetDestination(transform.position);
        
         bullet.GetComponent<ToppingScript>().playerShooter = player;
 
         bullet.transform.localScale = new Vector3(5f, 5f, 5f);
 
+    }
+
+    private void Shotgun()
+    {
+        AudioManager.instance.Play("Shoot");
+        Vector3 ShotPos;
+        GameObject[] bullets = new GameObject[6];
+
+        if (player == Players.Player1)
+        {
+            ShotPos = new Vector3(-5f, -5f, 0f);
+            for(int i = 0; i < bullets.Length; i++)
+            {
+                bullets[i] = ObjectPooler.instance.SpawnFromPool(ToppingSwitcher.instance.getPlayer1ToppingName(), ShotPos, Quaternion.identity);
+            }
+        }
+        else
+        {
+            ShotPos = new Vector3(5f, -5f, 0f);
+            for (int i = 0; i < bullets.Length; i++)
+            {
+                bullets[i] = ObjectPooler.instance.SpawnFromPool(ToppingSwitcher.instance.getPlayer2ToppingName(), ShotPos, Quaternion.identity);
+            }
+        }
+
+        for(int i = 0; i < bullets.Length; i++)
+        {
+            float offsetX = Random.Range(-2f, 2f);
+            float offsetY = Random.Range(-2f, 2f);
+
+            bullets[i].GetComponent<ToppingScript>().SetDestination(transform.position + new Vector3(offsetX, offsetY, 0));
+
+            bullets[i].GetComponent<ToppingScript>().playerShooter = player;
+
+            bullets[i].transform.localScale = new Vector3(5f, 5f, 5f);
+        }
     }
 }
