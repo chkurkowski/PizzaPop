@@ -129,10 +129,10 @@ public class ToppingSwitcher : MonoBehaviour
     public enum Toppings 
     { 
         Pepperoni,   //topping 0
-        GreenPepper, //topping 1
+        BlackOlive, //topping 1
         Mushroom,    //topping 2
         Onion,       //topping 3
-        BlackOlive   //topping 4
+        GreenPepper   //topping 4
     }
 
     [SerializeField]
