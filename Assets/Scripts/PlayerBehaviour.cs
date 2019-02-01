@@ -163,4 +163,40 @@ public class PlayerBehaviour : MonoBehaviour
             bullets[i].transform.localScale = new Vector3(5f, 5f, 5f);
         }
     }
+
+    private void Arc()
+    {
+        AudioManager.instance.Play("Shoot");
+        Vector3 ShotPos;
+        GameObject[] bullets = new GameObject[5];
+
+        if (player == Players.Player1)
+        {
+            ShotPos = new Vector3(-5f, -5f, 0f);
+            for (int i = 0; i < bullets.Length; i++)
+            {
+                bullets[i] = ObjectPooler.instance.SpawnFromPool(ToppingSwitcher.instance.getPlayer1ToppingName(), ShotPos, Quaternion.identity);
+            }
+        }
+        else
+        {
+            ShotPos = new Vector3(5f, -5f, 0f);
+            for (int i = 0; i < bullets.Length; i++)
+            {
+                bullets[i] = ObjectPooler.instance.SpawnFromPool(ToppingSwitcher.instance.getPlayer2ToppingName(), ShotPos, Quaternion.identity);
+            }
+        }
+
+        for (int i = 0; i < bullets.Length; i++)
+        {
+            float offsetX = -.55f + (i * .5f); //Random.Range(-1f, 2f);
+            float offsetY = -(offsetX * offsetX) + (offsetX); //This is for a parabola
+
+            bullets[i].GetComponent<ToppingScript>().SetDestination(transform.position + new Vector3(offsetX, offsetY, 0));
+
+            bullets[i].GetComponent<ToppingScript>().playerShooter = player;
+
+            bullets[i].transform.localScale = new Vector3(5f, 5f, 5f);
+        }
+    }
 }
