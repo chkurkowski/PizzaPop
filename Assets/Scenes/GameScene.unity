@@ -1481,6 +1481,78 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Beginning of Game
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: End of Game
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Abundant Correct Toppings
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Abundant Incorrect Toppings
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pizza Event Triggered
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: 15 Seconds Left
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: 5 Seconds Left
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: No Pizzas Hit
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: 15 Seconds Left
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Score Threshold Low
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Score Threshold Medium
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Score Threshold High
+    clip: {fileID: 8300000, guid: 1056b4ff760197c4284be135aed1e143, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &573165482
 Transform:
   m_ObjectHideFlags: 0
