@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Pizza
   - Topping
-  - StartMenu
   layers:
   - Default
   - TransparentFX
