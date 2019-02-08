@@ -11,26 +11,6 @@ public class PlayerBehaviour : MonoBehaviour
     public Players player;
     public Vector2 initalPosition;
 
-    private float shotTimer;
-
-
-    [SerializeField]
-    private float pepperoniReloadTime;
-
-    [SerializeField]
-    private float pepperReloadTime;
-
-    [SerializeField]
-    private float mushroomReloadTime;
-
-    [SerializeField]
-    private float oliveReloadTime;
-
-    [SerializeField]
-    private float onionReloadTime;
-
-
-
     private RegisterPlayers _regPlayers;
 
     private InputState inputState;
@@ -70,36 +50,17 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (_regPlayers.Axis1LeftClick().IsDown && player == Players.Player1)
             {
-                if ((ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.Pepperoni 
-                     && shotTimer >= pepperoniReloadTime) 
-                    || (ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.GreenPepper 
-                        && shotTimer >= pepperReloadTime)
-                    )
-                {
-                    shotTimer = 0f;
-                    Shoot();
-                }
-                else if (ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.BlackOlive
-                         && shotTimer >= oliveReloadTime)
-                {
-                    shotTimer = 0f;
-                    Shotgun();
-                }
-                else if (ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.Onion
-                         && shotTimer >= onionReloadTime)
-                {
-                    shotTimer = 0f;
-                    Arc();
-                }
-                
-                //ToppingSwitcher.instance.SwitchPlayer1Topping(0);
-                //Shoot();
-            }
-            else if (_regPlayers.Axis1LeftClick().IsHeld && ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.Mushroom && player == Players.Player1
-                     && shotTimer >= mushroomReloadTime)
-            {
-                shotTimer = 0f;
+                ToppingSwitcher.instance.SwitchPlayer1Topping(0);
                 Shoot();
+            }
+        }
+
+         if (_regPlayers.Axis1RightClick() != null)
+        {
+            if (_regPlayers.Axis1RightClick().IsDown && player == Players.Player1)
+            {
+                ToppingSwitcher.instance.SwitchPlayer1Topping(4);
+                Shotgun();
             }
         }
 
@@ -107,67 +68,20 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (_regPlayers.Axis2LeftClick().IsDown && player == Players.Player2)
             {
-                if ((ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.Pepperoni
-                     && shotTimer >= pepperoniReloadTime)
-                    || (ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.GreenPepper
-                        && shotTimer >= pepperReloadTime)
-                    )
-                {
-                    shotTimer = 0f;
-                    Shoot();
-                }
-                else if (ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.BlackOlive
-                         && shotTimer >= oliveReloadTime)
-                {
-                    shotTimer = 0f;
-                    Shotgun();
-                }
-                else if (ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.Onion
-                         && shotTimer >= onionReloadTime)
-                {
-                    shotTimer = 0f;
-                    Arc();
-                }
-
-                //ToppingSwitcher.instance.SwitchPlayer1Topping(0);
-                //Shoot();
-            }
-            else if (_regPlayers.Axis2LeftClick().IsHeld && ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.Mushroom && player == Players.Player2
-                     && shotTimer >= mushroomReloadTime)
-            {
-                shotTimer = 0f;
+                ToppingSwitcher.instance.SwitchPlayer2Topping(0);
                 Shoot();
             }
         }
 
-        //if (_regPlayers.Axis1RightClick() != null)
-        //{
-        //    if (_regPlayers.Axis1RightClick().IsDown && player == Players.Player1)
-        //    {
-        //        ToppingSwitcher.instance.SwitchPlayer1Topping(4);
-        //        Shotgun();
-        //    }
-        //}
+         if (_regPlayers.Axis2RightClick() != null)
+        {
+            if (_regPlayers.Axis2RightClick().IsDown && player == Players.Player2)
+            {
+                ToppingSwitcher.instance.SwitchPlayer2Topping(4);
+                Shotgun();
+            }
+        }
 
-        //if (_regPlayers.Axis2LeftClick() != null)
-        //{
-        //    if (_regPlayers.Axis2LeftClick().IsDown && player == Players.Player2)
-        //    {
-        //        ToppingSwitcher.instance.SwitchPlayer2Topping(0);
-        //        Shoot();
-        //    }
-        //}
-
-        // if (_regPlayers.Axis2RightClick() != null)
-        //{
-        //    if (_regPlayers.Axis2RightClick().IsDown && player == Players.Player2)
-        //    {
-        //        ToppingSwitcher.instance.SwitchPlayer2Topping(4);
-        //        Shotgun();
-        //    }
-        //}
-
-        shotTimer += Time.deltaTime;
     }
 
     public void resetPosition()
