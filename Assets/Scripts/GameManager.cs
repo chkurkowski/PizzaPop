@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.Stop("Title Music");
         AudioManager.instance.Play("Game Music");
 
-        Cursor.visible = false; //makes mouse cursor invisible on start of game
+       // Cursor.visible = false; //makes mouse cursor invisible on start of game
 
         foreach (PlayerBehaviour p in FindObjectsOfType<PlayerBehaviour>())
         {
@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
         endGamePanel.SetActive(false);
         StartGame();
     }
-
 
     public void setPlayer1Score(int score)
     {
@@ -112,7 +111,7 @@ public class GameManager : MonoBehaviour
                 EndGame();
             }
         }
-	}
+    }
 
     public void ResetScene()
     {

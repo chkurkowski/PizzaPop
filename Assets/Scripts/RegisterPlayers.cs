@@ -12,11 +12,11 @@ public class RegisterPlayers : MonoBehaviour
     private IDevice player1Device = null;
     private IDevice player2Device = null;
 
-    private IVirtualAxis player1Left;
-    private IVirtualAxis player2Left;
+    private IVirtualAxis player1Left = null;
+    private IVirtualAxis player2Left = null;
 
-    private IVirtualAxis player1Right;
-    private IVirtualAxis player2Right;
+    private IVirtualAxis player1Right = null;
+    private IVirtualAxis player2Right = null;
 
 
     private void Awake()
@@ -35,8 +35,8 @@ public class RegisterPlayers : MonoBehaviour
     [SerializeField]
     private Image player2progressImage;
     private float player2progress;
-
     // Use this for initialization
+
     void Start () 
     {
         instructionText.text = "Player 1 hold the mouse button";
@@ -44,19 +44,44 @@ public class RegisterPlayers : MonoBehaviour
     	// Update is called once per frame
 	void Update () 
     {
+        //instructionText.text = (player1Device == null) ?  "null" : (player1Device).ToString();
+
+
+
         if (Input.GetMouseButton(0))
         {
-            if (player1Device == null)
+            if (player1Left == null)
             {
                 player1progress += Time.deltaTime;
-
+                //instructionText.text = player1progress.ToString();
                 if (player1progress >= 1.0f)
                 {
+                    instructionText.text = player1progress.ToString();
                     player1Device = inputState.FindFirstHeld();
-                    Debug.Log(inputState.FindFirstHeld());
-                    player1Left = player1Device[InputCode.MouseLeft];
-                    player1Right = player1Device[InputCode.MouseRight];
-                    instructionText.text = "Player 2 hold the mouse button";
+
+                    //foreach(IDevice i in inputState.Devices)
+                    //{
+                    //    if (i == null)
+                    //        break;
+                    //    if (i[InputCode.MouseLeft].IsHeld)
+                    //    {
+                    //        player1Left = i[InputCode.MouseLeft];
+                    //    }
+                    //}
+
+                    instructionText.text = "hi";
+
+                    if (player1Device != null)
+                    {
+                        player1Left = player1Device[InputCode.MouseLeft];
+                        player1Right = player1Device[InputCode.MouseRight];
+                        instructionText.text = (player1Left == null).ToString();
+
+
+                        player1Left.Commit();
+                    }
+             
+
                 }
             }
             else if (player2Device == null && inputState.FindFirstHeld() != player1Device)
@@ -71,6 +96,8 @@ public class RegisterPlayers : MonoBehaviour
                     player2Device = inputState.FindFirstHeld();
                     player2Left = player2Device[InputCode.MouseLeft];
                     player2Right = player2Device[InputCode.MouseRight];
+                    player2Left.Commit();
+
                 }
             }
             else if (player1Device != null & player2Device != null)

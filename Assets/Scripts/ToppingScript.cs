@@ -20,6 +20,7 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
     {
         rand = Random.Range(0, 2);
     }
+    
 
     // Update is called once per frame
     void Update () 
@@ -94,6 +95,7 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
 
     public void OnSpawnedByPooler()
     {
+        transform.parent = null;
         added = false;
     }
 }
