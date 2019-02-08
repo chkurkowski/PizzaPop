@@ -15,7 +15,8 @@ public class PizzaOrder : MonoBehaviour
 
     public void AssignRandomTopping()
     {
-        toppingNeeded = (ToppingSwitcher.Toppings)Random.Range(0, 2);
+        toppingNeeded = (ToppingSwitcher.Toppings)Random.Range(0, 5);
+
         assignToppingNeededSprite();
     }
 

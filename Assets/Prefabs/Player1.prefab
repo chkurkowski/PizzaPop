@@ -81,7 +81,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aebca126d975453b82379e49554d11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSpeed: 0
   player: 0
+  initalPosition: {x: 0, y: 0}
+  pepperoniReloadTime: 0.5
+  pepperReloadTime: 8
+  mushroomReloadTime: 0.2
+  oliveReloadTime: 0.8
+  onionReloadTime: 0.3
   cursorSprite: {fileID: 1524578176298848}
 --- !u!212 &212896408740406200
 SpriteRenderer:
