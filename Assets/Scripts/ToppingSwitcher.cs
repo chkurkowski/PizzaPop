@@ -12,13 +12,6 @@ public class ToppingSwitcher : MonoBehaviour
         instance = this;
     }
 
-    void Start()
-    {
-        p1ToppingDisplay.sprite = toppingSprites[0];
-        p2ToppingDisplay.sprite = toppingSprites[0];
-
-    }
-
     public void Update() 
     {
         /* Buttons 1-5 on the keyboard are for Player 1*/
@@ -136,10 +129,10 @@ public class ToppingSwitcher : MonoBehaviour
     public enum Toppings 
     { 
         Pepperoni,   //topping 0
-        GreenPepper, //topping 1
+        BlackOlive, //topping 1
         Mushroom,    //topping 2
         Onion,       //topping 3
-        BlackOlive   //topping 4
+        GreenPepper   //topping 4
     }
 
     [SerializeField]

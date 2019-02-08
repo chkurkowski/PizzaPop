@@ -12,17 +12,11 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
     [SerializeField]
     private int pizzaLife;
-    
-    private int initialPizzaLife;
+
 
     private float fallMultiplier = 1.0f;
 
     private float riseMultiplier = 1.0f;
-
-    private void Start()
-    {
-        initialPizzaLife = pizzaLife;
-    }
 
     public enum PizzaSizes
     {
@@ -66,12 +60,14 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
             scoreToAdd = 100;
         }
 
-        //TODO: modify score to add based on toppings
+        if (_toppingSwitcher.GetPlayer1Topping() == _pizzaOrder.GetToppingNeeded())
+        {
+            scoreToAdd *= 2;
+            pizzaLife--;
 
-        pizzaLife--;
-
-        if (pizzaLife <= 0)
-            Pop();
+            if (pizzaLife <= 0)
+                Pop();
+        }
 
         _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
         DisplayScore(scoreToAdd, transform.position, Color.red);
