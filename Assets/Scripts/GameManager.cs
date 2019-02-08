@@ -41,9 +41,16 @@ public class GameManager : MonoBehaviour
 
     public static GameManager manager;
 
+    private UIManager UIManagerScript;
+
     private void Awake()
     {
         manager = this;
+    }
+
+    private void Start()
+    {
+        UIManagerScript = GameObject.Find("GameCanvas").GetComponent<UIManager>();
     }
 
     public void StartGame()
@@ -81,6 +88,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         gameStarted = false;
         endGamePanel.SetActive(true);
+        UIManagerScript.onPayoffScreen = true;
     }
 
     public void ResetGame()
