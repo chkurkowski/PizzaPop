@@ -7,11 +7,10 @@ using UnityEngine.UI;
 
 public class RegisterPlayers : MonoBehaviour 
 {
-
     private InputState inputState;
 
-    private IDevice player1Device;
-    private IDevice player2Device;
+    private IDevice player1Device = null;
+    private IDevice player2Device = null;
 
     private IVirtualAxis player1Left;
     private IVirtualAxis player2Left;
@@ -42,8 +41,7 @@ public class RegisterPlayers : MonoBehaviour
     {
         instructionText.text = "Player 1 hold the mouse button";
 	}
-	
-	// Update is called once per frame
+    	// Update is called once per frame
 	void Update () 
     {
         if (Input.GetMouseButton(0))
@@ -55,6 +53,7 @@ public class RegisterPlayers : MonoBehaviour
                 if (player1progress >= 1.0f)
                 {
                     player1Device = inputState.FindFirstHeld();
+                    Debug.Log(inputState.FindFirstHeld());
                     player1Left = player1Device[InputCode.MouseLeft];
                     player1Right = player1Device[InputCode.MouseRight];
                     instructionText.text = "Player 2 hold the mouse button";
@@ -79,6 +78,7 @@ public class RegisterPlayers : MonoBehaviour
                 instructionText.text = "All players Synced";
             }
         }
+
         else if (Input.GetMouseButtonUp(0))
         {
             if (player1progress < 1)
