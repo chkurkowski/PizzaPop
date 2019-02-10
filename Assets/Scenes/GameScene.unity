@@ -3234,11 +3234,6 @@ MonoBehaviour:
   mouseSpeed: 2
   player: 1
   initalPosition: {x: 3.99, y: 0}
-  pepperoniReloadTime: 0.4
-  pepperReloadTime: 0.5
-  mushroomReloadTime: 0.1
-  oliveReloadTime: 0.8
-  onionReloadTime: 0.3
   cursorSprite: {fileID: 1611785177}
 --- !u!212 &1611785179
 SpriteRenderer:
@@ -3700,11 +3695,6 @@ MonoBehaviour:
   mouseSpeed: 2
   player: 0
   initalPosition: {x: -3.66, y: 0.03}
-  pepperoniReloadTime: 0.4
-  pepperReloadTime: 0.5
-  mushroomReloadTime: 0.1
-  oliveReloadTime: 0.8
-  onionReloadTime: 0.3
   cursorSprite: {fileID: 1969716359}
 --- !u!1 &1983075720
 GameObject:
