@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4773615788627894}
   - component: {fileID: 212095990616759308}
+  - component: {fileID: 114450517250977716}
   m_Layer: 0
   m_Name: Reticule(Green)
   m_TagString: Untagged
@@ -190,6 +191,21 @@ Transform:
   m_Father: {fileID: 4773615788627894}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114450517250977716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1209839886275124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aebca126d975453b82379e49554d11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSpeed: 2
+  player: 1
+  initalPosition: {x: 3.99, y: 0}
+  cursorSprite: {fileID: 1209839886275124}
 --- !u!212 &212095990616759308
 SpriteRenderer:
   m_ObjectHideFlags: 1
