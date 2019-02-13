@@ -18,6 +18,9 @@ public class RegisterPlayers : MonoBehaviour
     private IVirtualAxis player1Right = null;
     private IVirtualAxis player2Right = null;
 
+    private IVirtualAxis player1Mid = null;
+    private IVirtualAxis player2Mid = null;
+
 
     private void Awake()
     {
@@ -75,6 +78,7 @@ public class RegisterPlayers : MonoBehaviour
                     {
                         player1Left = player1Device[InputCode.MouseLeft];
                         player1Right = player1Device[InputCode.MouseRight];
+                        player1Mid = player1Device[InputCode.MouseMiddle];
                         instructionText.text = (player1Left == null).ToString();
 
 
@@ -96,6 +100,7 @@ public class RegisterPlayers : MonoBehaviour
                     player2Device = inputState.FindFirstHeld();
                     player2Left = player2Device[InputCode.MouseLeft];
                     player2Right = player2Device[InputCode.MouseRight];
+                    player2Mid = player2Device[InputCode.MouseMiddle];
                     player2Left.Commit();
 
                 }
@@ -158,4 +163,13 @@ public class RegisterPlayers : MonoBehaviour
         return player2Right;
     }
 
+    public IVirtualAxis Axis1MidClick()
+    {
+        return player1Mid;
+    }
+
+    public IVirtualAxis Axis2MidClick()
+    {
+        return player2Mid;
+    }
 }
