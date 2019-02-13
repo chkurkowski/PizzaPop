@@ -44,9 +44,9 @@ public class ToppingSwitcher : MonoBehaviour
 
         if (Input.GetKeyDown("q"))
         {
-            if (toppings[(int)GetPlayer1Topping()] == "BlackOlive")
+            if (toppings[(int)GetPlayer1Topping()] == "Onion")
             {
-                SwitchPlayer1Topping(2);
+                SwitchPlayer1Topping(0);
             }
             else if (toppings[(int)GetPlayer1Topping()] == "Pepperoni") 
             {
@@ -54,15 +54,15 @@ public class ToppingSwitcher : MonoBehaviour
             }
             else if (toppings[(int)GetPlayer1Topping()] == "GreenPepper")
             {
-                SwitchPlayer1Topping(0);
+                SwitchPlayer1Topping(4);
             }
             else if (toppings[(int)GetPlayer1Topping()] == "Mushroom")
             {
-                SwitchPlayer1Topping(3);
+                SwitchPlayer1Topping(2);
             }
-            else if (toppings[(int)GetPlayer1Topping()] == "Onion")
+            else if (toppings[(int)GetPlayer1Topping()] == "BlackOlive")
             {
-                SwitchPlayer1Topping(4);
+                SwitchPlayer1Topping(3);
             }
             else
             {
@@ -129,10 +129,10 @@ public class ToppingSwitcher : MonoBehaviour
     public enum Toppings 
     { 
         Pepperoni,   //topping 0
-        BlackOlive, //topping 1
-        Mushroom,    //topping 2
-        Onion,       //topping 3
-        GreenPepper   //topping 4
+        Mushroom, //topping 1
+        BlackOlive,    //topping 2
+        GreenPepper,       //topping 3
+        Onion  //topping 4
     }
 
     [SerializeField]

@@ -60,14 +60,12 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
             scoreToAdd = 100;
         }
 
-        if (_toppingSwitcher.GetPlayer1Topping() == _pizzaOrder.GetToppingNeeded())
-        {
-            scoreToAdd *= 2;
+
             pizzaLife--;
 
             if (pizzaLife <= 0)
                 Pop();
-        }
+
 
         _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
         DisplayScore(scoreToAdd, transform.position, Color.red);
