@@ -4,39 +4,39 @@ using UnityEngine;
 
 public class ToppingScoreHandler : MonoBehaviour {
 
-	public static ToppingScoreHandler inst;
+	public static ToppingScoreHandler instance;
 
 	#region Singleton
 
 	void Awake()
 	{
-		if(inst == null)
+		if(instance == null)
 		{
-			inst = this;
+			instance = this;
 		}
 	}
 
 	#endregion
 
-	private float pepperoniScore = 100;
-	private float greenPepperScore = 100;
-	private float mushroomScore = 100;
-	private float oliveScore = 100;
-	private float onionScore = 100;
+	private int pepperoniScore = 100;
+	private int greenPepperScore = 100;
+	private int mushroomScore = 100;
+	private int oliveScore = 100;
+	private int onionScore = 100;
 
-	public float GetScore(string topping)
+	public int GetScore(string topping)
 	{
 		switch(topping)
 		{
-			case "pepperoni":
+			case "Pepperoni":
 				return pepperoniScore;
-			case "greenpepper":
+			case "GreenPepper":
 				return greenPepperScore;
-			case "mushroom":
+			case "Mushroom":
 				return mushroomScore;
-			case "olive":
+			case "Olive":
 				return oliveScore;
-			case "onion":
+			case "Onion":
 				return onionScore;
 		}
 

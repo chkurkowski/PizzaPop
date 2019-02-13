@@ -9,9 +9,12 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private List<GameObject> toppings;
     private PizzaOrder _pizzaOrder;
     private ParticleSystem _particles;
+    private ToppingScoreHandler _scoreHandler;
 
     [SerializeField]
     private int pizzaLife;
+
+    private int scoreToAdd = 0;
 
 
     private float fallMultiplier = 1.0f;
@@ -34,6 +37,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         _manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         toppings = new List<GameObject>();
         _particles = GetComponent<ParticleSystem>();
+        _scoreHandler = ToppingScoreHandler.instance;
     }
 
     //private void OnMouseDown()
@@ -41,32 +45,25 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     //    Player1Hits();
     //}
 
-    private void Player1Hits()
+    private void PlayerHits(string player)
     {
         AudioManager.instance.Play("Hit");
-    
-        int scoreToAdd = 0;
 
-            pizzaLife--;
+        pizzaLife--;
 
-            if (pizzaLife <= 0)
-                Pop();
+        if (pizzaLife <= 0)
+            Pop();
 
-        _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
-        
-        DisplayScore(scoreToAdd, transform.position, Color.red);
-
+        if(player == "one")
+        {
+            _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
+            DisplayScore(scoreToAdd, transform.position, Color.red);
         }
-
-    private void Player2Hits()
-    {
-        AudioManager.instance.Play("Hit");
-    
-        int scoreToAdd = 0;
-
-        _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
-
-        DisplayScore(scoreToAdd, transform.position, Color.blue);
+        else
+        {
+            _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
+            DisplayScore(scoreToAdd, transform.position, Color.blue);
+        }
 
     }
 
@@ -87,15 +84,21 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         if (toppingToAdd.GetComponent<ToppingScript>().playerShooter == PlayerBehaviour.Players.Player1)
         {
-            Player1Hits();
+            PlayerHits("one");
         }
         else if (toppingToAdd.GetComponent<ToppingScript>().playerShooter == PlayerBehaviour.Players.Player2)
         {
-            Player2Hits();
+            PlayerHits("two");
         }
 
         toppings.Add(toppingToAdd);
         toppingToAdd.transform.parent = transform;
+        scoreToAdd = CheckToppingToAdd(toppingToAdd);
+    }
+
+    private int CheckToppingToAdd(GameObject toppingToAdd)
+    {
+        return _scoreHandler.GetScore(toppingToAdd.tag);
     }
 
     public void RemoveToppings()
