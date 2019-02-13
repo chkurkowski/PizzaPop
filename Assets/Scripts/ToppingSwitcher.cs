@@ -7,9 +7,19 @@ public class ToppingSwitcher : MonoBehaviour
 {
     public static ToppingSwitcher instance;
 
+    public Sprite[] player1CenterIcons;
+    public Sprite[] player2CenterIcons;
+
+    public Sprite[] player1WheelIcons;
+    public Sprite[] player2WheelIcons;
+
+    private RegisterPlayers _regPlayers;
+
+
     void Awake()
     {
         instance = this;
+        _regPlayers = FindObjectOfType<RegisterPlayers>();
     }
 
     public void Update() 
@@ -42,31 +52,74 @@ public class ToppingSwitcher : MonoBehaviour
 
         /* Player 1 Topping cycle*/
 
-        if (Input.GetKeyDown("q"))
+        if (_regPlayers.Axis1LeftClick().IsDown)
         {
-            if (toppings[(int)GetPlayer1Topping()] == "Onion")
+            if ((int)(GetPlayer1Topping()) < toppings.Length - 1)
             {
-                SwitchPlayer1Topping(0);
-            }
-            else if (toppings[(int)GetPlayer1Topping()] == "Pepperoni") 
-            {
-                SwitchPlayer1Topping(1);        
-            }
-            else if (toppings[(int)GetPlayer1Topping()] == "GreenPepper")
-            {
-                SwitchPlayer1Topping(4);
-            }
-            else if (toppings[(int)GetPlayer1Topping()] == "Mushroom")
-            {
-                SwitchPlayer1Topping(2);
-            }
-            else if (toppings[(int)GetPlayer1Topping()] == "BlackOlive")
-            {
-                SwitchPlayer1Topping(3);
+                SwitchPlayer1Topping((int)GetPlayer1Topping() + 1);
             }
             else
             {
-                SwitchPlayer1Topping(1); // The pepperoni line wouldn't work so I added this. No idea why it didn't work to begin with.
+                SwitchPlayer1Topping(0);
+            }
+
+            //if (toppings[(int)GetPlayer1Topping()] == "Onion")
+            //{
+            //    SwitchPlayer1Topping(0);
+            //}
+            //else if (toppings[(int)GetPlayer1Topping()] == "Pepperoni") 
+            //{
+            //    SwitchPlayer1Topping(1);        
+            //}
+            //else if (toppings[(int)GetPlayer1Topping()] == "GreenPepper")
+            //{
+            //    SwitchPlayer1Topping(4);
+            //}
+            //else if (toppings[(int)GetPlayer1Topping()] == "Mushroom")
+            //{
+            //    SwitchPlayer1Topping(2);
+            //}
+            //else if (toppings[(int)GetPlayer1Topping()] == "BlackOlive")
+            //{
+            //    SwitchPlayer1Topping(3);
+            //}
+            //else
+            //{
+            //    SwitchPlayer1Topping(1); // The pepperoni line wouldn't work so I added this. No idea why it didn't work to begin with.
+            //}
+        }
+        else if (_regPlayers.Axis1RightClick().IsDown)
+        {
+            if ((int)(GetPlayer1Topping()) < toppings.Length - 1)
+            {
+                SwitchPlayer1Topping((int)GetPlayer1Topping() + 1);
+            }
+            else
+            {
+                SwitchPlayer1Topping(0);
+            }
+        }
+        else if (_regPlayers.Axis2LeftClick().IsDown)
+        {
+            if ((int)(GetPlayer2Topping()) > 0)
+            {
+                SwitchPlayer2Topping((int)GetPlayer2Topping() - 1);
+            }
+            else
+            {
+                SwitchPlayer2Topping(toppings.Length - 1);
+            }
+        }
+
+        else if (_regPlayers.Axis2RightClick().IsDown)
+        {
+            if ((int)(GetPlayer2Topping()) > 0)
+            {
+                SwitchPlayer2Topping((int)GetPlayer2Topping() - 1);
+            }
+            else
+            {
+                SwitchPlayer2Topping(toppings.Length - 1);
             }
         }
 
@@ -125,6 +178,8 @@ public class ToppingSwitcher : MonoBehaviour
             }
         }
     }
+
+    
 
     public enum Toppings 
     { 
