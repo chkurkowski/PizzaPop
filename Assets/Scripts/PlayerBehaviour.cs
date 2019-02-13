@@ -56,6 +56,9 @@ public class PlayerBehaviour : MonoBehaviour
     
     void Update () 
     {
+
+        SetReticleSprites();
+
         //cursorSprite.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f);
         Follow();
 
@@ -64,9 +67,9 @@ public class PlayerBehaviour : MonoBehaviour
         //player1Axis = player1Device[InputCode.MouseLeft];
         shotTimer += Time.deltaTime;
 
-        if (_regPlayers.Axis1LeftClick() != null)
+        if (_regPlayers.Axis1MidClick() != null)
         {
-            if (_regPlayers.Axis1LeftClick().IsHeld && player == Players.Player1)
+            if (_regPlayers.Axis1MidClick().IsHeld && player == Players.Player1)
             {
 
 
@@ -101,9 +104,9 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        if (_regPlayers.Axis2LeftClick() != null)
+        if (_regPlayers.Axis2MidClick() != null)
         {
-            if (_regPlayers.Axis2LeftClick().IsHeld && player == Players.Player2)
+            if (_regPlayers.Axis2MidClick().IsHeld && player == Players.Player2)
             {
 
 
@@ -129,9 +132,17 @@ public class PlayerBehaviour : MonoBehaviour
                     shotTimer = 0;
                     Shoot();
                 }
+                else if (ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.BlackOlive && shotTimer >= oliveReloadTime)
+                {
+                    shotTimer = 0;
+                    Shotgun();
+                }
 
             }
+
+
         }
+
 
         // if (_regPlayers.Axis1RightClick() != null)
         //{
@@ -171,6 +182,20 @@ public class PlayerBehaviour : MonoBehaviour
 
 
 
+    }
+
+    private int GetToppingIndex()
+    {
+        if (player  == Players.Player1)
+        {
+            return (int)ToppingSwitcher.instance.GetPlayer1Topping();
+        }
+        else if (player == Players.Player2)
+        {
+            return (int)ToppingSwitcher.instance.GetPlayer2Topping();
+        }
+
+        return 0;
     }
 
     public void resetPosition()
@@ -287,5 +312,19 @@ public class PlayerBehaviour : MonoBehaviour
 
             bullets[i].transform.localScale = new Vector3(5f, 5f, 5f);
         }
+    }
+
+    private void SetReticleSprites()
+    {
+        if (player == Players.Player1)
+        {
+            GetComponent<SpriteRenderer>().sprite = ToppingSwitcher.instance.player1CenterIcons[GetToppingIndex()];
+
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = ToppingSwitcher.instance.player2CenterIcons[GetToppingIndex()];
+        }
+
     }
 }
