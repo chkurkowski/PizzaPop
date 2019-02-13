@@ -47,28 +47,15 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     
         int scoreToAdd = 0;
 
-        if (pizzaSize == PizzaSizes.Small)
-        {
-            scoreToAdd = 500;
-        }
-        else if (pizzaSize == PizzaSizes.Medium)
-        {
-            scoreToAdd = 200;
-        }
-        else if (pizzaSize == PizzaSizes.Large)
-        {
-            scoreToAdd = 100;
-        }
-
-
             pizzaLife--;
 
             if (pizzaLife <= 0)
                 Pop();
 
-
         _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
+        
         DisplayScore(scoreToAdd, transform.position, Color.red);
+
         }
 
     private void Player2Hits()
@@ -76,29 +63,6 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         AudioManager.instance.Play("Hit");
     
         int scoreToAdd = 0;
-
-        if (pizzaSize == PizzaSizes.Small)
-        {
-            scoreToAdd = 500;
-        }
-        else if (pizzaSize == PizzaSizes.Medium)
-        {
-            scoreToAdd = 200;
-        }
-        else if (pizzaSize == PizzaSizes.Large)
-        {
-            scoreToAdd = 100;
-        }
-
-        if (_toppingSwitcher.GetPlayer2Topping() == _pizzaOrder.GetToppingNeeded())
-        {
-            scoreToAdd *= 2;
-
-            pizzaLife--;
-
-            if (pizzaLife <= 0)
-                Pop();
-        }
 
         _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
 
@@ -178,4 +142,5 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5.0f), ForceMode2D.Impulse);
     }
+
 }
