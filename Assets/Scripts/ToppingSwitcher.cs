@@ -52,7 +52,6 @@ public class ToppingSwitcher : MonoBehaviour
 
         /* Player 1 Topping cycle*/
 
-
         if (_regPlayers.Axis1LeftClick() != null)
         {
             if (_regPlayers.Axis1LeftClick().IsDown)

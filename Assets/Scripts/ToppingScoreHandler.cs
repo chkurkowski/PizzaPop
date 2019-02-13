@@ -39,5 +39,7 @@ public class ToppingScoreHandler : MonoBehaviour {
 			case "onion":
 				return onionScore;
 		}
+
+		return pepperoniScore;
 	}
 }
