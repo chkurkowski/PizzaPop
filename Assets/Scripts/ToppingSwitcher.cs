@@ -46,7 +46,7 @@ public class ToppingSwitcher : MonoBehaviour
         {
             if (toppings[(int)GetPlayer1Topping()] == "BlackOlive")
             {
-                SwitchPlayer1Topping(0);
+                SwitchPlayer1Topping(2);
             }
             else if (toppings[(int)GetPlayer1Topping()] == "Pepperoni") 
             {
@@ -54,7 +54,7 @@ public class ToppingSwitcher : MonoBehaviour
             }
             else if (toppings[(int)GetPlayer1Topping()] == "GreenPepper")
             {
-                SwitchPlayer1Topping(2);
+                SwitchPlayer1Topping(0);
             }
             else if (toppings[(int)GetPlayer1Topping()] == "Mushroom")
             {
