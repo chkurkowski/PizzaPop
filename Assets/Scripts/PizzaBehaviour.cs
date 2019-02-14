@@ -82,6 +82,8 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         //GameObject toppingToAdd = ObjectPooler.instance.SpawnFromPool(toppingName, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f), Quaternion.identity);
 
+        scoreToAdd = CheckToppingToAdd(toppingToAdd);
+
         if (toppingToAdd.GetComponent<ToppingScript>().playerShooter == PlayerBehaviour.Players.Player1)
         {
             PlayerHits("one");
@@ -93,7 +95,6 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         toppings.Add(toppingToAdd);
         toppingToAdd.transform.parent = transform;
-        scoreToAdd = CheckToppingToAdd(toppingToAdd);
     }
 
     private int CheckToppingToAdd(GameObject toppingToAdd)
