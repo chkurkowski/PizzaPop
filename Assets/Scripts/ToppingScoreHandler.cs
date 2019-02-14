@@ -18,11 +18,11 @@ public class ToppingScoreHandler : MonoBehaviour {
 
 	#endregion
 
-	private int pepperoniScore = 100;
-	private int greenPepperScore = 100;
-	private int mushroomScore = 100;
-	private int oliveScore = 100;
-	private int onionScore = 100;
+	private int pepperoniScore = 120;
+	private int greenPepperScore = 300;
+	private int mushroomScore = 50;
+	private int oliveScore = 45;
+	private int onionScore = 80;
 
 	public int GetScore(string topping)
 	{

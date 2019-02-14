@@ -145,6 +145,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     {
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 5.0f), ForceMode2D.Impulse);
+        //pizzaLife = 3;
     }
 
 }

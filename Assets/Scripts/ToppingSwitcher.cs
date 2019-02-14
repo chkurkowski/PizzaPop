@@ -52,45 +52,45 @@ public class ToppingSwitcher : MonoBehaviour
 
         /* Player 1 Topping cycle*/
 
-        if (_regPlayers.Axis1LeftClick() != null)
-        {
-            if (_regPlayers.Axis1LeftClick().IsDown)
-            {
-                if ((int)(GetPlayer1Topping()) < toppings.Length - 1)
-                {
-                    SwitchPlayer1Topping((int)GetPlayer1Topping() + 1);
-                }
-                else
-                {
-                    SwitchPlayer1Topping(0);
-                }
+        //if (_regPlayers.Axis1LeftClick() != null)
+        //{
+        //    if (_regPlayers.Axis1LeftClick().IsDown)
+        //    {
+        //        if ((int)(GetPlayer1Topping()) < toppings.Length - 1)
+        //        {
+        //            SwitchPlayer1Topping((int)GetPlayer1Topping() + 1);
+        //        }
+        //        else
+        //        {
+        //            SwitchPlayer1Topping(0);
+        //        }
 
-                //if (toppings[(int)GetPlayer1Topping()] == "Onion")
-                //{
-                //    SwitchPlayer1Topping(0);
-                //}
-                //else if (toppings[(int)GetPlayer1Topping()] == "Pepperoni") 
-                //{
-                //    SwitchPlayer1Topping(1);        
-                //}
-                //else if (toppings[(int)GetPlayer1Topping()] == "GreenPepper")
-                //{
-                //    SwitchPlayer1Topping(4);
-                //}
-                //else if (toppings[(int)GetPlayer1Topping()] == "Mushroom")
-                //{
-                //    SwitchPlayer1Topping(2);
-                //}
-                //else if (toppings[(int)GetPlayer1Topping()] == "BlackOlive")
-                //{
-                //    SwitchPlayer1Topping(3);
-                //}
-                //else
-                //{
-                //    SwitchPlayer1Topping(1); // The pepperoni line wouldn't work so I added this. No idea why it didn't work to begin with.
-                //}
-            }
-        }
+        //        //if (toppings[(int)GetPlayer1Topping()] == "Onion")
+        //        //{
+        //        //    SwitchPlayer1Topping(0);
+        //        //}
+        //        //else if (toppings[(int)GetPlayer1Topping()] == "Pepperoni") 
+        //        //{
+        //        //    SwitchPlayer1Topping(1);        
+        //        //}
+        //        //else if (toppings[(int)GetPlayer1Topping()] == "GreenPepper")
+        //        //{
+        //        //    SwitchPlayer1Topping(4);
+        //        //}
+        //        //else if (toppings[(int)GetPlayer1Topping()] == "Mushroom")
+        //        //{
+        //        //    SwitchPlayer1Topping(2);
+        //        //}
+        //        //else if (toppings[(int)GetPlayer1Topping()] == "BlackOlive")
+        //        //{
+        //        //    SwitchPlayer1Topping(3);
+        //        //}
+        //        //else
+        //        //{
+        //        //    SwitchPlayer1Topping(1); // The pepperoni line wouldn't work so I added this. No idea why it didn't work to begin with.
+        //        //}
+        //    }
+        //}
 
         if (_regPlayers.Axis1RightClick() != null)
         {
@@ -107,21 +107,21 @@ public class ToppingSwitcher : MonoBehaviour
             }
         }
 
-        if (_regPlayers.Axis2LeftClick() != null)
-        {
-            if (_regPlayers.Axis2LeftClick().IsDown)
-            {
-                if ((int)(GetPlayer2Topping()) > 0)
-                {
-                    SwitchPlayer2Topping((int)GetPlayer2Topping() - 1);
-                }
-                else
-                {
-                    SwitchPlayer2Topping(toppings.Length - 1);
-                }
-            }
+        //if (_regPlayers.Axis2LeftClick() != null)
+        //{
+        //    if (_regPlayers.Axis2LeftClick().IsDown)
+        //    {
+        //        if ((int)(GetPlayer2Topping()) > 0)
+        //        {
+        //            SwitchPlayer2Topping((int)GetPlayer2Topping() - 1);
+        //        }
+        //        else
+        //        {
+        //            SwitchPlayer2Topping(toppings.Length - 1);
+        //        }
+        //    }
 
-        }
+        //}
 
         if (_regPlayers.Axis2RightClick() != null)
         {

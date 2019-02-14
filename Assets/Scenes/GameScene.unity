@@ -293,7 +293,7 @@ Prefab:
     - target: {fileID: 114450517250977716, guid: 9406590a0db9d4fe6bf3a522da272b19,
         type: 2}
       propertyPath: mushroomReloadTime
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 114450517250977716, guid: 9406590a0db9d4fe6bf3a522da272b19,
         type: 2}
@@ -304,6 +304,11 @@ Prefab:
         type: 2}
       propertyPath: onionReloadTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212095990616759308, guid: 9406590a0db9d4fe6bf3a522da272b19,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9406590a0db9d4fe6bf3a522da272b19, type: 2}
@@ -2536,7 +2541,7 @@ MonoBehaviour:
   initalPosition: {x: -3.66, y: 0.03}
   pepperoniReloadTime: 0.5
   pepperReloadTime: 0.8
-  mushroomReloadTime: 0.1
+  mushroomReloadTime: 0.15
   oliveReloadTime: 0.6
   onionReloadTime: 1
   cursorSprite: {fileID: 940819146}
@@ -2575,7 +2580,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 8be4c6902f19e124ab6671cfb6b775cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -67,9 +67,9 @@ public class PlayerBehaviour : MonoBehaviour
         //player1Axis = player1Device[InputCode.MouseLeft];
         shotTimer += Time.deltaTime;
 
-        if (_regPlayers.Axis1MidClick() != null)
+        if (_regPlayers.Axis1LeftClick() != null)
         {
-            if (_regPlayers.Axis1MidClick().IsHeld && player == Players.Player1)
+            if (_regPlayers.Axis1LeftClick().IsHeld && player == Players.Player1)
             {
 
 
@@ -104,9 +104,9 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        if (_regPlayers.Axis2MidClick() != null)
+        if (_regPlayers.Axis2LeftClick() != null)
         {
-            if (_regPlayers.Axis2MidClick().IsHeld && player == Players.Player2)
+            if (_regPlayers.Axis2LeftClick().IsHeld && player == Players.Player2)
             {
 
 
