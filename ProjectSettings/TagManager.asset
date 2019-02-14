@@ -7,6 +7,11 @@ TagManager:
   - Pizza
   - Topping
   - StartMenu
+  - Pepporoni
+  - GreenPepper
+  - Mushroom
+  - Olive
+  - Onion
   layers:
   - Default
   - TransparentFX
