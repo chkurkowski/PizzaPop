@@ -21,6 +21,10 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
     private float riseMultiplier = 1.0f;
 
+    private const float LARGE_MULTIPLIER = 1f;
+    private const float MEDIUM_MULTIPLIER = 1.2f;
+    private const float SMALL_MULTIPLIER = 1.5f;
+
     public enum PizzaSizes
     {
         Large,
@@ -50,6 +54,19 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         AudioManager.instance.Play("Hit");
 
         pizzaLife--;
+
+        switch(pizzaSize)
+        {
+        	case PizzaSizes.Large:
+        		scoreToAdd = (int)Mathf.Floor(scoreToAdd * LARGE_MULTIPLIER);
+        		break;
+    		case PizzaSizes.Medium:
+    			scoreToAdd = (int)Mathf.Floor(scoreToAdd * MEDIUM_MULTIPLIER);
+    			break;
+			case PizzaSizes.Small:
+				scoreToAdd = (int)Mathf.Floor(scoreToAdd * SMALL_MULTIPLIER);
+				break;
+        }
 
         if (pizzaLife <= 0)
             Pop();
