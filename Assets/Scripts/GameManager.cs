@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        timeLeft = 30f;
+        timeLeft = 10f; // CHANGE THIS BACK TO 30
 
         gameStarted = true;
         
