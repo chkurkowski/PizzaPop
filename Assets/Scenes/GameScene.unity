@@ -250,11 +250,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4773615788627894, guid: 9406590a0db9d4fe6bf3a522da272b19, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.947232
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 4773615788627894, guid: 9406590a0db9d4fe6bf3a522da272b19, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.6583705
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 4773615788627894, guid: 9406590a0db9d4fe6bf3a522da272b19, type: 2}
       propertyPath: m_LocalPosition.z
@@ -691,7 +691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &137750321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2013,6 +2013,24 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: End Game Chime
+    clip: {fileID: 8300000, guid: 533e6594a7603754c8ddcbbbe3996eef, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Gameplay Music
+    clip: {fileID: 8300000, guid: 6fc1ee8e94fa50f4c998e5b13420e709, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: SplashMusic
+    clip: {fileID: 8300000, guid: 015af4f50bd8e0242a4e24d83bee7ab3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!4 &573165482
 Transform:
   m_ObjectHideFlags: 0
@@ -2779,7 +2797,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 940819146}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.81, y: -0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 1385921744}

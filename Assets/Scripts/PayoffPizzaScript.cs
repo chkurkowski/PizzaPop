@@ -16,6 +16,7 @@ public class PayoffPizzaScript : MonoBehaviour {
 
     public void DetermineGameResults()
     {
+        AudioManager.instance.Stop("Gameplay Music");
         GetPlayersScores();
         StartCoroutine(SpawnPizzaBoxes());
     }
