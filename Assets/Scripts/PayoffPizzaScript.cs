@@ -16,8 +16,6 @@ public class PayoffPizzaScript : MonoBehaviour {
 
     public void DetermineGameResults()
     {
-        GameManager.manager.setPlayer1Score(10000);
-        GameManager.manager.setPlayer2Score(5999);
         GetPlayersScores();
         StartCoroutine(SpawnPizzaBoxes());
     }
