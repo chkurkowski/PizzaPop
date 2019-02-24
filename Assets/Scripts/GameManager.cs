@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     private int player2Score;
 
     [SerializeField]
+    private float player1Combo = 1f;
+    [SerializeField]
+    private float player2Combo = 1f;
+
+    [SerializeField]
     private float timeLeft;
 
     [SerializeField]
@@ -42,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        timeLeft = 10f; // CHANGE THIS BACK TO 30
+        timeLeft = 30f; // CHANGE THIS BACK TO 30
 
         gameStarted = true;
         
@@ -99,6 +104,26 @@ public class GameManager : MonoBehaviour
     public int getPlayer2Score()
     {
         return player2Score;
+    }
+
+    public float GetPlayer1Combo()
+    {
+        return player1Combo;
+    }
+
+    public void SetPlayer1Combo(float multiplier)
+    {
+        player1Combo += multiplier;
+    }
+
+    public float GetPlayer2Combo()
+    {
+        return player2Combo;
+    }
+
+    public void SetPlayer2Combo(float multiplier)
+    {
+        player2Combo += multiplier;
     }
 
     // Update is called once per frame
