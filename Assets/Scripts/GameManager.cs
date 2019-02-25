@@ -10,6 +10,16 @@ public class GameManager : MonoBehaviour
     private int player2Score;
 
     [SerializeField]
+    private float player1Combo = 1f;
+    [SerializeField]
+    private float player2Combo = 1f;
+    [SerializeField]
+    private float player1Timer = 0;
+    [SerializeField]
+    private float player2Timer = 0;
+    private const float PLAYERCOMBOMAXTIME = 1f;
+
+    [SerializeField]
     private float timeLeft;
 
     [SerializeField]
@@ -101,6 +111,26 @@ public class GameManager : MonoBehaviour
         return player2Score;
     }
 
+    public float GetPlayer1Combo()
+    {
+        return player1Combo;
+    }
+
+    public void SetPlayer1Combo(float multiplier)
+    {
+        player1Combo += multiplier;
+    }
+
+    public float GetPlayer2Combo()
+    {
+        return player2Combo;
+    }
+
+    public void SetPlayer2Combo(float multiplier)
+    {
+        player2Combo += multiplier;
+    }
+
     // Update is called once per frame
     void Update () 
     {
@@ -118,8 +148,41 @@ public class GameManager : MonoBehaviour
                 AudioManager.instance.Play("End Game Chime");
                 EndGame();
             }
+
+            if(player1Combo > 1 && player2Timer == 0)
+                StartCoroutine("Player1Timer");
+            if(player2Combo > 1 && player2Timer == 0)
+                StartCoroutine("Player2Timer");
         }
     }
+
+    private IEnumerator Player1Timer()
+    {
+        while(player1Combo > 1)
+        {
+            player1Timer += Time.deltaTime;
+            if(player1Timer >= 1)
+            {
+                player1Combo = 1;
+                player1Timer = 0;
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator Player2Timer()
+    {
+        while(player2Combo > 1)
+        {
+            player2Timer += Time.deltaTime;
+            if(player2Timer >= 1)
+            {
+                player2Combo = 1;
+                player2Timer = 0;
+            }
+            yield return null;
+        }
+    } 
 
     public void ResetScene()
     {

@@ -21,8 +21,15 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
     private float riseMultiplier = 1.0f;
 
+    private int uniqueToppingCount = 0;
+
+    public bool pepperoni, greenPepper, mushroom, onion, olive = false;
+
+    [SerializeField]
     private const float LARGE_MULTIPLIER = 1f;
+    [SerializeField]
     private const float MEDIUM_MULTIPLIER = 1.2f;
+    [SerializeField]
     private const float SMALL_MULTIPLIER = 1.5f;
 
     public enum PizzaSizes
@@ -55,19 +62,6 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         pizzaLife--;
 
-        switch(pizzaSize)
-        {
-        	case PizzaSizes.Large:
-        		scoreToAdd = (int)Mathf.Floor(scoreToAdd * LARGE_MULTIPLIER);
-        		break;
-    		case PizzaSizes.Medium:
-    			scoreToAdd = (int)Mathf.Floor(scoreToAdd * MEDIUM_MULTIPLIER);
-    			break;
-			case PizzaSizes.Small:
-				scoreToAdd = (int)Mathf.Floor(scoreToAdd * SMALL_MULTIPLIER);
-				break;
-        }
-
         if (pizzaLife <= 0)
             Pop();
 
@@ -82,6 +76,89 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
             DisplayScore(scoreToAdd, transform.position, Color.blue);
         }
 
+    }
+
+    private void CheckSizeAndTopping(string topping, string player)
+    {
+        print(topping);
+        switch(pizzaSize)
+        {
+            case PizzaSizes.Large:
+                scoreToAdd = (int)Mathf.Floor(scoreToAdd * LARGE_MULTIPLIER);
+                break;
+            case PizzaSizes.Medium:
+                scoreToAdd = (int)Mathf.Floor(scoreToAdd * MEDIUM_MULTIPLIER);
+                break;
+            case PizzaSizes.Small:
+                scoreToAdd = (int)Mathf.Floor(scoreToAdd * SMALL_MULTIPLIER);
+                break;
+        }
+
+        switch(topping)
+        {
+            case "Pepporoni": //I am aware that this is not how you spell Pepporoni - Chase
+                if(!pepperoni)
+                {
+                    pepperoni = true;
+                    uniqueToppingCount++;
+                    AddToPlayerCombo(player);
+                }
+                break;
+            case "GreenPepper":
+                if(!greenPepper)
+                {
+                    greenPepper = true;
+                    uniqueToppingCount++;
+                    AddToPlayerCombo(player);
+                }
+                break;
+            case "Onion":
+                if(!onion)
+                {
+                    onion = true;
+                    uniqueToppingCount++;
+                    AddToPlayerCombo(player);
+                }
+                break;
+            case "Mushroom":
+                if(!mushroom)
+                {
+                    mushroom = true;
+                    uniqueToppingCount++;
+                    AddToPlayerCombo(player);
+                }
+                break;
+            case "Olive":
+                if(!olive)
+                {
+                    olive = true;
+                    uniqueToppingCount++;
+                    AddToPlayerCombo(player);
+                }
+                break;
+        }
+
+        if(player == "one")
+        {
+            scoreToAdd = (int)Mathf.Floor(scoreToAdd * _manager.GetPlayer1Combo());
+        }
+        else if(player == "two")
+        {
+            scoreToAdd = (int)Mathf.Floor(scoreToAdd * _manager.GetPlayer2Combo());
+        }
+    }
+
+    private void AddToPlayerCombo(string player)
+    {
+        print(uniqueToppingCount);
+        if(player == "one" && uniqueToppingCount > 1)
+        {
+            _manager.SetPlayer1Combo(.2f);
+        }
+        else if(player == "two" && uniqueToppingCount > 1)
+        {
+            _manager.SetPlayer2Combo(.2f);
+        }
     }
 
     public void DisplayScore(int score, Vector2 position, Color fontColor)
@@ -103,10 +180,12 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         if (toppingToAdd.GetComponent<ToppingScript>().playerShooter == PlayerBehaviour.Players.Player1)
         {
+            CheckSizeAndTopping(toppingToAdd.tag, "one");
             PlayerHits("one");
         }
         else if (toppingToAdd.GetComponent<ToppingScript>().playerShooter == PlayerBehaviour.Players.Player2)
         {
+            CheckSizeAndTopping(toppingToAdd.tag, "two");
             PlayerHits("two");
         }
 
