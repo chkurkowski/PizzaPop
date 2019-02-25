@@ -25,8 +25,11 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
     public bool pepperoni, greenPepper, mushroom, onion, olive = false;
 
+    [SerializeField]
     private const float LARGE_MULTIPLIER = 1f;
+    [SerializeField]
     private const float MEDIUM_MULTIPLIER = 1.2f;
+    [SerializeField]
     private const float SMALL_MULTIPLIER = 1.5f;
 
     public enum PizzaSizes
@@ -147,6 +150,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
     private void AddToPlayerCombo(string player)
     {
+        print(uniqueToppingCount);
         if(player == "one" && uniqueToppingCount > 1)
         {
             _manager.SetPlayer1Combo(.2f);

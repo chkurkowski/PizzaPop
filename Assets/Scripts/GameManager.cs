@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     private float player1Combo = 1f;
     [SerializeField]
     private float player2Combo = 1f;
+    [SerializeField]
+    private float player1Timer = 0;
+    [SerializeField]
+    private float player2Timer = 0;
+    private const float PLAYERCOMBOMAXTIME = 1f;
 
     [SerializeField]
     private float timeLeft;
@@ -143,8 +148,41 @@ public class GameManager : MonoBehaviour
                 AudioManager.instance.Play("Results Music");
                 EndGame();
             }
+
+            if(player1Combo > 1 && player2Timer == 0)
+                StartCoroutine("Player1Timer");
+            if(player2Combo > 1 && player2Timer == 0)
+                StartCoroutine("Player2Timer");
         }
     }
+
+    private IEnumerator Player1Timer()
+    {
+        while(player1Combo > 1)
+        {
+            player1Timer += Time.deltaTime;
+            if(player1Timer >= 1)
+            {
+                player1Combo = 1;
+                player1Timer = 0;
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator Player2Timer()
+    {
+        while(player2Combo > 1)
+        {
+            player2Timer += Time.deltaTime;
+            if(player2Timer >= 1)
+            {
+                player2Combo = 1;
+                player2Timer = 0;
+            }
+            yield return null;
+        }
+    } 
 
     public void ResetScene()
     {
