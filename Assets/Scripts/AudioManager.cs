@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("Title Music");   
+        Play("SplashMusic");   
     }
 
     void Awake()

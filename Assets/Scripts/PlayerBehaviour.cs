@@ -67,9 +67,9 @@ public class PlayerBehaviour : MonoBehaviour
         //player1Axis = player1Device[InputCode.MouseLeft];
         shotTimer += Time.deltaTime;
 
-        if (_regPlayers.Axis1LeftClick() != null)
+       // if (_regPlayers.Axis1LeftClick() != null)
         {
-            if (_regPlayers.Axis1LeftClick().IsHeld && player == Players.Player1)
+            if (Input.GetButton("P1Trigger") && player == Players.Player1)
             {
 
 
@@ -104,9 +104,9 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        if (_regPlayers.Axis2LeftClick() != null)
+        //if (_regPlayers.Axis2LeftClick() != null)
         {
-            if (_regPlayers.Axis2LeftClick().IsHeld && player == Players.Player2)
+            if (Input.GetButton("P2Trigger") && player == Players.Player2)
             {
 
 
@@ -207,14 +207,19 @@ public class PlayerBehaviour : MonoBehaviour
     {
         RegisterPlayers players = _regPlayers;
 
-        if (player == Players.Player1 && players.Mouse1() != null)
+        if (player == Players.Player1)
         {
-            cursorSprite.transform.position += new Vector3(players.Mouse1()[InputCode.MouseX].Value, players.Mouse1()[InputCode.MouseY].Value, 0f) * Time.deltaTime * mouseSpeed;
+            //cursorSprite.transform.position += new Vector3(players.Mouse1()[InputCode.MouseX].Value, players.Mouse1()[InputCode.MouseY].Value, 0f) * Time.deltaTime * mouseSpeed;
+            cursorSprite.transform.position = new Vector3((Input.GetAxis("P1Horizontal") * 9f), Input.GetAxis("P1Vertical") * 4.0f) ;
+ 
         }
-        else if (player == Players.Player2 && players.Mouse2() != null)
+        else if (player == Players.Player2)
         {
-            cursorSprite.transform.position += new Vector3(players.Mouse2()[InputCode.MouseX].Value, players.Mouse2()[InputCode.MouseY].Value, 0f) * Time.deltaTime * mouseSpeed;
+            //cursorSprite.transform.position += new Vector3(players.Mouse2()[InputCode.MouseX].Value, players.Mouse2()[InputCode.MouseY].Value, 0f) * Time.deltaTime * mouseSpeed;
+            cursorSprite.transform.position = new Vector3((Input.GetAxis("P2Horizontal") * 9f), Input.GetAxis("P2Vertical") * 4.0f) ;
         }
+        Debug.Log(Input.GetAxis("P1Horizontal"));
+        Debug.Log(Input.GetAxis("P1Vertical"));
     }
 
     private void Shoot()
