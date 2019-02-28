@@ -248,6 +248,22 @@ public class ToppingSwitcher : MonoBehaviour
             }
         }
 
+
+
+
+
+
+
+        if (Input.GetButtonDown("P1SwitchLeft"))
+            Player1RotateToppings(false);
+        if (Input.GetButtonDown("P1SwitchRight"))
+            Player1RotateToppings(true);
+
+        if (Input.GetButtonDown("P2SwitchLeft"))
+            Player2RotateToppings(false);
+        if (Input.GetButtonDown("P2SwitchRight"))
+            Player2RotateToppings(true);
+
         // Moves the reticule icons.
         if (isPlayer1Rotating)
         {
