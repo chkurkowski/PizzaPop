@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (Input.anyKeyDown && !leftStartScreen)
         {
             titleScreen.SetActive(false);
@@ -30,9 +31,9 @@ public class UIManager : MonoBehaviour {
 
         if (Input.anyKeyDown && onPayoffScreen)
         {
-            payoffScreen.SetActive(false);
-            highScoreScreen.SetActive(true);
-            onPayoffScreen = false;
+            //payoffScreen.SetActive(false);
+            //highScoreScreen.SetActive(true);
+            //onPayoffScreen = false;
         }
 
         if (!Input.anyKeyDown && !leftStartScreen && secsSinceLastInput > 10)

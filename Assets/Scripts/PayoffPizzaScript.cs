@@ -13,15 +13,21 @@ public class PayoffPizzaScript : MonoBehaviour
     public Image[] player1Pizzas;
     public Image[] player2Pizzas;
 
+    public Image player1WinsImage;
+    public Image player2WinsImage;
+
+    public Text winnerText;
+
     void Awake()
     {
-        payoff = this;
+        if (payoff == null)
+            payoff = this;
     }
 
     public void DetermineGameResults()
     {
-        GameManager.manager.setPlayer1Score(400);
-        GameManager.manager.setPlayer2Score(400);
+        GameManager.manager.setPlayer1Score(3000);
+        GameManager.manager.setPlayer2Score(500);
         GetPlayersScores();
         StartCoroutine(SpawnPlayer1Boxes());
         StartCoroutine(SpawnPlayer2Boxes());
@@ -29,27 +35,47 @@ public class PayoffPizzaScript : MonoBehaviour
 
     void GetPlayersScores()
     {
-        boxQuotient2 = GameManager.manager.getPlayer2Score() / 20;
-        boxQuotient = GameManager.manager.getPlayer1Score() / 20;
+        boxQuotient2 = GameManager.manager.getPlayer2Score() / 200;
+        boxQuotient = GameManager.manager.getPlayer1Score() / 200;
     }
 
     IEnumerator SpawnPlayer1Boxes()
     {
+        float secondsToWait = (float)(4.1 / boxQuotient);
+
+        Debug.Log("secondsToWait" + secondsToWait.ToString());
+
         Debug.Log("quotient 1: " + boxQuotient);
         for (int i = 0; i < boxQuotient; i++)
         {
             player1Pizzas[i].enabled = true;
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(secondsToWait);
+        }
+
+        if (GameManager.manager.getPlayer1Score() > GameManager.manager.getPlayer2Score())
+        {
+            player1WinsImage.enabled = true;
+            winnerText.text = "Player 1 Wins!";
         }
     }
 
     IEnumerator SpawnPlayer2Boxes()
     {
+
+        float secondsToWait = (float)(4.1 / boxQuotient2);
+
         Debug.Log("quotient 2: " + boxQuotient2);
         for (int i = 0; i < boxQuotient2; i++)
         {
             player2Pizzas[i].enabled = true;
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(secondsToWait);
+        }
+
+        if (GameManager.manager.getPlayer2Score() > GameManager.manager.getPlayer1Score())
+        {
+            player2WinsImage.enabled = true;
+            winnerText.text = "Player 2 Wins!";
+
         }
     }
 }
