@@ -157,6 +157,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaLife: 2
+  pepperoni: 0
+  greenPepper: 0
+  mushroom: 0
+  onion: 0
+  olive: 0
   pizzaSize: 1
 --- !u!212 &212426476000279586
 SpriteRenderer:

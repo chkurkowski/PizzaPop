@@ -134,6 +134,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaLife: 1
+  pepperoni: 0
+  greenPepper: 0
+  mushroom: 0
+  onion: 0
+  olive: 0
   pizzaSize: 2
 --- !u!114 &114347040543328050
 MonoBehaviour:
