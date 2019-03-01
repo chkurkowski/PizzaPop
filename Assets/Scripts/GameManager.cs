@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
 
             if (timeLeft <= 0)
             {
-                AudioManager.instance.Stop("Game Music");
+                AudioManager.instance.Stop("Gameplay Music");
                 AudioManager.instance.Play("End Game Chime");
                 EndGame();
             }

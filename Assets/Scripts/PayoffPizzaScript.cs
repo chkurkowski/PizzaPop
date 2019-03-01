@@ -26,12 +26,18 @@ public class PayoffPizzaScript : MonoBehaviour
 
     public void DetermineGameResults()
     {
-        GameManager.manager.setPlayer1Score(3000);
-        GameManager.manager.setPlayer2Score(500);
+
         GetPlayersScores();
         StartCoroutine(SpawnPlayer1Boxes());
         StartCoroutine(SpawnPlayer2Boxes());
+
+        Invoke("ResetScene", 10f);
     }
+
+        private void ResetScene()
+        {
+        GameManager.manager.ResetScene();
+        }
 
     void GetPlayersScores()
     {
@@ -79,3 +85,4 @@ public class PayoffPizzaScript : MonoBehaviour
         }
     }
 }
+

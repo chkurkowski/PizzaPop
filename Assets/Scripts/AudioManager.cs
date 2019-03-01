@@ -44,7 +44,29 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
             return;
-        s.source.Play();
+
+        if (s.loop)
+        {
+            s.source.Play();
+        }
+        else
+        {
+            s.source.PlayOneShot(s.clip);
+        }
+    }
+
+    public void PlayWithRandomPitch(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+            return;
+
+        float randomNum = UnityEngine.Random.Range(-1f, 1f);
+
+        s.source.pitch += randomNum;
+        s.source.PlayOneShot(s.clip);
+        s.source.pitch = 1.0f;
+
     }
 
     public void Stop(string name)

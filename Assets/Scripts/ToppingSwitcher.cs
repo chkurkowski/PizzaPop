@@ -92,11 +92,13 @@ public class ToppingSwitcher : MonoBehaviour
         //    }
         //}
 
-        if (_regPlayers.Axis1RightClick() != null)
+        //Toggling Toppings
+
+        if (Input.GetButtonDown("P1SwitchLeft"))
         {
-            if (_regPlayers.Axis1RightClick().IsDown)
-            {
-                if ((int)(GetPlayer1Topping()) < toppings.Length - 1)
+            AudioManager.instance.Play("SwitchLeft");
+
+            if ((int)(GetPlayer1Topping()) < toppings.Length - 1)
                 {
                     SwitchPlayer1Topping((int)GetPlayer1Topping() + 1);
                 }
@@ -104,30 +106,31 @@ public class ToppingSwitcher : MonoBehaviour
                 {
                     SwitchPlayer1Topping(0);
                 }
+
+        }
+        else if (Input.GetButtonDown("P1SwitchRight"))
+        {
+            AudioManager.instance.Play("SwitchLeft");
+
+            if ((int)(GetPlayer1Topping()) > 0)
+            {
+                SwitchPlayer1Topping((int)GetPlayer1Topping() - 1);
             }
+            else
+            {
+                SwitchPlayer1Topping(toppings.Length - 1);
+            }
+
+            AudioManager.instance.Play("SwitchLeft");
         }
 
-        //if (_regPlayers.Axis2LeftClick() != null)
-        //{
-        //    if (_regPlayers.Axis2LeftClick().IsDown)
-        //    {
-        //        if ((int)(GetPlayer2Topping()) > 0)
-        //        {
-        //            SwitchPlayer2Topping((int)GetPlayer2Topping() - 1);
-        //        }
-        //        else
-        //        {
-        //            SwitchPlayer2Topping(toppings.Length - 1);
-        //        }
-        //    }
 
-        //}
-
-        if (_regPlayers.Axis2RightClick() != null)
-        {
-            if (_regPlayers.Axis2RightClick().IsDown)
+         if (Input.GetButtonDown("P2SwitchLeft"))
             {
-                if ((int)(GetPlayer2Topping()) > 0)
+
+            AudioManager.instance.Play("SwitchLeft");
+
+            if ((int)(GetPlayer2Topping()) > 0)
                 {
                     SwitchPlayer2Topping((int)GetPlayer2Topping() - 1);
                 }
@@ -135,8 +138,25 @@ public class ToppingSwitcher : MonoBehaviour
                 {
                     SwitchPlayer2Topping(toppings.Length - 1);
                 }
-            }
+
+            AudioManager.instance.Play("SwitchLeft");
         }
+        else if (Input.GetButtonDown("P2SwitchRight"))
+        {
+            AudioManager.instance.Play("SwitchLeft");
+
+            if ((int)(GetPlayer2Topping()) > 0)
+            {
+                SwitchPlayer2Topping((int)GetPlayer2Topping() - 1);
+            }
+            else
+            {
+                SwitchPlayer2Topping(toppings.Length - 1);
+            }
+
+            AudioManager.instance.Play("SwitchLeft");
+        }
+
 
 
         /* Buttons 6-0 on the keyboard are for Player 2*/

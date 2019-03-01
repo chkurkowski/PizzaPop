@@ -64,6 +64,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         if (pizzaLife <= 0)
             Pop();
+            
 
         if(player == "one")
         {

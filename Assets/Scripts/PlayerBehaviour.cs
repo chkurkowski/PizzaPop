@@ -72,31 +72,35 @@ public class PlayerBehaviour : MonoBehaviour
             if (Input.GetButton("P1Trigger") && player == Players.Player1)
             {
 
-
                 if (ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.Pepperoni
                     && shotTimer >= pepperoniReloadTime)
                 {
+                    AudioManager.instance.PlayWithRandomPitch("Pepparoni");
                     shotTimer = 0;
                     Shoot();
                 }
                 else if (ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.GreenPepper
                     && shotTimer >= pepperReloadTime)
                 {
+                    AudioManager.instance.PlayWithRandomPitch("GreenPepper");
                     shotTimer = 0;
                     Shoot();
                 }
                 else if (ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.Onion && shotTimer >= onionReloadTime)
                 {
+                    AudioManager.instance.PlayWithRandomPitch("Onion");
                     shotTimer = 0;
                     Arc();
                 }
                 else if (ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.Mushroom && shotTimer >= mushroomReloadTime)
                 {
+                    AudioManager.instance.PlayWithRandomPitch("Mushroom");
                     shotTimer = 0;
                     Shoot();
                 }
                 else if (ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.BlackOlive && shotTimer >= oliveReloadTime)
                 {
+                    AudioManager.instance.PlayWithRandomPitch("Olive");
                     shotTimer = 0;
                     Shotgun();
                 }
@@ -113,27 +117,36 @@ public class PlayerBehaviour : MonoBehaviour
                 if (ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.Pepperoni
                     && shotTimer >= pepperoniReloadTime)
                 {
+                    AudioManager.instance.PlayWithRandomPitch("Pepparoni");
                     shotTimer = 0;
                     Shoot();
                 }
                 else if (ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.GreenPepper
                     && shotTimer >= pepperReloadTime)
                 {
+                    AudioManager.instance.PlayWithRandomPitch("GreenPepper");
+
                     shotTimer = 0;
                     Shoot();
                 }
                 else if (ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.Onion && shotTimer >= onionReloadTime)
                 {
+                    AudioManager.instance.PlayWithRandomPitch("Onion");
+
                     shotTimer = 0;
                     Arc();
                 }
                 else if (ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.Mushroom && shotTimer >= mushroomReloadTime)
                 {
+                    AudioManager.instance.PlayWithRandomPitch("Mushroom");
+
                     shotTimer = 0;
                     Shoot();
                 }
                 else if (ToppingSwitcher.instance.GetPlayer2Topping() == ToppingSwitcher.Toppings.BlackOlive && shotTimer >= oliveReloadTime)
                 {
+                    AudioManager.instance.PlayWithRandomPitch("Olive");
+
                     shotTimer = 0;
                     Shotgun();
                 }
@@ -224,7 +237,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Shoot()
     {
-        AudioManager.instance.Play("Shoot");
+        //AudioManager.instance.Play("Shoot");
         Vector3 ShotPos;
         GameObject bullet;
 
@@ -249,7 +262,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Shotgun()
     {
-        AudioManager.instance.Play("Shoot");
         Vector3 ShotPos;
         GameObject[] bullets = new GameObject[6];
 
@@ -285,7 +297,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Arc()
     {
-        AudioManager.instance.Play("Shoot");
+       // AudioManager.instance.Play("Shoot");
         Vector3 ShotPos;
         GameObject[] bullets = new GameObject[5];
 
