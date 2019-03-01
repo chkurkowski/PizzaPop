@@ -54,11 +54,13 @@ public class UIManager : MonoBehaviour {
             titleScreen.SetActive(false);
             demoScreen.SetActive(true);
             onDemoScreen = true;
+            
             leftStartScreen = true;
         }
 
         if (Input.anyKeyDown && onDemoScreen)
         {
+            onTitleScreen = true;
             titleScreen.SetActive(true);
             demoScreen.SetActive(false);
             onDemoScreen = false;

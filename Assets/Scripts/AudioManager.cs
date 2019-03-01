@@ -11,11 +11,14 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("SplashMusic");   
+        Play("SplashMusic");
     }
+
 
     void Awake()
     {
+
+
         if (instance == null)
         {
             instance = this;
@@ -37,6 +40,8 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+
+
     }
 
     public void Play(string name)

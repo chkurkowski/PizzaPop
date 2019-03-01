@@ -41,8 +41,8 @@ public class PayoffPizzaScript : MonoBehaviour
 
     void GetPlayersScores()
     {
-        boxQuotient2 = GameManager.manager.getPlayer2Score() / 200;
-        boxQuotient = GameManager.manager.getPlayer1Score() / 200;
+        boxQuotient2 = GameManager.manager.getPlayer2Score() / 300;
+        boxQuotient = GameManager.manager.getPlayer1Score() / 300;
     }
 
     IEnumerator SpawnPlayer1Boxes()

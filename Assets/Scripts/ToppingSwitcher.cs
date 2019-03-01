@@ -13,13 +13,11 @@ public class ToppingSwitcher : MonoBehaviour
     public Sprite[] player1WheelIcons;
     public Sprite[] player2WheelIcons;
 
-    private RegisterPlayers _regPlayers;
 
 
     void Awake()
     {
         instance = this;
-        _regPlayers = FindObjectOfType<RegisterPlayers>();
     }
 
     public void Update() 

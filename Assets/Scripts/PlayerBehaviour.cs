@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using RavingBots.MultiInput;
 
 
 public class PlayerBehaviour : MonoBehaviour 
@@ -10,10 +9,6 @@ public class PlayerBehaviour : MonoBehaviour
     public enum Players { Player1, Player2 };
     public Players player;
     public Vector2 initalPosition;
-
-    private RegisterPlayers _regPlayers;
-
-    private InputState inputState;
 
     private float shotTimer = 0;
 
@@ -37,17 +32,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        inputState = FindObjectOfType<InputState>();
-        _regPlayers = FindObjectOfType<RegisterPlayers>();
+
     }
 
     //Two Device Objects
     //Two IVirtual Axis
 
-    public IDevice player1Device;
-
-    IVirtualAxis player1Axis;
-    IVirtualAxis player2Axis;
 
     void Start () 
     {
@@ -218,7 +208,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Follow()
     {
-        RegisterPlayers players = _regPlayers;
+
 
         if (player == Players.Player1)
         {
