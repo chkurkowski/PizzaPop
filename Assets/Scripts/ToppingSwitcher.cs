@@ -7,6 +7,9 @@ public class ToppingSwitcher : MonoBehaviour
 {
     public static ToppingSwitcher instance;
 
+    [SerializeField] private Animator player1Animator;
+    [SerializeField] private Animator player2Animator;
+
     public Sprite[] player1CenterIcons;
     public Sprite[] player2CenterIcons;
 
@@ -95,20 +98,22 @@ public class ToppingSwitcher : MonoBehaviour
         if (Input.GetButtonDown("P1SwitchLeft"))
         {
             AudioManager.instance.Play("SwitchLeft");
+            player1Animator.SetBool("RotateClockwise", true);
 
             if ((int)(GetPlayer1Topping()) < toppings.Length - 1)
-                {
-                    SwitchPlayer1Topping((int)GetPlayer1Topping() + 1);
-                }
-                else
-                {
-                    SwitchPlayer1Topping(0);
-                }
+            {
+                SwitchPlayer1Topping((int)GetPlayer1Topping() + 1);
+            }
+            else
+            {
+                SwitchPlayer1Topping(0);
+            }
 
         }
         else if (Input.GetButtonDown("P1SwitchRight"))
         {
             AudioManager.instance.Play("SwitchLeft");
+            player1Animator.SetBool("RotateCounterClockwise", true);
 
             if ((int)(GetPlayer1Topping()) > 0)
             {
@@ -127,21 +132,23 @@ public class ToppingSwitcher : MonoBehaviour
             {
 
             AudioManager.instance.Play("SwitchLeft");
+            player2Animator.SetBool("RotateClockwise", true);
 
             if ((int)(GetPlayer2Topping()) > 0)
                 {
                     SwitchPlayer2Topping((int)GetPlayer2Topping() - 1);
                 }
-                else
-                {
-                    SwitchPlayer2Topping(toppings.Length - 1);
-                }
+            else
+            {
+                SwitchPlayer2Topping(toppings.Length - 1);
+            }
 
             AudioManager.instance.Play("SwitchLeft");
         }
         else if (Input.GetButtonDown("P2SwitchRight"))
         {
             AudioManager.instance.Play("SwitchLeft");
+            player2Animator.SetBool("RotateCounterClockwise", true);
 
             if ((int)(GetPlayer2Topping()) > 0)
             {
