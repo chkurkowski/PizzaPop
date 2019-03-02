@@ -23,7 +23,7 @@ public class ToppingSwitcher : MonoBehaviour
         instance = this;
     }
 
-    public void Update() 
+    public void Update()
     {
         /* Buttons 1-5 on the keyboard are for Player 1*/
 
@@ -126,9 +126,16 @@ public class ToppingSwitcher : MonoBehaviour
 
             AudioManager.instance.Play("SwitchLeft");
         }
+        else
+        {
+            player1Animator.SetBool("RotateClockwise", false);
+            player1Animator.SetBool("RotateCounterClockwise", false);
+        }
+        Debug.Log("Clockwise: " + player1Animator.GetBool("RotateClockwise"));
+        Debug.Log("Counterclockwise: " + player1Animator.GetBool("RotateCounterClockwise"));
 
 
-         if (Input.GetButtonDown("P2SwitchLeft"))
+        if (Input.GetButtonDown("P2SwitchLeft"))
             {
 
             AudioManager.instance.Play("SwitchLeft");
@@ -246,7 +253,7 @@ public class ToppingSwitcher : MonoBehaviour
     public void SwitchPlayer1Topping(int toppingToSwitch)
     {
         p1Topping = (Toppings)toppingToSwitch;
-        p1ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
+        //p1ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
     }
 
     public void SwitchPlayer2Topping(int toppingToSwitch)
