@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject endGamePanel;
 
+    public Image leftFill;
+    public Image rightFill;
+    public Text player1ComboText;
+    public Text player2ComboText;
+
     public static GameManager manager;
 
     private UIManager UIManagerScript;
@@ -142,6 +147,8 @@ public class GameManager : MonoBehaviour
             player1ScoreText.text = "Player 1: " + player1Score.ToString();
             player2ScoreText.text = "Player 2: " + player2Score.ToString();
 
+            HandlePlayerComboUI();
+
             if (timeLeft <= 0)
             {
                 AudioManager.instance.Stop("Gameplay Music");
@@ -183,6 +190,14 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     } 
+
+    private void HandlePlayerComboUI()
+    {
+        leftFill.fillAmount = player1Timer;
+        rightFill.fillAmount = player2Timer;
+        player1ComboText.text = player1Combo.ToString();
+        player2ComboText.text = player2ComboText.ToString();
+    }
 
     public void ResetScene()
     {
