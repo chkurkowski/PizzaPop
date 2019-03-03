@@ -36,6 +36,7 @@ public class PayoffPizzaScript : MonoBehaviour
 
         private void ResetScene()
         {
+        AudioManager.instance.Play("SplashMusic");
         GameManager.manager.ResetScene();
         }
 
