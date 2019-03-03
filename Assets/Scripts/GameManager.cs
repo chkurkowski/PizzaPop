@@ -23,13 +23,13 @@ public class GameManager : MonoBehaviour
     private float timeLeft;
 
     [SerializeField]
+    private GameObject timerFace;
+
+    [SerializeField]
     private Text player1ScoreText;
 
     [SerializeField]
     private Text player2ScoreText;
-
-    [SerializeField]
-    private Text timer;
 
     [HideInInspector]
     public bool gameStarted = false;
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
         if (gameStarted)
         {
             timeLeft -= Time.deltaTime;
-            timer.text = ((int)timeLeft).ToString();
+            timerFace.transform.eulerAngles = new Vector3(timerFace.transform.eulerAngles.x, timerFace.transform.eulerAngles.y,(timeLeft / 30f) * 360f);
 
             player1ScoreText.text = "Player 1: " + player1Score.ToString();
             player2ScoreText.text = "Player 2: " + player2Score.ToString();
