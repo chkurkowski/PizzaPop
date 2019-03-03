@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     private float player1Timer = 0;
     [SerializeField]
     private float player2Timer = 0;
-    private const float PLAYERCOMBOMAXTIME = 1f;
+    private const float PLAYERCOMBOMAXTIME = 3f;
 
     [SerializeField]
     private float timeLeft;
