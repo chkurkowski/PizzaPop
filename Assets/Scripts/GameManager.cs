@@ -193,8 +193,20 @@ public class GameManager : MonoBehaviour
 
     private void HandlePlayerComboUI()
     {
-        leftFill.fillAmount = player1Timer;
-        rightFill.fillAmount = player2Timer;
+        float p1;
+        float p2;
+        if(player1Timer != 0)
+            p1 = 1 - player1Timer;
+        else
+            p1 = 0;
+
+        if(player2Timer != 0)
+            p2 = 1 - player2Timer; 
+        else
+            p2 = 0;
+
+        leftFill.fillAmount = p1;
+        rightFill.fillAmount = p2;
         player1ComboText.text = player1Combo.ToString();
         player2ComboText.text = player2ComboText.ToString();
     }
