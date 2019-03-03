@@ -196,19 +196,19 @@ public class GameManager : MonoBehaviour
         float p1;
         float p2;
         if(player1Timer != 0)
-            p1 = 1 - player1Timer;
+            p1 = PLAYERCOMBOMAXTIME - player1Timer;
         else
             p1 = 0;
 
         if(player2Timer != 0)
-            p2 = 1 - player2Timer; 
+            p2 = PLAYERCOMBOMAXTIME - player2Timer; 
         else
             p2 = 0;
 
         leftFill.fillAmount = p1;
         rightFill.fillAmount = p2;
         player1ComboText.text = player1Combo.ToString();
-        player2ComboText.text = player2ComboText.ToString();
+        player2ComboText.text = player2Combo.ToString();
     }
 
     public void ResetScene()
