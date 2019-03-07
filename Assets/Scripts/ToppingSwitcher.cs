@@ -108,7 +108,6 @@ public class ToppingSwitcher : MonoBehaviour
             {
                 SwitchPlayer1Topping(0);
             }
-
         }
         else if (Input.GetButtonDown("P1SwitchRight"))
         {
@@ -131,8 +130,6 @@ public class ToppingSwitcher : MonoBehaviour
             player1Animator.SetBool("RotateClockwise", false);
             player1Animator.SetBool("RotateCounterClockwise", false);
         }
-        Debug.Log("Clockwise: " + player1Animator.GetBool("RotateClockwise"));
-        Debug.Log("Counterclockwise: " + player1Animator.GetBool("RotateCounterClockwise"));
 
 
         if (Input.GetButtonDown("P2SwitchLeft"))
@@ -141,15 +138,14 @@ public class ToppingSwitcher : MonoBehaviour
             AudioManager.instance.Play("SwitchLeft");
             player2Animator.SetBool("RotateClockwise", true);
 
-            if ((int)(GetPlayer2Topping()) > 0)
-                {
-                    SwitchPlayer2Topping((int)GetPlayer2Topping() - 1);
-                }
+            if ((int)(GetPlayer2Topping()) < toppings.Length - 1)
+            {
+                SwitchPlayer2Topping((int)GetPlayer2Topping() + 1);
+            }
             else
             {
-                SwitchPlayer2Topping(toppings.Length - 1);
+                SwitchPlayer2Topping(0);
             }
-
             AudioManager.instance.Play("SwitchLeft");
         }
         else if (Input.GetButtonDown("P2SwitchRight"))
@@ -167,6 +163,11 @@ public class ToppingSwitcher : MonoBehaviour
             }
 
             AudioManager.instance.Play("SwitchLeft");
+        }
+        else
+        {
+            player2Animator.SetBool("RotateClockwise", false);
+            player2Animator.SetBool("RotateCounterClockwise", false);
         }
 
 
@@ -259,7 +260,7 @@ public class ToppingSwitcher : MonoBehaviour
     public void SwitchPlayer2Topping(int toppingToSwitch)
     {
         p2Topping = (Toppings)toppingToSwitch;
-        p2ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
+        //p2ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
     }
 
     public Toppings GetPlayer1Topping()
