@@ -7,6 +7,9 @@ public class ToppingSwitcher : MonoBehaviour
 {
     public static ToppingSwitcher instance;
 
+    [SerializeField] private Animator player1Animator;
+    [SerializeField] private Animator player2Animator;
+
     public Sprite[] player1CenterIcons;
     public Sprite[] player2CenterIcons;
 
@@ -20,7 +23,7 @@ public class ToppingSwitcher : MonoBehaviour
         instance = this;
     }
 
-    public void Update() 
+    public void Update()
     {
         /* Buttons 1-5 on the keyboard are for Player 1*/
 
@@ -95,20 +98,21 @@ public class ToppingSwitcher : MonoBehaviour
         if (Input.GetButtonDown("P1SwitchLeft"))
         {
             AudioManager.instance.Play("SwitchLeft");
+            player1Animator.SetBool("RotateClockwise", true);
 
             if ((int)(GetPlayer1Topping()) < toppings.Length - 1)
-                {
-                    SwitchPlayer1Topping((int)GetPlayer1Topping() + 1);
-                }
-                else
-                {
-                    SwitchPlayer1Topping(0);
-                }
-
+            {
+                SwitchPlayer1Topping((int)GetPlayer1Topping() + 1);
+            }
+            else
+            {
+                SwitchPlayer1Topping(0);
+            }
         }
         else if (Input.GetButtonDown("P1SwitchRight"))
         {
             AudioManager.instance.Play("SwitchLeft");
+            player1Animator.SetBool("RotateCounterClockwise", true);
 
             if ((int)(GetPlayer1Topping()) > 0)
             {
@@ -121,27 +125,33 @@ public class ToppingSwitcher : MonoBehaviour
 
             AudioManager.instance.Play("SwitchLeft");
         }
+        else
+        {
+            player1Animator.SetBool("RotateClockwise", false);
+            player1Animator.SetBool("RotateCounterClockwise", false);
+        }
 
 
-         if (Input.GetButtonDown("P2SwitchLeft"))
+        if (Input.GetButtonDown("P2SwitchLeft"))
             {
 
             AudioManager.instance.Play("SwitchLeft");
+            player2Animator.SetBool("RotateClockwise", true);
 
-            if ((int)(GetPlayer2Topping()) > 0)
-                {
-                    SwitchPlayer2Topping((int)GetPlayer2Topping() - 1);
-                }
-                else
-                {
-                    SwitchPlayer2Topping(toppings.Length - 1);
-                }
-
+            if ((int)(GetPlayer2Topping()) < toppings.Length - 1)
+            {
+                SwitchPlayer2Topping((int)GetPlayer2Topping() + 1);
+            }
+            else
+            {
+                SwitchPlayer2Topping(0);
+            }
             AudioManager.instance.Play("SwitchLeft");
         }
         else if (Input.GetButtonDown("P2SwitchRight"))
         {
             AudioManager.instance.Play("SwitchLeft");
+            player2Animator.SetBool("RotateCounterClockwise", true);
 
             if ((int)(GetPlayer2Topping()) > 0)
             {
@@ -153,6 +163,11 @@ public class ToppingSwitcher : MonoBehaviour
             }
 
             AudioManager.instance.Play("SwitchLeft");
+        }
+        else
+        {
+            player2Animator.SetBool("RotateClockwise", false);
+            player2Animator.SetBool("RotateCounterClockwise", false);
         }
 
 
@@ -239,13 +254,13 @@ public class ToppingSwitcher : MonoBehaviour
     public void SwitchPlayer1Topping(int toppingToSwitch)
     {
         p1Topping = (Toppings)toppingToSwitch;
-        p1ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
+        //p1ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
     }
 
     public void SwitchPlayer2Topping(int toppingToSwitch)
     {
         p2Topping = (Toppings)toppingToSwitch;
-        p2ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
+        //p2ToppingDisplay.sprite = toppingSprites[toppingToSwitch];
     }
 
     public Toppings GetPlayer1Topping()
