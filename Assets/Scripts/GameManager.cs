@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     private float player1Timer = 0;
     [SerializeField]
     private float player2Timer = 0;
-    private const float PLAYERCOMBOMAXTIME = 1f;
+    private const float PLAYERCOMBOMAXTIME = 3f;
 
     [SerializeField]
     private float timeLeft;
@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
     public bool gameStarted = false;
 
     public GameObject endGamePanel;
+
+    public Image leftFill;
+    public Image rightFill;
+    public Text player1ComboText;
+    public Text player2ComboText;
 
     public static GameManager manager;
 
@@ -142,6 +147,8 @@ public class GameManager : MonoBehaviour
             player1ScoreText.text = "Player 1: " + player1Score.ToString();
             player2ScoreText.text = "Player 2: " + player2Score.ToString();
 
+            HandlePlayerComboUI();
+
             if (timeLeft <= 0)
             {
                 AudioManager.instance.Stop("Gameplay Music");
@@ -183,6 +190,26 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     } 
+
+    private void HandlePlayerComboUI()
+    {
+        float p1;
+        float p2;
+        if(player1Timer != 0)
+            p1 = PLAYERCOMBOMAXTIME - player1Timer;
+        else
+            p1 = 0;
+
+        if(player2Timer != 0)
+            p2 = PLAYERCOMBOMAXTIME - player2Timer; 
+        else
+            p2 = 0;
+
+        leftFill.fillAmount = p1;
+        rightFill.fillAmount = p2;
+        player1ComboText.text = player1Combo.ToString();
+        player2ComboText.text = player2Combo.ToString();
+    }
 
     public void ResetScene()
     {
