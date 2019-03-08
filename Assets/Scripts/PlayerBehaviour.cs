@@ -212,6 +212,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (player == Players.Player1)
         {
+           // cursorSprite.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0f);
+
             //cursorSprite.transform.position += new Vector3(players.Mouse1()[InputCode.MouseX].Value, players.Mouse1()[InputCode.MouseY].Value, 0f) * Time.deltaTime * mouseSpeed;
             cursorSprite.transform.position = new Vector3((Input.GetAxis("P1Horizontal") * 7.27f), Input.GetAxis("P1Vertical") * 3.8f) ;
  
