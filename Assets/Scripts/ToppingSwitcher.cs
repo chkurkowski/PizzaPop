@@ -16,11 +16,23 @@ public class ToppingSwitcher : MonoBehaviour
     public Sprite[] player1WheelIcons;
     public Sprite[] player2WheelIcons;
 
+    private bool player1IsRotating = false;
+    private bool player2IsRotating = false;
+    private Transform player1ReferenceIcon = null;
+    private Transform player2ReferenceIcon = null;
+    private Vector3 player1PreviousPt = Vector3.zero;
+    private Vector3 player2PreviousPt = Vector3.zero;
+
 
 
     void Awake()
     {
         instance = this;
+
+        player1ReferenceIcon = player1Animator.gameObject.GetComponentInChildren<Transform>();
+        player1PreviousPt = player1ReferenceIcon.position;
+        player2ReferenceIcon = player2Animator.gameObject.GetComponentInChildren<Transform>();
+        player2PreviousPt = player2ReferenceIcon.position;
     }
 
     public void Update()
@@ -95,10 +107,11 @@ public class ToppingSwitcher : MonoBehaviour
 
         //Toggling Toppings
 
-        if (Input.GetButtonDown("P1SwitchLeft"))
+        if (Input.GetButtonDown("P1SwitchLeft") && !player1IsRotating)
         {
             AudioManager.instance.Play("SwitchLeft");
             player1Animator.SetBool("RotateClockwise", true);
+            player1IsRotating = true;
 
             if ((int)(GetPlayer1Topping()) < toppings.Length - 1)
             {
@@ -109,10 +122,11 @@ public class ToppingSwitcher : MonoBehaviour
                 SwitchPlayer1Topping(0);
             }
         }
-        else if (Input.GetButtonDown("P1SwitchRight"))
+        else if (Input.GetButtonDown("P1SwitchRight") && !player1IsRotating)
         {
             AudioManager.instance.Play("SwitchLeft");
             player1Animator.SetBool("RotateCounterClockwise", true);
+            player1IsRotating = true;
 
             if ((int)(GetPlayer1Topping()) > 0)
             {
@@ -129,15 +143,19 @@ public class ToppingSwitcher : MonoBehaviour
         {
             player1Animator.SetBool("RotateClockwise", false);
             player1Animator.SetBool("RotateCounterClockwise", false);
+
+            if (player1IsRotating && player1ReferenceIcon.position == player1PreviousPt)
+                player1IsRotating = false;
+            player1PreviousPt = player1ReferenceIcon.position;
         }
         Debug.Log("Q: " + Input.GetKeyDown(KeyCode.Q));
-        Debug.Log("W: " + Input.GetKeyDown(KeyCode.Q));
+        Debug.Log("W: " + Input.GetKeyDown(KeyCode.W));
 
-        if (Input.GetButtonDown("P2SwitchLeft"))
+        if (Input.GetButtonDown("P2SwitchLeft") && !player2IsRotating)
             {
-
             AudioManager.instance.Play("SwitchLeft");
             player2Animator.SetBool("RotateClockwise", true);
+            player1IsRotating = true;
 
             if ((int)(GetPlayer2Topping()) < toppings.Length - 1)
             {
@@ -147,12 +165,14 @@ public class ToppingSwitcher : MonoBehaviour
             {
                 SwitchPlayer2Topping(0);
             }
+
             AudioManager.instance.Play("SwitchLeft");
         }
-        else if (Input.GetButtonDown("P2SwitchRight"))
+        else if (Input.GetButtonDown("P2SwitchRight") && !player2IsRotating)
         {
             AudioManager.instance.Play("SwitchLeft");
             player2Animator.SetBool("RotateCounterClockwise", true);
+            player1IsRotating = true;
 
             if ((int)(GetPlayer2Topping()) > 0)
             {
@@ -169,6 +189,10 @@ public class ToppingSwitcher : MonoBehaviour
         {
             player2Animator.SetBool("RotateClockwise", false);
             player2Animator.SetBool("RotateCounterClockwise", false);
+
+            if (player2IsRotating && player2ReferenceIcon.position == player2PreviousPt)
+                player2IsRotating = false;
+            player2PreviousPt = player2ReferenceIcon.position;
         }
         Debug.Log("E: " + Input.GetKeyDown(KeyCode.E));
         Debug.Log("R: " + Input.GetKeyDown(KeyCode.R));
