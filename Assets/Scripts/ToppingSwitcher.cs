@@ -148,8 +148,7 @@ public class ToppingSwitcher : MonoBehaviour
                 player1IsRotating = false;
             player1PreviousPt = player1ReferenceIcon.position;
         }
-        Debug.Log("Q: " + Input.GetKeyDown(KeyCode.Q));
-        Debug.Log("W: " + Input.GetKeyDown(KeyCode.W));
+        Debug.Log(player1IsRotating);
 
         if (Input.GetButtonDown("P2SwitchLeft") && !player2IsRotating)
             {
@@ -194,8 +193,6 @@ public class ToppingSwitcher : MonoBehaviour
                 player2IsRotating = false;
             player2PreviousPt = player2ReferenceIcon.position;
         }
-        Debug.Log("E: " + Input.GetKeyDown(KeyCode.E));
-        Debug.Log("R: " + Input.GetKeyDown(KeyCode.R));
 
 
 
