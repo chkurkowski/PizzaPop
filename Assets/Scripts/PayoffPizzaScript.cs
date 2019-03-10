@@ -9,12 +9,16 @@ public class PayoffPizzaScript : MonoBehaviour
     public GameObject pizzaBox;
     int boxQuotient = 0;
     int boxQuotient2 = 0;
+    bool Player1Wins;
+    bool Player2Wins;
     public static PayoffPizzaScript payoff;
     public Image[] player1Pizzas;
     public Image[] player2Pizzas;
 
     public Image player1WinsImage;
     public Image player2WinsImage;
+    public Image player1WinsBox;
+    public Image player2WinsBox;
 
     public Text winnerText;
 
@@ -26,7 +30,6 @@ public class PayoffPizzaScript : MonoBehaviour
 
     public void DetermineGameResults()
     {
-
         GetPlayersScores();
         StartCoroutine(SpawnPlayer1Boxes());
         StartCoroutine(SpawnPlayer2Boxes());
@@ -42,8 +45,10 @@ public class PayoffPizzaScript : MonoBehaviour
 
     void GetPlayersScores()
     {
-        boxQuotient2 = GameManager.manager.getPlayer2Score() / 300;
-        boxQuotient = GameManager.manager.getPlayer1Score() / 300;
+        boxQuotient = 20;
+        boxQuotient2 = 20;
+        //boxQuotient2 = GameManager.manager.getPlayer2Score() / 300;
+        //boxQuotient = GameManager.manager.getPlayer1Score() / 300;
     }
 
     IEnumerator SpawnPlayer1Boxes()
@@ -59,8 +64,9 @@ public class PayoffPizzaScript : MonoBehaviour
             yield return new WaitForSeconds(secondsToWait);
         }
 
-        if (GameManager.manager.getPlayer1Score() > GameManager.manager.getPlayer2Score())
+        if (GameManager.manager.getPlayer1Score() == GameManager.manager.getPlayer2Score())
         {
+            player1WinsBox.enabled = true;
             player1WinsImage.enabled = true;
             winnerText.text = "Player 1 Wins!";
         }
@@ -80,6 +86,7 @@ public class PayoffPizzaScript : MonoBehaviour
 
         if (GameManager.manager.getPlayer2Score() > GameManager.manager.getPlayer1Score())
         {
+            player2WinsBox.enabled = true;
             player2WinsImage.enabled = true;
             winnerText.text = "Player 2 Wins!";
 
