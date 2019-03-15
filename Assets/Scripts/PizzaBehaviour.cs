@@ -151,14 +151,28 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
     private void AddToPlayerCombo(string player)
     {
-        print(uniqueToppingCount);
-        if(player == "one" && uniqueToppingCount > 1)
+        // print(uniqueToppingCount);
+        if(player == "one")
         {
-            _manager.SetPlayer1Combo(.2f);
+            if(_manager.GetPlayer1Combo() > 0 uniqueToppingCount > 0)
+            {
+                _manager.SetPlayer1Combo(.2f);
+            }
+            else if(uniqueToppingCount > 1)
+            {
+                _manager.SetPlayer1Combo(.2f);
+            }
         }
-        else if(player == "two" && uniqueToppingCount > 1)
+        else if(player == "two")
         {
-            _manager.SetPlayer2Combo(.2f);
+            if(_manager.GetPlayer2Combo() > 0 uniqueToppingCount > 0)
+            {
+                _manager.SetPlayer2Combo(.2f);
+            }
+            else if(uniqueToppingCount > 1)
+            {
+                _manager.SetPlayer2Combo(.2f);
+            }
         }
     }
 
