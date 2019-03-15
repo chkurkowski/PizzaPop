@@ -221,8 +221,8 @@ public class PlayerBehaviour : MonoBehaviour
             //cursorSprite.transform.position += new Vector3(players.Mouse2()[InputCode.MouseX].Value, players.Mouse2()[InputCode.MouseY].Value, 0f) * Time.deltaTime * mouseSpeed;
             cursorSprite.transform.position = new Vector3((Input.GetAxis("P2Horizontal") * 7.27f), Input.GetAxis("P2Vertical") * 3.8f) ;
         }
-        Debug.Log(Input.GetAxis("P1Horizontal"));
-        Debug.Log(Input.GetAxis("P1Vertical"));
+       // Debug.Log(Input.GetAxis("P1Horizontal"));
+       // Debug.Log(Input.GetAxis("P1Vertical"));
     }
 
     private void Shoot()

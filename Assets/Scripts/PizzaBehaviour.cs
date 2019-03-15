@@ -17,7 +17,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private int scoreToAdd = 0;
 
 
-    private float fallMultiplier = 1.0f;
+    private float fallMultiplier = 0.8f;
 
     private float riseMultiplier = 1.0f;
 
@@ -154,7 +154,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         // print(uniqueToppingCount);
         if(player == "one")
         {
-            if(_manager.GetPlayer1Combo() > 0 uniqueToppingCount > 0)
+            if(_manager.GetPlayer1Combo() > 0 && uniqueToppingCount > 0)
             {
                 _manager.SetPlayer1Combo(.2f);
             }
@@ -165,7 +165,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         }
         else if(player == "two")
         {
-            if(_manager.GetPlayer2Combo() > 0 uniqueToppingCount > 0)
+            if(_manager.GetPlayer2Combo() > 0 && uniqueToppingCount > 0)
             {
                 _manager.SetPlayer2Combo(.2f);
             }

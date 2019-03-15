@@ -14,6 +14,11 @@ public class UIManager : MonoBehaviour {
 
     public Text countDownText;
 
+    public GameObject introVideo;
+    private float player1ReadyUp;
+    private float player2ReadyUp;
+    bool videoSkipped = false;
+
 
     public bool leftStartScreen = false;
     public bool onPayoffScreen = false;
@@ -29,7 +34,30 @@ public class UIManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.anyKeyDown && !leftStartScreen)
+        if (Input.GetButton("P1SwitchRight") || Input.GetButton("P1SwitchLeft"))
+        {
+            player1ReadyUp += Time.deltaTime;
+            //Debug.Log("Player 1 Ready up " + player1ReadyUp.ToString());
+        }
+
+        if (Input.GetButton("P2SwitchRight") || Input.GetButton("P2SwitchLeft"))
+        {
+            player2ReadyUp += Time.deltaTime;
+            Debug.Log("Player 2 Ready up " + player2ReadyUp.ToString());
+        }
+
+        if (player1ReadyUp >= 1.0f || player2ReadyUp >= 1.0f)
+        {
+            if (!videoSkipped && introVideo.activeSelf)
+            {
+                videoSkipped = true;
+                skipVideo();
+            }
+        }
+
+
+
+        if (Input.anyKeyDown && !leftStartScreen)
         {
             titleScreen.SetActive(false);
             startScreen.SetActive(true);
@@ -41,7 +69,8 @@ public class UIManager : MonoBehaviour {
             onTitleScreen = false;
             titleScreen.SetActive(false);
 
-            StartCoroutine(CountDown());
+            introVideo.SetActive(true);
+            StartCoroutine(CountDown(25));
      
 
             //payoffScreen.SetActive(false);
@@ -71,9 +100,11 @@ public class UIManager : MonoBehaviour {
         secsSinceLastInput += Time.deltaTime;
 	}
 
-    private IEnumerator CountDown()
+    private IEnumerator CountDown(float timeToWait)
     {
-        yield return new WaitForSeconds(8.0f);
+        yield return new WaitForSeconds(timeToWait);
+
+        videoSkipped = true;
 
         int countdown = 4;
 
@@ -84,6 +115,7 @@ public class UIManager : MonoBehaviour {
             countDownText.text = countdown.ToString();
         }
 
+        introVideo.SetActive(false);
         countDownText.text = "GO!";
 
         yield return new WaitForSeconds(0.3f);
@@ -92,7 +124,12 @@ public class UIManager : MonoBehaviour {
 
         gameUI.SetActive(true);
         GameManager.manager.StartGame();
+    }
 
-
+    private void skipVideo()
+    {
+        introVideo.SetActive(false);
+        StopAllCoroutines();
+        StartCoroutine(CountDown(0.1f));
     }
 }

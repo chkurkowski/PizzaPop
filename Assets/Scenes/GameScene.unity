@@ -314,7 +314,32 @@ Prefab:
     - target: {fileID: 212095990616759308, guid: 9406590a0db9d4fe6bf3a522da272b19,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 8
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 212793002380024200, guid: 9406590a0db9d4fe6bf3a522da272b19,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 212190757250646956, guid: 9406590a0db9d4fe6bf3a522da272b19,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 212833515773475402, guid: 9406590a0db9d4fe6bf3a522da272b19,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 212840649305504656, guid: 9406590a0db9d4fe6bf3a522da272b19,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 212913477189502352, guid: 9406590a0db9d4fe6bf3a522da272b19,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9406590a0db9d4fe6bf3a522da272b19, type: 2}
@@ -938,6 +963,100 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1abfc8f01b1eb40b68f767e1ff98ba36, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &152576055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 152576059}
+  - component: {fileID: 152576058}
+  - component: {fileID: 152576057}
+  - component: {fileID: 152576056}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &152576056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 152576055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &152576057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 152576055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &152576058
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 152576055}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &152576059
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 152576055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1360066413}
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 19, y: 11.05}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &154824341 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114919332670136634, guid: c5689f43c7cbb4edf911f3f4e313cd2a,
@@ -1505,6 +1624,36 @@ Prefab:
     - target: {fileID: 4055295117603442, guid: 1c412ce01e6e746bea745faebc6b9dd0, type: 2}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 212506529993726712, guid: 1c412ce01e6e746bea745faebc6b9dd0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 212067489077958134, guid: 1c412ce01e6e746bea745faebc6b9dd0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 212808702074221932, guid: 1c412ce01e6e746bea745faebc6b9dd0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 212497186628869190, guid: 1c412ce01e6e746bea745faebc6b9dd0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 212938336748500744, guid: 1c412ce01e6e746bea745faebc6b9dd0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 212136089657104224, guid: 1c412ce01e6e746bea745faebc6b9dd0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c412ce01e6e746bea745faebc6b9dd0, type: 2}
@@ -2266,20 +2415,20 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: End Game Chime
-    clip: {fileID: 8300000, guid: 533e6594a7603754c8ddcbbbe3996eef, type: 3}
+    clip: {fileID: 8300000, guid: c2b0de3f2969f41479786187d9a00338, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Gameplay Music
-    clip: {fileID: 8300000, guid: 6fc1ee8e94fa50f4c998e5b13420e709, type: 3}
+    clip: {fileID: 8300000, guid: e4ee35764496f4b7baf146cd953d0f44, type: 3}
     volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: SplashMusic
-    clip: {fileID: 8300000, guid: 015af4f50bd8e0242a4e24d83bee7ab3, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: f486a99b4c7ae4a698a8e1d5555b74c6, type: 3}
+    volume: 0.095
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -3110,7 +3259,7 @@ VideoPlayer:
   - 1
   m_Url: 
   m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 00
+  m_DirectAudioMutes: 01
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
@@ -4690,6 +4839,110 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1360066412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1746519169160400, guid: 72bd415742b57134b990a84d936e380c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1360066413}
+  - component: {fileID: 1360066416}
+  - component: {fileID: 1360066415}
+  - component: {fileID: 1360066414}
+  m_Layer: 5
+  m_Name: DemoScreen (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1360066413
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224824210051271810, guid: 72bd415742b57134b990a84d936e380c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360066412}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9375, y: 0.9375, z: 0.9375}
+  m_Children: []
+  m_Father: {fileID: 152576059}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1.3, y: 0.73673}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1360066414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360066412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 8400000, guid: 88b3303c48c2ffb4587cf8d13a86ea9d, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1360066415
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360066412}
+  m_CullTransparentMesh: 0
+--- !u!328 &1360066416
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360066412}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 718c11a3f9ca249d8848ab1dda23ccfd, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 519420031}
+  m_TargetTexture: {fileID: 8400000, guid: 88b3303c48c2ffb4587cf8d13a86ea9d, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _MainTex
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
 --- !u!114 &1370800175 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114278034324376252, guid: f5d9fb99e208bef42bc84628c35fef5a,
@@ -5706,6 +5959,7 @@ MonoBehaviour:
   demoScreen: {fileID: 721887351}
   gameUI: {fileID: 126875954}
   countDownText: {fileID: 1252705813}
+  introVideo: {fileID: 152576055}
   leftStartScreen: 0
   onPayoffScreen: 0
   onDemoScreen: 0
