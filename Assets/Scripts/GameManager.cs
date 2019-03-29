@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        timeLeft = 30f; // CHANGE THIS BACK TO 30
+        timeLeft = 47f; // CHANGE THIS BACK TO 30
 
         gameStarted = true;
         
@@ -205,10 +205,10 @@ public class GameManager : MonoBehaviour
         else
             p2 = 0;
 
-        leftFill.fillAmount = p1;
-        rightFill.fillAmount = p2;
-        player1ComboText.text = player1Combo.ToString();
-        player2ComboText.text = player2Combo.ToString();
+        //leftFill.fillAmount = p1;
+        //rightFill.fillAmount = p2;
+        //player1ComboText.text = player1Combo.ToString();
+        //player2ComboText.text = player2Combo.ToString();
     }
 
     public void ResetScene()

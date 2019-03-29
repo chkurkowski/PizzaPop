@@ -64,13 +64,15 @@ public class UIManager : MonoBehaviour {
             leftStartScreen = true;
         }
 
-        if (Input.anyKeyDown && onTitleScreen)
+        if (Input.anyKeyDown && onTitleScreen && !onDemoScreen)
         {
             onTitleScreen = false;
             titleScreen.SetActive(false);
 
             introVideo.SetActive(true);
             StartCoroutine(CountDown(25));
+
+            FindObjectOfType<flash>().gameObject.SetActive(false);
      
 
             //payoffScreen.SetActive(false);

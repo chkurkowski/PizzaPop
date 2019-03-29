@@ -11,6 +11,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private ParticleSystem _particles;
     private ToppingScoreHandler _scoreHandler;
 
+
     [SerializeField]
     private int pizzaLife;
 
@@ -69,12 +70,12 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         if(player == "one")
         {
             _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
-            DisplayScore(scoreToAdd, transform.position, Color.red);
+            DisplayScore(_manager.GetPlayer1Combo(), transform.position, Color.red);
         }
         else
         {
             _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
-            DisplayScore(scoreToAdd, transform.position, Color.blue);
+            DisplayScore(_manager.GetPlayer2Combo(), transform.position, Color.blue);
         }
 
     }
@@ -176,10 +177,17 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         }
     }
 
-    public void DisplayScore(int score, Vector2 position, Color fontColor)
+    public void DisplayScore(float score, Vector2 position, Color fontColor)
     {
+        if (score <= 1.0f)
+            return;
+
+        float temp = (int)(score * 100);
+
+        score = temp / 100;
+
         TextMeshPro playerTextPopup = ObjectPooler.instance.SpawnFromPool("Text", position, Quaternion.identity).GetComponent<TextMeshPro>();
-        playerTextPopup.text = "+" + score.ToString();
+        playerTextPopup.text = "x" + score.ToString();
         playerTextPopup.color = fontColor;
     }
 
@@ -234,7 +242,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private void Update()
     {
         //disable a pizza when it leaves the screen
-        if (transform.position.y < -7.0f)
+        if (transform.position.y < -20.0f)
         {
             RemoveToppings();
             gameObject.SetActive(false);
