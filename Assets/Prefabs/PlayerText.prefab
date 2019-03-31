@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 222491789471207456}
   - component: {fileID: 114292517712998180}
   - component: {fileID: 114339725319286940}
+  - component: {fileID: 114024695718015720}
   m_Layer: 0
   m_Name: PlayerText
   m_TagString: Untagged
@@ -73,6 +74,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1910071220769730}
   m_Mesh: {fileID: 0}
+--- !u!114 &114024695718015720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1910071220769730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 1
 --- !u!114 &114292517712998180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,14 +133,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 4.18
-  m_fontSizeBase: 4.18
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -157,7 +171,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -0.37050772, w: -0.10932374}
+  m_margin: {x: 0, y: 0, z: -3.5280366, w: -2.0500088}
   m_textInfo:
     textComponent: {fileID: 0}
     characterCount: 4
@@ -219,6 +233,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.6355367, y: -1.8490069}
-  m_SizeDelta: {x: 0.801, y: 0.393}
+  m_AnchoredPosition: {x: 0.80207515, y: 2.540266}
+  m_SizeDelta: {x: 1.706, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TextPopUp : MonoBehaviour, iPoolerObject 
 {
@@ -13,7 +14,8 @@ public class TextPopUp : MonoBehaviour, iPoolerObject
 
     private IEnumerator disappearTimer()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(1.0f);
+
         gameObject.SetActive(false);
     }
 

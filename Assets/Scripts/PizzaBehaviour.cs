@@ -10,6 +10,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private PizzaOrder _pizzaOrder;
     private ParticleSystem _particles;
     private ToppingScoreHandler _scoreHandler;
+    private const float baseFontSize = 7.0f;
 
 
     [SerializeField]
@@ -189,17 +190,20 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         }
     }
 
-    public void DisplayScore(float score, Vector2 position, Color fontColor)
+    public void DisplayScore(float combo, Vector2 position, Color fontColor)
     {
-        if (score <= 1.0f)
+        if (combo <= 1.0f)
             return;
 
-        float temp = (int)(score * 100);
+        float temp = (int)(combo * 100);
 
-        score = temp / 100;
+        combo = temp / 100;
 
         TextMeshPro playerTextPopup = ObjectPooler.instance.SpawnFromPool("Text", position, Quaternion.identity).GetComponent<TextMeshPro>();
-        playerTextPopup.text = "x" + score.ToString();
+
+        playerTextPopup.text = "x" + combo.ToString();
+        playerTextPopup.fontSize = baseFontSize * combo;
+
         playerTextPopup.color = fontColor;
     }
 

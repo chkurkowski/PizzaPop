@@ -61,7 +61,6 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (Input.GetButton("P1Trigger") && player == Players.Player1)
             {
-
                 if (ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.Pepperoni
                     && shotTimer >= pepperoniReloadTime)
                 {

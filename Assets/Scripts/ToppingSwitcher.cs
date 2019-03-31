@@ -16,6 +16,9 @@ public class ToppingSwitcher : MonoBehaviour
     public Sprite[] player1WheelIcons;
     public Sprite[] player2WheelIcons;
 
+    private float player1switchTimer;
+    private float player2switchTimer;
+
 
 
     void Awake()
@@ -50,6 +53,12 @@ public class ToppingSwitcher : MonoBehaviour
         {
             SwitchPlayer1Topping(4); // Switch Player 1's topping to BlackOlive
         }
+
+        if (player1switchTimer > 0)
+            player1switchTimer -= Time.deltaTime;
+
+        if (player2switchTimer > 0)
+            player2switchTimer -= Time.deltaTime;
 
         /* Player 1 Topping cycle*/
 
@@ -95,8 +104,10 @@ public class ToppingSwitcher : MonoBehaviour
 
         //Toggling Toppings
 
-        if (Input.GetButtonDown("P1SwitchLeft"))
+        if (Input.GetButtonDown("P1SwitchLeft") && player1switchTimer <= 0)
         {
+            player1switchTimer = 0.5f;
+
             AudioManager.instance.Play("SwitchLeft");
             player1Animator.SetBool("RotateClockwise", true);
 
@@ -109,8 +120,10 @@ public class ToppingSwitcher : MonoBehaviour
                 SwitchPlayer1Topping(0);
             }
         }
-        else if (Input.GetButtonDown("P1SwitchRight"))
+        else if (Input.GetButtonDown("P1SwitchRight") && player1switchTimer <= 0)
         {
+            player1switchTimer = 0.5f;
+
             AudioManager.instance.Play("SwitchLeft");
             player1Animator.SetBool("RotateCounterClockwise", true);
 
@@ -133,8 +146,10 @@ public class ToppingSwitcher : MonoBehaviour
         Debug.Log("Q: " + Input.GetKeyDown(KeyCode.Q));
         Debug.Log("W: " + Input.GetKeyDown(KeyCode.Q));
 
-        if (Input.GetButtonDown("P2SwitchLeft"))
+        if (Input.GetButtonDown("P2SwitchLeft") && player2switchTimer <= 0)
             {
+
+            player2switchTimer = 0.5f;
 
             AudioManager.instance.Play("SwitchLeft");
             player2Animator.SetBool("RotateClockwise", true);
@@ -149,8 +164,10 @@ public class ToppingSwitcher : MonoBehaviour
             }
             AudioManager.instance.Play("SwitchLeft");
         }
-        else if (Input.GetButtonDown("P2SwitchRight"))
+        else if (Input.GetButtonDown("P2SwitchRight") && player2switchTimer <= 0)
         {
+            player2switchTimer = 0.5f;
+
             AudioManager.instance.Play("SwitchLeft");
             player2Animator.SetBool("RotateCounterClockwise", true);
 

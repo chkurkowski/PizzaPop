@@ -63,6 +63,7 @@ public class CharacterBehaviour : MonoBehaviour
         while (GameManager.manager.gameStarted)
         {
             yield return new WaitForSeconds(pizzaSpawnRate);
+            //events[3].launch();
 
             float percentage = Random.Range(0f, 1f);
             //every 1 in 10 
