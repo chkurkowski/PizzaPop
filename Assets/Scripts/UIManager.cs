@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour {
 
@@ -11,6 +12,15 @@ public class UIManager : MonoBehaviour {
     public GameObject highScoreScreen;
     public GameObject demoScreen;
     public GameObject gameUI;
+
+    public TMP_Text titleScreenMessage;
+
+    public TMP_Text player1ReadyUpText;
+    public Image player1ReadyUpImage;
+
+    public TMP_Text player2ReadyUpText;
+    public Image player2ReadyUpImage;
+
 
     public Text countDownText;
 
@@ -37,16 +47,38 @@ public class UIManager : MonoBehaviour {
         if (Input.GetButton("P1SwitchRight") || Input.GetButton("P1SwitchLeft"))
         {
             player1ReadyUp += Time.deltaTime;
+            player1ReadyUpImage.fillAmount = player1ReadyUp;
+
+            if (player1ReadyUp > 1.0f)
+            {
+                player1ReadyUpText.text = "Ready!";
+            }
+            else
+            {
+                player1ReadyUpText.enabled = false;
+            }
+
             //Debug.Log("Player 1 Ready up " + player1ReadyUp.ToString());
         }
 
         if (Input.GetButton("P2SwitchRight") || Input.GetButton("P2SwitchLeft"))
         {
             player2ReadyUp += Time.deltaTime;
+            player2ReadyUpImage.fillAmount = player2ReadyUp;
             Debug.Log("Player 2 Ready up " + player2ReadyUp.ToString());
+
+
+            if (player2ReadyUp > 1.0f)
+            {
+                player2ReadyUpText.text = "Ready!";
+            }
+            else
+            {
+                player2ReadyUpText.enabled = false;
+            }
         }
 
-        if (player1ReadyUp >= 1.0f || player2ReadyUp >= 1.0f)
+        if (player1ReadyUp >= 1.0f && player2ReadyUp >= 1.0f)
         {
             if (!videoSkipped && introVideo.activeSelf)
             {
@@ -70,11 +102,13 @@ public class UIManager : MonoBehaviour {
             titleScreen.SetActive(false);
 
             introVideo.SetActive(true);
+
+            titleScreenMessage.gameObject.SetActive(false);
+
             StartCoroutine(CountDown(25));
 
-            FindObjectOfType<flash>().gameObject.SetActive(false);
-     
 
+    
             //payoffScreen.SetActive(false);
             //highScoreScreen.SetActive(true);
             //onPayoffScreen = false;
@@ -118,7 +152,7 @@ public class UIManager : MonoBehaviour {
         }
 
         introVideo.SetActive(false);
-        countDownText.text = "GO!";
+        countDownText.text = "ORDER UP!";
 
         yield return new WaitForSeconds(0.3f);
 
