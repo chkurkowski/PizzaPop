@@ -190,6 +190,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         }
     }
 
+
     public void DisplayScore(float combo, Vector2 position, Color fontColor)
     {
         if (combo <= 1.0f)
@@ -201,7 +202,8 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         TextMeshPro playerTextPopup = ObjectPooler.instance.SpawnFromPool("Text", position, Quaternion.identity).GetComponent<TextMeshPro>();
 
-        playerTextPopup.text = "Combo! x" + combo.ToString();
+        playerTextPopup.text = "Combo!";
+
         playerTextPopup.fontSize = baseFontSize * combo;
 
         playerTextPopup.color = fontColor;
