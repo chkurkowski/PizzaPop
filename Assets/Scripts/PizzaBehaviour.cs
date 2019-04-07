@@ -201,7 +201,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         TextMeshPro playerTextPopup = ObjectPooler.instance.SpawnFromPool("Text", position, Quaternion.identity).GetComponent<TextMeshPro>();
 
-        playerTextPopup.text = "x" + combo.ToString();
+        playerTextPopup.text = "Combo! x" + combo.ToString();
         playerTextPopup.fontSize = baseFontSize * combo;
 
         playerTextPopup.color = fontColor;

@@ -39,9 +39,10 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
         //TODO: have the toppings fall/dissapear in some way after hitting the wall
         if (transform.localScale.x < 0.81f && !touchingPizza)
         {
-            GetComponent<SpriteRenderer>().color = Color.grey;
-            gameObject.tag = "Untagged";
-            added = true;
+            //GetComponent<SpriteRenderer>().color = Color.grey;
+            //gameObject.tag = "Untagged";
+            //added = true;
+            gameObject.SetActive(false);
 
             //TODO: Change layer of topping once it hits the wall
             //gameObject.SetActive(false);
