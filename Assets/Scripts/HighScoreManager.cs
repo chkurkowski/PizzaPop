@@ -63,4 +63,9 @@ public class HighScoreManager : MonoBehaviour {
 		string tempString = PlayerPrefs.GetString("HighScores");
 		string[] subStrings = tempString.Split(',');
 	}
+
+	private void TestUtility()
+	{
+		
+	}
 }
