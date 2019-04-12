@@ -25,9 +25,10 @@ public class flash : MonoBehaviour {
             yield return new WaitForSeconds(flashRate);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public void StopFlashing()
+    {
+        StopAllCoroutines();
+        menuText.enabled = true;
+    }
 }
