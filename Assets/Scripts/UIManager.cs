@@ -165,14 +165,14 @@ public class UIManager : MonoBehaviour {
 
         videoSkipped = true;
 
-        int countdown = 4;
+        //int countdown = 4;
 
-        while (countdown > 0)
-        {
-            yield return new WaitForSeconds(1.0f);
-            countdown--;
-            countDownText.text = countdown.ToString();
-        }
+        //while (countdown > 0)
+        //{
+        //    yield return new WaitForSeconds(1.0f);
+        //    countdown--;
+        //    countDownText.text = countdown.ToString();
+        //}
 
         introVideo.SetActive(false);
         countDownText.text = "ORDER UP!";

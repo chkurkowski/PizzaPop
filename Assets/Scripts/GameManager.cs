@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Image timerFront;
 
+    [SerializeField]
+    private Image timerCircle;
+
     public static GameManager manager;
 
     private UIManager UIManagerScript;
@@ -152,7 +155,8 @@ public class GameManager : MonoBehaviour
         if (gameStarted)
         {
             timeLeft -= Time.deltaTime;
-            timerFront.rectTransform.rotation = Quaternion.Euler(new Vector3(0f, 0f, Mathf.Lerp(0f, 360f, (timeLeft / 47))));
+            timerFront.rectTransform.rotation = Quaternion.Euler(new Vector3(0f, 0f, Mathf.Lerp(0f, -360f, (timeLeft / 47))));
+            timerCircle.fillAmount = (float)(timeLeft / 47.75f);
             timer.text = ((int)timeLeft).ToString();
 
             player1ScoreText.text = player1ScoreTextOutline.text = "Rosso: " + player1Score.ToString();
