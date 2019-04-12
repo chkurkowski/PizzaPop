@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour 
@@ -23,13 +24,13 @@ public class GameManager : MonoBehaviour
     private float timeLeft;
 
     [SerializeField]
-    private Text player1ScoreText;
+    private TextMeshProUGUI player1ScoreText;
 
     [SerializeField]
-    private Text player2ScoreText;
+    private TextMeshProUGUI player2ScoreText;
 
     [SerializeField]
-    private Text timer;
+    private TextMeshProUGUI timer;
 
     [HideInInspector]
     public bool gameStarted = false;
@@ -144,8 +145,8 @@ public class GameManager : MonoBehaviour
             timeLeft -= Time.deltaTime;
             timer.text = ((int)timeLeft).ToString();
 
-            player1ScoreText.text = "Player 1: " + player1Score.ToString();
-            player2ScoreText.text = "Player 2: " + player2Score.ToString();
+            player1ScoreText.text = "Rosso: " + player1Score.ToString();
+            player2ScoreText.text = "Verde: " + player2Score.ToString();
 
             HandlePlayerComboUI();
 
