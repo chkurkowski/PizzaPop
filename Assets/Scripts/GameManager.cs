@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour 
 {
@@ -23,10 +24,16 @@ public class GameManager : MonoBehaviour
     private float timeLeft;
 
     [SerializeField]
-    private Text player1ScoreText;
+    private TextMeshProUGUI player1ScoreText;
 
     [SerializeField]
-    private Text player2ScoreText;
+    private TextMeshProUGUI player1ScoreTextOutline;
+
+    [SerializeField]
+    private TextMeshProUGUI player2ScoreText;
+
+    [SerializeField]
+    private TextMeshProUGUI player2ScoreTextOutline;
 
     [SerializeField]
     private Text timer;
@@ -40,6 +47,9 @@ public class GameManager : MonoBehaviour
     public Image rightFill;
     public Text player1ComboText;
     public Text player2ComboText;
+
+    [SerializeField]
+    private Image timerFront;
 
     public static GameManager manager;
 
@@ -142,10 +152,22 @@ public class GameManager : MonoBehaviour
         if (gameStarted)
         {
             timeLeft -= Time.deltaTime;
+            timerFront.rectTransform.rotation = Quaternion.Euler(new Vector3(0f, 0f, Mathf.Lerp(0f, 360f, (timeLeft / 47))));
             timer.text = ((int)timeLeft).ToString();
 
-            player1ScoreText.text = "Player 1: " + player1Score.ToString();
-            player2ScoreText.text = "Player 2: " + player2Score.ToString();
+            player1ScoreText.text = player1ScoreTextOutline.text = "Rosso: " + player1Score.ToString();
+
+            if (GameManager.manager.GetPlayer1Combo() > 1.0f)
+            {
+                player1ScoreTextOutline.text = player1ScoreText.text += " X " + GameManager.manager.GetPlayer1Combo();
+            }
+
+            player2ScoreText.text = player2ScoreTextOutline.text = "Verde: " + player2Score.ToString();
+
+            if (GameManager.manager.GetPlayer2Combo() > 1.0f)
+            {
+                player2ScoreTextOutline.text = player2ScoreText.text += " X " + GameManager.manager.GetPlayer2Combo();
+            }
 
             HandlePlayerComboUI();
 

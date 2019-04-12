@@ -49,33 +49,56 @@ public class UIManager : MonoBehaviour {
             player1ReadyUp += Time.deltaTime;
             player1ReadyUpImage.fillAmount = player1ReadyUp;
 
-            if (player1ReadyUp > 1.0f)
+            if (player1ReadyUp >= 1.0f)
             {
                 player1ReadyUpText.text = "Ready!";
+                player1ReadyUpText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Ready!";
+
+                player1ReadyUpText.gameObject.GetComponent<flash>().StopFlashing();
+                player1ReadyUpText.transform.GetChild(0).GetComponent<flash>().StopFlashing();
+                player1ReadyUpImage.enabled = false;
+
             }
             else
             {
                 player1ReadyUpText.enabled = false;
+                player1ReadyUpText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
             }
 
             //Debug.Log("Player 1 Ready up " + player1ReadyUp.ToString());
+        }
+        else if (player1ReadyUp < 1)
+        {
+            player1ReadyUp = 0f;
+            player1ReadyUpImage.fillAmount = player1ReadyUp;
         }
 
         if (Input.GetButton("P2SwitchRight") || Input.GetButton("P2SwitchLeft"))
         {
             player2ReadyUp += Time.deltaTime;
             player2ReadyUpImage.fillAmount = player2ReadyUp;
-            Debug.Log("Player 2 Ready up " + player2ReadyUp.ToString());
 
 
-            if (player2ReadyUp > 1.0f)
+            if (player2ReadyUp >= 1.0f)
             {
                 player2ReadyUpText.text = "Ready!";
+                player2ReadyUpText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Ready!";
+
+                player2ReadyUpText.gameObject.GetComponent<flash>().StopFlashing();
+                player2ReadyUpText.transform.GetChild(0).GetComponent<flash>().StopFlashing();
+                player2ReadyUpImage.enabled = false;
             }
             else
             {
                 player2ReadyUpText.enabled = false;
+                player2ReadyUpText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+
             }
+        }
+        else if (player2ReadyUp < 1)
+        {
+            player2ReadyUp = 0f;
+            player2ReadyUpImage.fillAmount = player2ReadyUp;
         }
 
         if (player1ReadyUp >= 1.0f && player2ReadyUp >= 1.0f)
