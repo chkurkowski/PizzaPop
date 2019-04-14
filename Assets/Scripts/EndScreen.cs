@@ -14,13 +14,6 @@ public class EndScreen : MonoBehaviour {
         PayoffPizzaScript.payoff.DetermineGameResults();
         player1Score.text = "Player 1 Score: " + GameManager.manager.getPlayer1Score().ToString();
         player2Score.text = "Player 2 Score: " + GameManager.manager.getPlayer2Score().ToString();
-
-        Invoke("RestartScene", 8f);
-    }
-
-    public void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 

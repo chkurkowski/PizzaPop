@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour
 
     private UIManager UIManagerScript;
 
+    [SerializeField]
+    private GameObject highScorePanel;
+
     private void Awake()
     {
         manager = this;
@@ -96,6 +99,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         gameStarted = false;
         endGamePanel.SetActive(true);
+        StartCoroutine(EnableHighScoreScreen());
         UIManagerScript.onPayoffScreen = true;
     }
 
@@ -216,6 +220,16 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     } 
+
+    private IEnumerator EnableHighScoreScreen()
+    {
+        yield return new WaitForSeconds(8f);
+        endGamePanel.SetActive(false);
+        highScorePanel.SetActive(true);
+        yield return new WaitForSeconds(6f);
+        ResetScene();
+        yield return null;
+    }
 
     private void HandlePlayerComboUI()
     {

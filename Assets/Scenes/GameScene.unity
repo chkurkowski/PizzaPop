@@ -7508,7 +7508,6 @@ MonoBehaviour:
   introVideo: {fileID: 152576055}
   leftStartScreen: 0
   onPayoffScreen: 0
-  onDemoScreen: 0
   secsSinceLastInput: 0
 --- !u!1 &1706137610
 GameObject:
@@ -7989,6 +7988,11 @@ Prefab:
       propertyPath: timerCircle
       value: 
       objectReference: {fileID: 176819051}
+    - target: {fileID: 114347233700195702, guid: 824e869e4fe434d0993126337b2b9835,
+        type: 2}
+      propertyPath: highScorePanel
+      value: 
+      objectReference: {fileID: 1213519114}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 824e869e4fe434d0993126337b2b9835, type: 2}
   m_IsPrefabAsset: 0

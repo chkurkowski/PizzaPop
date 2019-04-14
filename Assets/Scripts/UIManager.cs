@@ -32,8 +32,8 @@ public class UIManager : MonoBehaviour {
 
     public bool leftStartScreen = false;
     public bool onPayoffScreen = false;
-    public bool onDemoScreen = false;
     private bool onTitleScreen = true;
+    private bool onDemoScreen = false;
     public float secsSinceLastInput = 0;
 
 	// Use this for initialization
@@ -43,7 +43,6 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
         if (Input.GetButton("P1SwitchRight") || Input.GetButton("P1SwitchLeft"))
         {
             player1ReadyUp += Time.deltaTime;
@@ -119,7 +118,7 @@ public class UIManager : MonoBehaviour {
             leftStartScreen = true;
         }
 
-        if (Input.anyKeyDown && onTitleScreen && !onDemoScreen)
+        if (Input.anyKeyDown && onTitleScreen)
         {
             onTitleScreen = false;
             titleScreen.SetActive(false);
@@ -140,8 +139,18 @@ public class UIManager : MonoBehaviour {
         if (!Input.anyKeyDown && !leftStartScreen && secsSinceLastInput > 10)
         {
             titleScreen.SetActive(false);
-            demoScreen.SetActive(true);
-            onDemoScreen = true;
+            if (Random.Range(0, 2) == 1)
+            {
+                demoScreen.SetActive(true);
+                onTitleScreen = false;
+                onDemoScreen = true;
+            }
+            else
+            {
+                highScoreScreen.SetActive(true);
+                onTitleScreen = false;
+                onDemoScreen = true;
+            }
             
             leftStartScreen = true;
         }
@@ -149,9 +158,10 @@ public class UIManager : MonoBehaviour {
         if (Input.anyKeyDown && onDemoScreen)
         {
             onTitleScreen = true;
+            onDemoScreen = false;
             titleScreen.SetActive(true);
             demoScreen.SetActive(false);
-            onDemoScreen = false;
+            highScoreScreen.SetActive(false);
             leftStartScreen = false;
             secsSinceLastInput = 0;
         }
