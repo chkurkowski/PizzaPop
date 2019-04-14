@@ -3105,6 +3105,126 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Bonjoro
+    clip: {fileID: 8300000, guid: 4b37d039baaaba8498268672e9fa5964, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Customers
+    clip: {fileID: 8300000, guid: bc070f4527833714d9655b6db729c51f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EccoFatto
+    clip: {fileID: 8300000, guid: b0c04e1d43bc11f47a89524f48f5ab0d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GetToppingsReady
+    clip: {fileID: 8300000, guid: f81f5c3cdd1094541ab55624262bf529, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hold Trigger
+    clip: {fileID: 8300000, guid: 86b4e175caf1ccb4983de900b34cabee, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dont
+    clip: {fileID: 8300000, guid: 79eda5272ba11bb4596dbe636122046f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: KeepTopping
+    clip: {fileID: 8300000, guid: b7b770e7c082b4d43bfc389a418ddba7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Make Pizza
+    clip: {fileID: 8300000, guid: 881492bf5d0bd6b43b468d380162a01c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MoltaBella
+    clip: {fileID: 8300000, guid: 94c0af4c418fc454587a3488643a8bc5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Order Up 1
+    clip: {fileID: 8300000, guid: 6c83a458abaad904aa5c808cad2272fd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Order up 2
+    clip: {fileID: 8300000, guid: b6092bf4f9299a24d88c790cbd283a25, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Order up 3
+    clip: {fileID: 8300000, guid: 2d3389293283f5d46b6dbbc9a296c378, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: OttimoLavoro
+    clip: {fileID: 8300000, guid: 80facf12b331c5b4cb956232a4aaa36e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: pullTrigger 1
+    clip: {fileID: 8300000, guid: 287ca3dae1e0b844e8b69fc9e281b866, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PullTrigger 3
+    clip: {fileID: 8300000, guid: 26dd42713b15e9640b754bab2d2da065, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: stopSittingOnHands
+    clip: {fileID: 8300000, guid: 8d87a07134511d646814338007a203f4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: wantMeToMakePizza
+    clip: {fileID: 8300000, guid: f046b2d03deaa6b41872e3a62f5174c4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: watsAMatta
+    clip: {fileID: 8300000, guid: 4ba91c38e42a61644ba37146572db546, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: wattaYouDoin
+    clip: {fileID: 8300000, guid: 8dad22c74ea03a940926bd0c7efc86bb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: whyGettinPep
+    clip: {fileID: 8300000, guid: b92c41e4d73bd504cac17661718f9ee6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &573165482
 Transform:
   m_ObjectHideFlags: 0
