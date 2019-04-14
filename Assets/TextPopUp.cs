@@ -21,12 +21,39 @@ public class TextPopUp : MonoBehaviour, iPoolerObject
 
     void Start () 
     {
-		
+        RestrainPosition();
 	}
-	
-	// Update is called once per frame
-	void Update () 
+
+    private void OnEnable()
+    {
+        RestrainPosition();
+    }
+
+    // Update is called once per frame
+    void Update () 
     {
 		
 	}
+
+    public void RestrainPosition()
+    {
+        //Check X
+        if (transform.position.x < -5)
+        {
+            transform.position = new Vector3(0f, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x > 5)
+        {
+            transform.position = new Vector3(0f, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.y < 5f)
+        {
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+        }
+        else if (transform.position.y > 5f)
+        {
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+        }
+    }
 }

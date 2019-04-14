@@ -215,6 +215,8 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         playerTextPopup.fontSize = baseFontSize * combo;
         playerTextPopup.transform.GetChild(0).GetComponent<TextMeshPro>().fontSize = baseFontSize * combo;
 
+        playerTextPopup.GetComponent<TextPopUp>().RestrainPosition();
+
     }
 
 
