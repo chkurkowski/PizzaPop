@@ -9,7 +9,7 @@ public class HighScoreManager : MonoBehaviour {
 
 	#region Singleton
 
-	HighScoreManager inst;
+	public static HighScoreManager inst;
 
 	void Awake()
 	{
@@ -61,7 +61,7 @@ public class HighScoreManager : MonoBehaviour {
 			AddHighScore(score);
 			return;
 		}
-		
+
 		if(score > highScores[7])
 		{
 			AddHighScore(score);
