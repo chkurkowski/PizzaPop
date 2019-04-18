@@ -143,8 +143,7 @@ public class ToppingSwitcher : MonoBehaviour
             player1Animator.SetBool("RotateClockwise", false);
             player1Animator.SetBool("RotateCounterClockwise", false);
         }
-        Debug.Log("Q: " + Input.GetKeyDown(KeyCode.Q));
-        Debug.Log("W: " + Input.GetKeyDown(KeyCode.Q));
+
 
         if (Input.GetButtonDown("P2SwitchLeft") && player2switchTimer <= 0)
             {
@@ -187,8 +186,6 @@ public class ToppingSwitcher : MonoBehaviour
             player2Animator.SetBool("RotateClockwise", false);
             player2Animator.SetBool("RotateCounterClockwise", false);
         }
-        Debug.Log("E: " + Input.GetKeyDown(KeyCode.E));
-        Debug.Log("R: " + Input.GetKeyDown(KeyCode.R));
 
 
 

@@ -87,7 +87,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 123
 --- !u!23 &23835337600757502
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -122,7 +122,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 123
 --- !u!33 &33285057162931996
 MeshFilter:
   m_ObjectHideFlags: 1

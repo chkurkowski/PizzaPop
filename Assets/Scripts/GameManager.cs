@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI player2ScoreTextOutline;
 
     [SerializeField]
+    private TextMeshProUGUI finalTextFill;
+
+
+    [SerializeField]
     private Text timer;
 
     [HideInInspector]
@@ -83,10 +87,10 @@ public class GameManager : MonoBehaviour
 
        // Cursor.visible = false; //makes mouse cursor invisible on start of game
 
-        foreach (PlayerBehaviour p in FindObjectsOfType<PlayerBehaviour>())
-        {
-            p.resetPosition();
-        }
+        //foreach (PlayerBehaviour p in FindObjectsOfType<PlayerBehaviour>())
+        //{
+        //    p.resetPosition();
+        //}
 
         foreach (CharacterBehaviour c in FindObjectsOfType<CharacterBehaviour>())
         {
@@ -192,7 +196,7 @@ public class GameManager : MonoBehaviour
                 StartCoroutine("Player2Timer");
         }
 
-        if (highScorePanel.activeSelf && (Input.GetButtonDown("P1Trigger") || Input.GetButtonDown("P2Trigger") || Input.GetButtonDown("P1SwitchLeft") 
+        if (finalTextFill.enabled && (Input.GetButtonDown("P1Trigger") || Input.GetButtonDown("P2Trigger") || Input.GetButtonDown("P1SwitchLeft") 
                                           || Input.GetButtonDown("P2SwitchRight") || Input.GetButtonDown("P2SwitchLeft") || Input.GetButtonDown("P1SwitchRight")))
         {
             ResetScene();
@@ -234,13 +238,22 @@ public class GameManager : MonoBehaviour
 
     void EnableHighScoreScreen()
     {
+        Invoke("EnableFinalText", 4);
+
         highScorePanel.SetActive(true);
         HighScoreManager.inst.CheckHighScore(player1Score);
         HighScoreManager.inst.CheckHighScore(player2Score);
         HighScoreManager.inst.UpdateHighScoreUI();
-        endGamePanel.SetActive(false);
-     
 
+        highScorePanel.SetActive(true);
+        endGamePanel.SetActive(false);
+
+
+    }
+
+    private void EnableFinalText()
+    {
+        finalTextFill.enabled = true;
     }
 
     private void HandlePlayerComboUI()

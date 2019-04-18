@@ -103,5 +103,7 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
     {
         transform.parent = null;
         added = false;
+
+        GetComponent<SpriteRenderer>().sortingOrder = 122;
     }
 }

@@ -34,11 +34,11 @@ public class PayoffPizzaScript : MonoBehaviour
         Invoke("ResetScene", 10f);
     }
 
-        private void ResetScene()
-        {
-        AudioManager.instance.Play("SplashMusic");
-        GameManager.manager.ResetScene();
-        }
+        //private void ResetScene()
+        //{
+        //AudioManager.instance.Play("SplashMusic");
+        //GameManager.manager.ResetScene();
+        //}
 
     void GetPlayersScores()
     {

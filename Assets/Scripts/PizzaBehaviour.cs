@@ -242,6 +242,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         toppings.Add(toppingToAdd);
         toppingToAdd.transform.parent = transform;
+        toppingToAdd.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
     }
 
     private int CheckToppingToAdd(GameObject toppingToAdd)

@@ -31,9 +31,24 @@ public class ObjectPooler : MonoBehaviour
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
+            int pizzaCount = 0;
+
             for (int i = 0; i < p.size; i ++)
             {
                 GameObject obj = Instantiate(p.prefab);
+
+                if (obj.tag == "Pizza")
+                {
+                    obj.GetComponent<SpriteRenderer>().sortingOrder = (pizzaCount * 2) + 1;
+
+                    if (obj.GetComponent<PizzaBehaviour>().pizzaSize == PizzaBehaviour.PizzaSizes.Small)
+                    {
+                        obj.GetComponent<SpriteRenderer>().sortingOrder++;
+                    }
+
+                    pizzaCount++;
+                }
+
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
 

@@ -86,17 +86,17 @@ public class CharacterBehaviour : MonoBehaviour
 
             if (GameManager.manager.GetSecondsLeft() <= 30.0f)
             {
-                AudioManager.instance.Play("Make Pizza");
+               // AudioManager.instance.Play("Make Pizza");
                 pizzaSpawnRate = 1.5f;
             }
              if (GameManager.manager.GetSecondsLeft() <= 20.0f)
             {
-                AudioManager.instance.Play("stopSittingOnHands");
+                //AudioManager.instance.Play("stopSittingOnHands");
                 pizzaSpawnRate = 1.0f;
             }
              if (GameManager.manager.GetSecondsLeft() <= 10.0f)
             {
-                AudioManager.instance.Play("GetToppingsReady");
+                //AudioManager.instance.Play("GetToppingsReady");
                 pizzaSpawnRate = 0.5f;
             }
         }
