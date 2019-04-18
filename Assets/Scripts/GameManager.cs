@@ -224,6 +224,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator EnableHighScoreScreen()
     {
         yield return new WaitForSeconds(8f);
+        HighScoreManager.inst.CheckHighScore(player1Score);
+        HighScoreManager.inst.CheckHighScore(player2Score);
         endGamePanel.SetActive(false);
         highScorePanel.SetActive(true);
         yield return new WaitForSeconds(6f);
