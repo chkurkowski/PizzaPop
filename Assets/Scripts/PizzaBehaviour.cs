@@ -77,7 +77,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
             if(player1ComboPrev != _manager.GetPlayer1Combo() && _manager.GetPlayer1Combo() != 1)
             {
                 _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
-                DisplayScore(_manager.GetPlayer1Combo(), transform.position, Color.red);
+                DisplayScore(_manager.GetPlayer1Combo(), transform.position, 0);
                 player1ComboPrev = _manager.GetPlayer1Combo();
             }
         }
@@ -86,7 +86,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
             if(player2ComboPrev != _manager.GetPlayer2Combo() && _manager.GetPlayer2Combo() != 1)
             {
                 _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
-                DisplayScore(_manager.GetPlayer2Combo(), transform.position, Color.blue);
+                DisplayScore(_manager.GetPlayer2Combo(), transform.position, 1);
                 player2ComboPrev = _manager.GetPlayer2Combo();
             }
         }
@@ -190,7 +190,8 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         }
     }
 
-    public void DisplayScore(float combo, Vector2 position, Color fontColor)
+
+    public void DisplayScore(float combo, Vector2 position, int player)
     {
         if (combo <= 1.0f)
             return;
@@ -199,12 +200,23 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
         combo = temp / 100;
 
-        TextMeshPro playerTextPopup = ObjectPooler.instance.SpawnFromPool("Text", position, Quaternion.identity).GetComponent<TextMeshPro>();
+        string playerObj;
 
-        playerTextPopup.text = "Combo! x" + combo.ToString();
+        if (player == 0)
+            playerObj = "RossoText";
+        else
+            playerObj = "VerdeText";
+
+        TextMeshPro playerTextPopup = ObjectPooler.instance.SpawnFromPool(playerObj, position, Quaternion.identity).GetComponent<TextMeshPro>();
+
+        playerTextPopup.text = "Combo!";
+        playerTextPopup.transform.GetChild(0).GetComponent<TextMeshPro>().text = "Combo!";
+
         playerTextPopup.fontSize = baseFontSize * combo;
+        playerTextPopup.transform.GetChild(0).GetComponent<TextMeshPro>().fontSize = baseFontSize * combo;
 
-        playerTextPopup.color = fontColor;
+        playerTextPopup.GetComponent<TextPopUp>().RestrainPosition();
+
     }
 
 

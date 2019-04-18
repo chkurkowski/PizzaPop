@@ -32,8 +32,8 @@ public class UIManager : MonoBehaviour {
 
     public bool leftStartScreen = false;
     public bool onPayoffScreen = false;
-    public bool onDemoScreen = false;
     private bool onTitleScreen = true;
+    private bool onDemoScreen = false;
     public float secsSinceLastInput = 0;
 
 	// Use this for initialization
@@ -43,39 +43,61 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
         if (Input.GetButton("P1SwitchRight") || Input.GetButton("P1SwitchLeft"))
         {
             player1ReadyUp += Time.deltaTime;
             player1ReadyUpImage.fillAmount = player1ReadyUp;
 
-            if (player1ReadyUp > 1.0f)
+            if (player1ReadyUp >= 1.0f)
             {
                 player1ReadyUpText.text = "Ready!";
+                player1ReadyUpText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Ready!";
+
+                player1ReadyUpText.gameObject.GetComponent<flash>().StopFlashing();
+                player1ReadyUpText.transform.GetChild(0).GetComponent<flash>().StopFlashing();
+                player1ReadyUpImage.enabled = false;
+
             }
             else
             {
                 player1ReadyUpText.enabled = false;
+                player1ReadyUpText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
             }
 
             //Debug.Log("Player 1 Ready up " + player1ReadyUp.ToString());
+        }
+        else if (player1ReadyUp < 1)
+        {
+            player1ReadyUp = 0f;
+            player1ReadyUpImage.fillAmount = player1ReadyUp;
         }
 
         if (Input.GetButton("P2SwitchRight") || Input.GetButton("P2SwitchLeft"))
         {
             player2ReadyUp += Time.deltaTime;
             player2ReadyUpImage.fillAmount = player2ReadyUp;
-            Debug.Log("Player 2 Ready up " + player2ReadyUp.ToString());
 
 
-            if (player2ReadyUp > 1.0f)
+            if (player2ReadyUp >= 1.0f)
             {
                 player2ReadyUpText.text = "Ready!";
+                player2ReadyUpText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Ready!";
+
+                player2ReadyUpText.gameObject.GetComponent<flash>().StopFlashing();
+                player2ReadyUpText.transform.GetChild(0).GetComponent<flash>().StopFlashing();
+                player2ReadyUpImage.enabled = false;
             }
             else
             {
                 player2ReadyUpText.enabled = false;
+                player2ReadyUpText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+
             }
+        }
+        else if (player2ReadyUp < 1)
+        {
+            player2ReadyUp = 0f;
+            player2ReadyUpImage.fillAmount = player2ReadyUp;
         }
 
         if (player1ReadyUp >= 1.0f && player2ReadyUp >= 1.0f)
@@ -96,7 +118,7 @@ public class UIManager : MonoBehaviour {
             leftStartScreen = true;
         }
 
-        if (Input.anyKeyDown && onTitleScreen && !onDemoScreen)
+        if (Input.anyKeyDown && onTitleScreen)
         {
             onTitleScreen = false;
             titleScreen.SetActive(false);
@@ -117,8 +139,18 @@ public class UIManager : MonoBehaviour {
         if (!Input.anyKeyDown && !leftStartScreen && secsSinceLastInput > 10)
         {
             titleScreen.SetActive(false);
-            demoScreen.SetActive(true);
-            onDemoScreen = true;
+            if (Random.Range(0, 2) == 1)
+            {
+                demoScreen.SetActive(true);
+                onTitleScreen = false;
+                onDemoScreen = true;
+            }
+            else
+            {
+                highScoreScreen.SetActive(true);
+                onTitleScreen = false;
+                onDemoScreen = true;
+            }
             
             leftStartScreen = true;
         }
@@ -126,9 +158,10 @@ public class UIManager : MonoBehaviour {
         if (Input.anyKeyDown && onDemoScreen)
         {
             onTitleScreen = true;
+            onDemoScreen = false;
             titleScreen.SetActive(true);
             demoScreen.SetActive(false);
-            onDemoScreen = false;
+            highScoreScreen.SetActive(false);
             leftStartScreen = false;
             secsSinceLastInput = 0;
         }
@@ -142,14 +175,14 @@ public class UIManager : MonoBehaviour {
 
         videoSkipped = true;
 
-        int countdown = 4;
+        //int countdown = 4;
 
-        while (countdown > 0)
-        {
-            yield return new WaitForSeconds(1.0f);
-            countdown--;
-            countDownText.text = countdown.ToString();
-        }
+        //while (countdown > 0)
+        //{
+        //    yield return new WaitForSeconds(1.0f);
+        //    countdown--;
+        //    countDownText.text = countdown.ToString();
+        //}
 
         introVideo.SetActive(false);
         countDownText.text = "ORDER UP!";
