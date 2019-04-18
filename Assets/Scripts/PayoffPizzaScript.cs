@@ -42,17 +42,23 @@ public class PayoffPizzaScript : MonoBehaviour
 
     void GetPlayersScores()
     {
-        boxQuotient2 = GameManager.manager.getPlayer2Score() / 300;
-        boxQuotient = GameManager.manager.getPlayer1Score() / 300;
+        boxQuotient2 = GameManager.manager.getPlayer2Score() / 200;
+        boxQuotient = GameManager.manager.getPlayer1Score() / 200;
     }
 
     IEnumerator SpawnPlayer1Boxes()
     {
+
+        if (boxQuotient > 20)
+            boxQuotient = 20;
+
         float secondsToWait = (float)(4.1 / boxQuotient);
 
         Debug.Log("secondsToWait" + secondsToWait.ToString());
 
         Debug.Log("quotient 1: " + boxQuotient);
+
+
         for (int i = 0; i < boxQuotient; i++)
         {
             player1Pizzas[i].enabled = true;
@@ -68,10 +74,15 @@ public class PayoffPizzaScript : MonoBehaviour
 
     IEnumerator SpawnPlayer2Boxes()
     {
+        if (boxQuotient2 > 20)
+            boxQuotient2 = 20;
 
-        float secondsToWait = (float)(4.1 / boxQuotient2);
+
+        float secondsToWait = (float)(4.0 / boxQuotient2);
 
         Debug.Log("quotient 2: " + boxQuotient2);
+
+
         for (int i = 0; i < boxQuotient2; i++)
         {
             player2Pizzas[i].enabled = true;

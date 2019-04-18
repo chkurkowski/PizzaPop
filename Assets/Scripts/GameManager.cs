@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         gameStarted = false;
         endGamePanel.SetActive(true);
-        StartCoroutine(EnableHighScoreScreen());
+        Invoke("EnableHighScoreScreen", 8);
         UIManagerScript.onPayoffScreen = true;
     }
 
@@ -191,6 +191,12 @@ public class GameManager : MonoBehaviour
             if(player2Combo > 1 && player2Timer == 0)
                 StartCoroutine("Player2Timer");
         }
+
+        if (highScorePanel.activeSelf && (Input.GetButtonDown("P1Trigger") || Input.GetButtonDown("P2Trigger") || Input.GetButtonDown("P1SwitchLeft") 
+                                          || Input.GetButtonDown("P2SwitchRight") || Input.GetButtonDown("P2SwitchLeft") || Input.GetButtonDown("P1SwitchRight")))
+        {
+            ResetScene();
+        }
     }
 
     private IEnumerator Player1Timer()
@@ -221,16 +227,20 @@ public class GameManager : MonoBehaviour
         }
     } 
 
-    private IEnumerator EnableHighScoreScreen()
+    //private IEnumerator EnableHighScoreScreen()
+    //{
+
+    //}
+
+    void EnableHighScoreScreen()
     {
-        yield return new WaitForSeconds(8f);
-        // HighScoreManager.inst.CheckHighScore(player1Score);
-        // HighScoreManager.inst.CheckHighScore(player2Score);
-        endGamePanel.SetActive(false);
         highScorePanel.SetActive(true);
-        yield return new WaitForSeconds(6f);
-        ResetScene();
-        yield return null;
+        HighScoreManager.inst.CheckHighScore(player1Score);
+        HighScoreManager.inst.CheckHighScore(player2Score);
+        HighScoreManager.inst.UpdateHighScoreUI();
+        endGamePanel.SetActive(false);
+     
+
     }
 
     private void HandlePlayerComboUI()
