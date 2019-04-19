@@ -56,7 +56,7 @@ public class HighScoreManager : MonoBehaviour {
 	{
 		//Check against the lowest of the high scores.
 		//if it is a high score AddHighScore(score);
-		if(highScores.Count < 7)
+		if(highScores.Count < 8)
 		{
 			AddHighScore(score);
 			return;
