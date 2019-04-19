@@ -104,7 +104,7 @@ public class HighScoreManager : MonoBehaviour {
 		{
 			//Add second split here
 			foreach(string s in subStrings)
-				// if(!highScores.Contains(int.Parse(s)))
+				if(!highScores.Contains(int.Parse(s)))
 					AddHighScore(int.Parse(s));
 		}
 	}
