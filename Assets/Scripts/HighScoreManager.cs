@@ -97,6 +97,7 @@ public class HighScoreManager : MonoBehaviour {
 	private void ParseHighScores()
 	{
 		// Debug.Log("Parsing High Scores");
+		highScores.Clear();
 		string tempString = PlayerPrefs.GetString("HighScores");
 		string[] subStrings = tempString.Split(',');
 
@@ -104,7 +105,7 @@ public class HighScoreManager : MonoBehaviour {
 		{
 			//Add second split here
 			foreach(string s in subStrings)
-				if(!highScores.Contains(int.Parse(s)))
+				// if(!highScores.Contains(int.Parse(s)))
 					AddHighScore(int.Parse(s));
 		}
 	}
