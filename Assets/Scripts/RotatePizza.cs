@@ -14,6 +14,8 @@ public class RotatePizza : MonoBehaviour
         {
             rotationSpeed *= -1f;
         }
+
+        rotationSpeed = Random.Range(-250f, 250f);
     }
 
     private void Update()

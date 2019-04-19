@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 8a4257e5a19dd4298aada2bbf42e83dc
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Chalkduster
+  fontNames:
+  - Chalkduster
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 20800139af3fd40b698e8a0fdccf533c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
