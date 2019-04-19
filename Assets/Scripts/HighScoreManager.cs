@@ -61,8 +61,7 @@ public class HighScoreManager : MonoBehaviour {
 			AddHighScore(score);
 			return;
 		}
-
-		if(score > highScores[7])
+		else if(score > highScores[7])
 		{
 			AddHighScore(score);
 		}
@@ -94,6 +93,7 @@ public class HighScoreManager : MonoBehaviour {
 		PlayerPrefs.SetString("HighScores", scores);
 	}
 
+	//Add the name string in with the score and then parse the name out seperately in a second split.
 	private void ParseHighScores()
 	{
 		// Debug.Log("Parsing High Scores");
@@ -102,10 +102,16 @@ public class HighScoreManager : MonoBehaviour {
 
 		if(subStrings.Length != 0)
 		{
+			//Add second split here
 			foreach(string s in subStrings)
-				if(!highScores.Contains(int.Parse(s)))
+				// if(!highScores.Contains(int.Parse(s)))
 					AddHighScore(int.Parse(s));
 		}
+	}
+
+	public void TypingOnGuns()
+	{
+
 	}
 
 	private void TestUtility()
