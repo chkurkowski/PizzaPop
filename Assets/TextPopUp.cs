@@ -21,12 +21,12 @@ public class TextPopUp : MonoBehaviour, iPoolerObject
 
     void Start () 
     {
-        RestrainPosition();
+        //RestrainPosition();
 	}
 
     private void OnEnable()
     {
-        RestrainPosition();
+        //RestrainPosition();
     }
 
     // Update is called once per frame

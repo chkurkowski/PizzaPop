@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PayoffPizzaScript : MonoBehaviour
 {
@@ -15,6 +16,15 @@ public class PayoffPizzaScript : MonoBehaviour
 
     public Image player1WinsImage;
     public Image player2WinsImage;
+
+    public GameObject RossoWinsText;
+    public GameObject VerdeWinsText;
+
+    public TextMeshProUGUI player1ScoreDisplayFill;
+    public TextMeshProUGUI player1ScoreDisplayOutline;
+
+    public TextMeshProUGUI player2ScoreDisplayFill;
+    public TextMeshProUGUI player2ScoreDisplayOutline;
 
     public Text winnerText;
 
@@ -49,10 +59,10 @@ public class PayoffPizzaScript : MonoBehaviour
     IEnumerator SpawnPlayer1Boxes()
     {
 
-        if (boxQuotient > 20)
-            boxQuotient = 20;
+        if (boxQuotient > 19)
+            boxQuotient = 19;
 
-        float secondsToWait = (float)(4.1 / boxQuotient);
+        float secondsToWait = (float)(3.9f / boxQuotient);
 
         Debug.Log("secondsToWait" + secondsToWait.ToString());
 
@@ -68,17 +78,28 @@ public class PayoffPizzaScript : MonoBehaviour
         if (GameManager.manager.getPlayer1Score() > GameManager.manager.getPlayer2Score())
         {
             player1WinsImage.enabled = true;
-            winnerText.text = "Player 1 Wins!";
+            //winnerText.text = "Player 1 Wins!";
+            RossoWinsText.SetActive(true);
+
+      
+
+            if (boxQuotient == boxQuotient2 && GameManager.manager.getPlayer1Score() > GameManager.manager.getPlayer2Score())
+            {
+                player1Pizzas[19].enabled = true;
+            }
         }
+
+        player1ScoreDisplayFill.text = GameManager.manager.getPlayer1Score().ToString();
+        player1ScoreDisplayOutline.text = GameManager.manager.getPlayer1Score().ToString();
     }
 
     IEnumerator SpawnPlayer2Boxes()
     {
-        if (boxQuotient2 > 20)
-            boxQuotient2 = 20;
+        if (boxQuotient2 > 19)
+            boxQuotient2 = 19;
 
 
-        float secondsToWait = (float)(4.0 / boxQuotient2);
+        float secondsToWait = (float)(3.9f / boxQuotient2);
 
         Debug.Log("quotient 2: " + boxQuotient2);
 
@@ -92,9 +113,18 @@ public class PayoffPizzaScript : MonoBehaviour
         if (GameManager.manager.getPlayer2Score() > GameManager.manager.getPlayer1Score())
         {
             player2WinsImage.enabled = true;
-            winnerText.text = "Player 2 Wins!";
+            VerdeWinsText.SetActive(true);
 
+            if (boxQuotient == boxQuotient2 && GameManager.manager.getPlayer2Score() > GameManager.manager.getPlayer1Score())
+            {
+                player2Pizzas[19].enabled = true;
+            }
         }
+
+        player2ScoreDisplayFill.text = GameManager.manager.getPlayer2Score().ToString();
+        player2ScoreDisplayOutline.text = GameManager.manager.getPlayer2Score().ToString();
     }
+
+
 }
 

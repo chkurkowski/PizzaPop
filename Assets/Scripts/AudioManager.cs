@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
         Play("SplashMusic");
     }
 
+    private String[] audioLines = { "EccoFatto", "Dont", "KeepTopping", "MoltaBella", "OttimoLavoro", "stopSittingOnHands", "wantMeToMakePizza", "watsAMatta", "wattaYouDoin" };
+
 
     void Awake()
     {
@@ -79,5 +81,10 @@ public class AudioManager : MonoBehaviour
         if (s == null)
             return;
         s.source.Stop();
+    }
+
+    public void PlayRandomVO()
+    {
+        Play(audioLines[UnityEngine.Random.Range(0, audioLines.Length)]);
     }
 }

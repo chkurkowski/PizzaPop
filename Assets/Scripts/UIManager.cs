@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour {
     public GameObject demoScreen;
     public GameObject gameUI;
 
+    public GameObject TutorialPizzas;
+
     public TMP_Text titleScreenMessage;
 
     public TMP_Text player1ReadyUpText;
@@ -127,10 +129,8 @@ public class UIManager : MonoBehaviour {
 
             titleScreenMessage.gameObject.SetActive(false);
 
-            StartCoroutine(CountDown(25));
+            StartCoroutine(CountDown(22));
 
-
-    
             //payoffScreen.SetActive(false);
             //highScoreScreen.SetActive(true);
             //onPayoffScreen = false;
@@ -171,10 +171,20 @@ public class UIManager : MonoBehaviour {
 
     private IEnumerator CountDown(float timeToWait)
     {
-        yield return new WaitForSeconds(timeToWait);
+        //spawn the pizzas roughly after 8 seconds;
 
-        videoSkipped = true;
+        if (timeToWait != 0.1f)
+        {
+            yield return new WaitForSeconds(8.0f);
+            TutorialPizzas.SetActive(true);
 
+            Debug.Log("Spawning Pizzas");
+
+            yield return new WaitForSeconds(timeToWait - 8);
+            TutorialPizzas.SetActive(false);
+
+            videoSkipped = true;
+        }
         //int countdown = 4;
 
         //while (countdown > 0)

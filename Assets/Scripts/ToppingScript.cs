@@ -86,6 +86,10 @@ public class ToppingScript : MonoBehaviour, iPoolerObject
                 added = true;
                 pizzaHit.AddTopping(gameObject);
             }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 

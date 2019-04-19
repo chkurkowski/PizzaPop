@@ -11,6 +11,10 @@ public class CharacterBehaviour : MonoBehaviour
     public float leftLimitX;
     public float pizzaSpawnRate;
 
+    private bool vo1Played;
+    private bool vo2Played;
+    private bool vo3Played;
+
     public float characterSpeed;
 
     private float direction = 1.0f;
@@ -77,7 +81,6 @@ public class CharacterBehaviour : MonoBehaviour
             }
             else
             {
-
                 GameObject pizza = ObjectPooler.instance.SpawnFromPool(randomPizza(), transform.position, Quaternion.identity);
                 pizza.GetComponent<PizzaBehaviour>().RemoveToppings();
                 pizza.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -86,17 +89,30 @@ public class CharacterBehaviour : MonoBehaviour
 
             if (GameManager.manager.GetSecondsLeft() <= 30.0f)
             {
-               // AudioManager.instance.Play("Make Pizza");
+                if (!vo1Played)
+                {
+                    vo1Played = true;
+                    AudioManager.instance.PlayRandomVO();
+                }
+
                 pizzaSpawnRate = 1.5f;
             }
              if (GameManager.manager.GetSecondsLeft() <= 20.0f)
             {
-                //AudioManager.instance.Play("stopSittingOnHands");
+                if (!vo2Played)
+                {
+                    vo2Played = true;
+                    AudioManager.instance.PlayRandomVO();
+                }
                 pizzaSpawnRate = 1.0f;
             }
              if (GameManager.manager.GetSecondsLeft() <= 10.0f)
             {
-                //AudioManager.instance.Play("GetToppingsReady");
+                if (!vo3Played)
+                {
+                    vo3Played = true;
+                    AudioManager.instance.PlayRandomVO();
+                }
                 pizzaSpawnRate = 0.5f;
             }
         }

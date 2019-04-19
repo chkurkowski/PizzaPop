@@ -4,6 +4,8 @@ using TMPro;
 
 public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 {
+    public bool isTutorialPizza;
+
     private ToppingSwitcher _toppingSwitcher;
     private GameManager _manager;
     private List<GameObject> toppings;
@@ -65,6 +67,9 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
     private void PlayerHits(string player)
     {
         AudioManager.instance.Play("Hit");
+
+        if (isTutorialPizza)
+            return;
 
         pizzaLife--;
 
