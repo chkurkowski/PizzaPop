@@ -26,6 +26,8 @@ public class HighScoreManager : MonoBehaviour {
 
 	[Space(10)]
 
+	public GameObject inputBoard;
+
 	public int[] dummyScores;
 
 	public List<int> highScores;
@@ -52,17 +54,21 @@ public class HighScoreManager : MonoBehaviour {
 		// PrintUtility(); //For Debugging only
 	}
 
-	public void CheckHighScore(int score)
+	public void CheckHighScore(int score, int player)
 	{
 		//Check against the lowest of the high scores.
 		//if it is a high score AddHighScore(score);
 		if(highScores.Count < 8)
 		{
+			//Activate Panel for name typing
+			TypingOnGuns();
 			AddHighScore(score);
 			return;
 		}
 		else if(score > highScores[7])
 		{
+			//Activate Panel for Typing
+			TypingOnGuns();
 			AddHighScore(score);
 		}
 	}
@@ -110,9 +116,14 @@ public class HighScoreManager : MonoBehaviour {
 		}
 	}
 
-	public void TypingOnGuns()
+	public void TypingOnGuns(int player)
 	{
+		inputBoard.SetActive(true);
 
+		if(player == 1)
+			inputBoard.GetComponent<HighScoreInput>().PlayerOneHighScore = true;
+		if(player == 2)
+			inputBoard.GetComponent<HighScoreInput>().PlayerTwoHighScore = true;
 	}
 
 	private void TestUtility()

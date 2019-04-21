@@ -241,8 +241,8 @@ public class GameManager : MonoBehaviour
         Invoke("EnableFinalText", 4);
 
         highScorePanel.SetActive(true);
-        HighScoreManager.inst.CheckHighScore(player1Score);
-        HighScoreManager.inst.CheckHighScore(player2Score);
+        HighScoreManager.inst.CheckHighScore(player1Score, 1);
+        HighScoreManager.inst.CheckHighScore(player2Score, 2);
         HighScoreManager.inst.UpdateHighScoreUI();
 
         highScorePanel.SetActive(true);
