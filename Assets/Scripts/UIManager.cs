@@ -136,7 +136,9 @@ public class UIManager : MonoBehaviour {
             //onPayoffScreen = false;
         }
 
-        if (!Input.anyKeyDown && !leftStartScreen && secsSinceLastInput > 10)
+        secsSinceLastInput += Time.deltaTime;
+
+        if (!Input.anyKeyDown && !leftStartScreen && secsSinceLastInput > 10f)
         {
             titleScreen.SetActive(false);
             if (Random.Range(0, 2) == 1)
@@ -151,11 +153,12 @@ public class UIManager : MonoBehaviour {
                 onTitleScreen = false;
                 onDemoScreen = true;
             }
-            
+
+            secsSinceLastInput = 0f;
             leftStartScreen = true;
         }
 
-        if (Input.anyKeyDown && onDemoScreen)
+        if ((Input.anyKeyDown || secsSinceLastInput > 10f) && onDemoScreen)
         {
             onTitleScreen = true;
             onDemoScreen = false;
@@ -165,8 +168,6 @@ public class UIManager : MonoBehaviour {
             leftStartScreen = false;
             secsSinceLastInput = 0;
         }
-
-        secsSinceLastInput += Time.deltaTime;
 	}
 
     private IEnumerator CountDown(float timeToWait)
