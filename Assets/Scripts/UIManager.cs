@@ -195,11 +195,11 @@ public class UIManager : MonoBehaviour {
         //}
 
         introVideo.SetActive(false);
-        countDownText.text = "ORDER UP!";
+        // countDownText.text = "ORDER UP!";
 
         yield return new WaitForSeconds(0.3f);
 
-        countDownText.text = "";
+        // countDownText.text = "";
 
         gameUI.SetActive(true);
         GameManager.manager.StartGame();

@@ -26,6 +26,8 @@ public class HighScoreManager : MonoBehaviour {
 
 	[Space(10)]
 
+	public GameManager manager;
+
 	public GameObject inputBoard;
 
 	public int[] dummyScores;
@@ -44,12 +46,21 @@ public class HighScoreManager : MonoBehaviour {
 		UpdateHighScoreUI();
 	}
 
+	void Update()
+	{
+		if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.C))
+			PlayerPrefs.SetString("HighScores", "");
+	}
+
 	public void UpdateHighScoreUI()
 	{
 		ParseHighScores();
 		for(int i = 0; i < highScores.Count; i++)
 		{
-			scoreDisplay[i].text = highScores[i].ToString();
+			if(highScores.Count > 0)
+				scoreDisplay[i].text = highScores[i].ToString();
+			else
+				scoreDisplay[i].text = "-";
 		}
 		// PrintUtility(); //For Debugging only
 	}
@@ -61,14 +72,14 @@ public class HighScoreManager : MonoBehaviour {
 		if(highScores.Count < 8)
 		{
 			//Activate Panel for name typing
-			TypingOnGuns();
+			TypingOnGuns(player);
 			AddHighScore(score);
 			return;
 		}
 		else if(score > highScores[7])
 		{
 			//Activate Panel for Typing
-			TypingOnGuns();
+			TypingOnGuns(player);
 			AddHighScore(score);
 		}
 	}
@@ -99,6 +110,11 @@ public class HighScoreManager : MonoBehaviour {
 		PlayerPrefs.SetString("HighScores", scores);
 	}
 
+	public void AddHighScoreName(string name)
+	{
+		
+	}
+
 	//Add the name string in with the score and then parse the name out seperately in a second split.
 	private void ParseHighScores()
 	{
@@ -107,7 +123,7 @@ public class HighScoreManager : MonoBehaviour {
 		string tempString = PlayerPrefs.GetString("HighScores");
 		string[] subStrings = tempString.Split(',');
 
-		if(subStrings.Length != 0)
+		if(subStrings.Length != 0 )
 		{
 			//Add second split here
 			foreach(string s in subStrings)
@@ -122,8 +138,10 @@ public class HighScoreManager : MonoBehaviour {
 
 		if(player == 1)
 			inputBoard.GetComponent<HighScoreInput>().PlayerOneHighScore = true;
-		if(player == 2)
+		else if(player == 2)
 			inputBoard.GetComponent<HighScoreInput>().PlayerTwoHighScore = true;
+		else
+			manager.InvokeFinalText();
 	}
 
 	private void TestUtility()

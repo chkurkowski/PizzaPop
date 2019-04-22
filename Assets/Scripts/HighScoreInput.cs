@@ -7,6 +7,10 @@ public class HighScoreInput : MonoBehaviour {
 
 	private HighScoreManager manager;
 
+	public GameManager gameManager;
+
+	public TextMeshProUGUI currentPlayer;
+
 	public TextMeshProUGUI name;
 
 	public bool PlayerOneHighScore = false;
@@ -27,17 +31,29 @@ public class HighScoreInput : MonoBehaviour {
 	// Update is called once per frame // P1Trigger/P2Trigger P1SwitchLeft/P1SwitchRight 
 	void Update () 
 	{
-		name.text = (Alphabet(lettersP1[0]) + Alphabet(lettersP1[1]) + Alphabet(lettersP1[2]));
-		name.text = (Alphabet(lettersP2[0]) + Alphabet(lettersP2[1]) + Alphabet(lettersP2[2]));
+		if(PlayerOneHighScore)
+			name.text = (Alphabet(lettersP1[0]) + Alphabet(lettersP1[1]) + Alphabet(lettersP1[2]));
+		if(PlayerTwoHighScore && !PlayerOneHighScore)
+			name.text = (Alphabet(lettersP2[0]) + Alphabet(lettersP2[1]) + Alphabet(lettersP2[2]));
 
 		if(PlayerOneHighScore)
 		{
+			currentPlayer.text = ("Rosso's Name:");
+			currentPlayer.color = new Color32(168, 49, 55, 255);
 			PlayerOneSwitch();
 		}
 
-		if(PlayerTwoHighScore)
+		if(PlayerTwoHighScore && !PlayerOneHighScore)
 		{
+			currentPlayer.text = ("Verde's Name:");
+			currentPlayer.color = new Color32(65, 155, 7, 255);
 			PlayerTwoSwitch();
+		}
+
+		if(!PlayerOneHighScore && !PlayerTwoHighScore)
+		{
+			gameObject.SetActive(false);
+			gameManager.EnableFinalText();
 		}
 	}
 
@@ -65,7 +81,8 @@ public class HighScoreInput : MonoBehaviour {
 			letterIndexP1++;
 			if(letterIndexP1 > 2)
 			{
-				letterIndexP1 = 0;
+				manager.AddHighScoreName(Alphabet(lettersP1[0]) + Alphabet(lettersP1[1]) + Alphabet(lettersP1[2]));
+				PlayerOneHighScore = false;
 			}
 		}
 	}
@@ -74,7 +91,7 @@ public class HighScoreInput : MonoBehaviour {
 	{
 		if(Input.GetButtonDown("P2SwitchLeft"))
 		{
-			LetterSwitcher(2, letterIndexP1, -1);
+			LetterSwitcher(2, letterIndexP2, -1);
 			if(lettersP2[letterIndexP2] < 0)
 			{
 				lettersP2[letterIndexP2] = 26;
@@ -94,7 +111,8 @@ public class HighScoreInput : MonoBehaviour {
 			letterIndexP2++;
 			if(letterIndexP2 > 2)
 			{
-				letterIndexP2 = 0;
+				manager.AddHighScoreName(Alphabet(lettersP2[0]) + Alphabet(lettersP2[1]) + Alphabet(lettersP2[2]));
+				PlayerTwoHighScore = false;
 			}
 		}
 	}
@@ -115,6 +133,8 @@ public class HighScoreInput : MonoBehaviour {
 	{
 		switch(letter)
 		{
+			case 0:
+				return " ";
 			case 1:
 				return "A";
 			case 2:
