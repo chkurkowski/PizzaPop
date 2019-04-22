@@ -448,7 +448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.72125, y: 0.2162214}
   m_AnchorMax: {x: 0.9075, y: 0.53367174}
-  m_AnchoredPosition: {x: -1, y: -0.49999237}
+  m_AnchoredPosition: {x: -1, y: -0.5000076}
   m_SizeDelta: {x: -2.600006, y: 3.399994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &33161287
@@ -4257,6 +4257,30 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: whyGettinPep
     clip: {fileID: 8300000, guid: b92c41e4d73bd504cac17661718f9ee6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: manja1
+    clip: {fileID: 8300000, guid: 21580b50c9f914343a3e14f43ccfe947, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: manja2
+    clip: {fileID: 8300000, guid: 40df914030dfd42afa8f987f097b94d4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: manja3
+    clip: {fileID: 8300000, guid: e8ea21fdcf5bb4589bd94426a0a5ee79, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SkinnySanta
+    clip: {fileID: 8300000, guid: 1b9ee0fcde11c4174b97d05c4725f757, type: 3}
     volume: 1
     pitch: 1
     loop: 0

@@ -139,9 +139,12 @@ public class UIManager : MonoBehaviour {
 
         secsSinceLastInput += Time.deltaTime;
 
-        if (!Input.anyKeyDown && !leftStartScreen && secsSinceLastInput > 10f)
+        if (!Input.anyKeyDown && !leftStartScreen && secsSinceLastInput > 20f)
         {
             titleScreen.SetActive(false);
+
+            AudioManager.instance.PlayRandomManja();
+
             if (Random.Range(0, 2) == 1)
             {
                 demoScreen.SetActive(true);
