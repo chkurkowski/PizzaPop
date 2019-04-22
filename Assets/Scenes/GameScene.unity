@@ -448,7 +448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.72125, y: 0.2162214}
   m_AnchorMax: {x: 0.9075, y: 0.53367174}
-  m_AnchoredPosition: {x: -1, y: -0.5000076}
+  m_AnchoredPosition: {x: -1, y: -0.49999237}
   m_SizeDelta: {x: -2.600006, y: 3.399994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &33161287
@@ -888,6 +888,11 @@ Prefab:
         type: 2}
       propertyPath: events.Array.data[3].pizzas.Array.data[4].startingPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114684703817536336, guid: 1ef2c792ac35545f088488edf23ff626,
+        type: 2}
+      propertyPath: shouldPlaySounds
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ef2c792ac35545f088488edf23ff626, type: 2}
@@ -1557,6 +1562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bb0e8ffa3604d0caf0f30a364800d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldPlaySounds: 0
   events: []
   rightLimitX: 8
   leftLimitX: -8
@@ -4071,61 +4077,61 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GreenPepper
     clip: {fileID: 8300000, guid: d3deb1277dc3344d8ac17aafa5b99170, type: 3}
-    volume: 0.3
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Mushroom
     clip: {fileID: 8300000, guid: 776f0e65be52944ac855fd812d5d1906, type: 3}
-    volume: 0.3
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Olive
     clip: {fileID: 8300000, guid: e716b447c05024f4f8fa65bf80d96907, type: 3}
-    volume: 0.3
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Onion
     clip: {fileID: 8300000, guid: d3e9dff8abdb74a3bb30d8386bc670c3, type: 3}
-    volume: 0.3
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Pepparoni
     clip: {fileID: 8300000, guid: 370b9adb1625449fa929a38ff924ceb5, type: 3}
-    volume: 0.3
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Impact1
     clip: {fileID: 8300000, guid: caf0ba8a76b8e4d22be1a7307dd9d179, type: 3}
-    volume: 0.3
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Impact2
     clip: {fileID: 8300000, guid: 25cdaab7ff279405cb0b452d08f05663, type: 3}
-    volume: 0.3
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Impact3
     clip: {fileID: 8300000, guid: 096ee739621d04848a7c5c9a59539bfb, type: 3}
-    volume: 0.3
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Impact4
     clip: {fileID: 8300000, guid: 5c0ab687d610e48f298850343a3ec6a7, type: 3}
-    volume: 0.3
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: SwitchLeft
     clip: {fileID: 8300000, guid: 657b531cd6f5e4eef94b67bb6e3a2c64, type: 3}
-    volume: 0.3
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -8633,6 +8639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bb0e8ffa3604d0caf0f30a364800d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldPlaySounds: 0
   events: []
   rightLimitX: 8
   leftLimitX: -8
