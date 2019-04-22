@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         onTitleScreen = true;
+        AudioManager.instance.Play("SplashMusic");
 	}
 	
 	// Update is called once per frame
@@ -207,6 +208,7 @@ public class UIManager : MonoBehaviour {
 
     private void skipVideo()
     {
+        TutorialPizzas.SetActive(false);
         introVideo.SetActive(false);
         StopAllCoroutines();
         StartCoroutine(CountDown(0.1f));
