@@ -49,7 +49,10 @@ public class HighScoreManager : MonoBehaviour {
 	void Update()
 	{
 		if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.C))
+		{
+			PlayerPrefs.SetString("HighScoreNames", "");
 			PlayerPrefs.SetString("HighScores", "");
+		}
 	}
 
 	public void UpdateHighScoreUI()
@@ -62,6 +65,19 @@ public class HighScoreManager : MonoBehaviour {
 			else
 				scoreDisplay[i].text = "-";
 		}
+
+		for(int i = 0; i < highScoreNames.Count; i++)
+		{
+			print(highScoreNames[i]);
+			string[] nameString = highScoreNames[i].Split('|');
+			print(nameString[0]);
+			if(nameString[0] != "")
+			{
+				nameDisplay[i].text = nameString[0];
+			}
+			else
+				nameDisplay[i].text = "-";
+		}
 		// PrintUtility(); //For Debugging only
 	}
 
@@ -72,14 +88,14 @@ public class HighScoreManager : MonoBehaviour {
 		if(highScores.Count < 8)
 		{
 			//Activate Panel for name typing
-			TypingOnGuns(player);
+			TypingOnGuns(player, score);
 			AddHighScore(score);
 			return;
 		}
 		else if(score > highScores[7])
 		{
 			//Activate Panel for Typing
-			TypingOnGuns(player);
+			TypingOnGuns(player, score);
 			AddHighScore(score);
 		}
 	}
@@ -110,9 +126,21 @@ public class HighScoreManager : MonoBehaviour {
 		PlayerPrefs.SetString("HighScores", scores);
 	}
 
-	public void AddHighScoreName(string name)
+	//highScores.IndexOf(score);
+	public void AddHighScoreName(string name, int score)
 	{
-		
+		highScoreNames.Add(name + "|" + score);
+
+		string names = "";
+		for(int i = 0; i < highScoreNames.Count; i++)
+		{
+			if((i + 1) == highScoreNames.Count)
+				names += highScoreNames[i];
+			else
+				names += highScoreNames[i] + ",";
+		}
+		PlayerPrefs.SetString("HighScoreNames", names);
+		UpdateHighScoreUI();
 	}
 
 	//Add the name string in with the score and then parse the name out seperately in a second split.
@@ -130,16 +158,36 @@ public class HighScoreManager : MonoBehaviour {
 				// if(!highScores.Contains(int.Parse(s)))
 					AddHighScore(int.Parse(s));
 		}
+
+		highScoreNames.Clear();
+		string tempName = PlayerPrefs.GetString("HighScoreNames");
+		string[] subNames = tempString.Split(',');
+
+		if(subNames.Length != 0)
+		{
+			foreach(string s in subNames)
+			{
+				string[] names = s.Split('|');
+				if(names.Length > 1)
+					AddHighScoreName(names[0], int.Parse(names[1]));
+			}
+		}
 	}
 
-	public void TypingOnGuns(int player)
+	public void TypingOnGuns(int player, int score)
 	{
 		inputBoard.SetActive(true);
 
 		if(player == 1)
+		{
+			inputBoard.GetComponent<HighScoreInput>().scoreP1 = score;
 			inputBoard.GetComponent<HighScoreInput>().PlayerOneHighScore = true;
+		}
 		else if(player == 2)
+		{
+			inputBoard.GetComponent<HighScoreInput>().scoreP2 = score;
 			inputBoard.GetComponent<HighScoreInput>().PlayerTwoHighScore = true;
+		}
 		else
 			manager.InvokeFinalText();
 	}

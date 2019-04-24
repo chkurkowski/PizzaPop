@@ -13,6 +13,9 @@ public class HighScoreInput : MonoBehaviour {
 
 	public TextMeshProUGUI name;
 
+	public int scoreP1;
+	public int scoreP2;
+
 	public bool PlayerOneHighScore = false;
 	public bool PlayerTwoHighScore = false;
 
@@ -38,14 +41,14 @@ public class HighScoreInput : MonoBehaviour {
 
 		if(PlayerOneHighScore)
 		{
-			currentPlayer.text = ("Rosso's Name:");
+			currentPlayer.text = ("Rosso:");
 			currentPlayer.color = new Color32(168, 49, 55, 255);
 			PlayerOneSwitch();
 		}
 
 		if(PlayerTwoHighScore && !PlayerOneHighScore)
 		{
-			currentPlayer.text = ("Verde's Name:");
+			currentPlayer.text = ("Verde:");
 			currentPlayer.color = new Color32(65, 155, 7, 255);
 			PlayerTwoSwitch();
 		}
@@ -81,7 +84,7 @@ public class HighScoreInput : MonoBehaviour {
 			letterIndexP1++;
 			if(letterIndexP1 > 2)
 			{
-				manager.AddHighScoreName(Alphabet(lettersP1[0]) + Alphabet(lettersP1[1]) + Alphabet(lettersP1[2]));
+				manager.AddHighScoreName(Alphabet(lettersP1[0]) + Alphabet(lettersP1[1]) + Alphabet(lettersP1[2]), scoreP1);
 				PlayerOneHighScore = false;
 			}
 		}
@@ -111,7 +114,7 @@ public class HighScoreInput : MonoBehaviour {
 			letterIndexP2++;
 			if(letterIndexP2 > 2)
 			{
-				manager.AddHighScoreName(Alphabet(lettersP2[0]) + Alphabet(lettersP2[1]) + Alphabet(lettersP2[2]));
+				manager.AddHighScoreName(Alphabet(lettersP2[0]) + Alphabet(lettersP2[1]) + Alphabet(lettersP2[2]), scoreP2);
 				PlayerTwoHighScore = false;
 			}
 		}
