@@ -38,11 +38,12 @@ public class HighScoreManager : MonoBehaviour {
 	void Start()
 	{
 		// TestUtility();
-		// ParseHighScores();
+		// ParseHighScores(); 
 	}
 
 	void OnEnable()
 	{
+		ParseHighScores();
 		UpdateHighScoreUI();
 	}
 
@@ -60,7 +61,6 @@ public class HighScoreManager : MonoBehaviour {
 
 	public void UpdateHighScoreUI()
 	{
-		ParseHighScores();
 		for(int i = 0; i < highScores.Count; i++)
 		{
 			if(highScores.Count > 0)
@@ -134,6 +134,11 @@ public class HighScoreManager : MonoBehaviour {
 	{
 		highScoreNames.Add(name + "|" + score);
 
+		SortNames();
+
+		if(highScoreNames.Count > highScores.Count)
+			highScoreNames.RemoveAt(highScores.Count);
+
 		string names = "";
 		for(int i = 0; i < highScoreNames.Count; i++)
 		{
@@ -153,7 +158,7 @@ public class HighScoreManager : MonoBehaviour {
 		string tempString = PlayerPrefs.GetString("HighScores");
 		string[] subStrings = tempString.Split(',');
 
-		if(subStrings.Length != 0 )
+		if(subStrings.Length != 0 && tempString != "")
 		{
 			//Add second split here
 			foreach(string s in subStrings)
@@ -165,7 +170,7 @@ public class HighScoreManager : MonoBehaviour {
 		string tempName = PlayerPrefs.GetString("HighScoreNames");
 		string[] subNames = tempName.Split(',');
 
-		if(subNames.Length != 0)
+		if(subNames.Length != 0 && tempName != "")
 		{
 			foreach(string s in subNames)
 			{
@@ -192,6 +197,25 @@ public class HighScoreManager : MonoBehaviour {
 		}
 		else
 			manager.InvokeFinalText();
+	}
+
+	private void SortNames()
+	{
+		string[] names = new string[highScoreNames.Count];
+
+		for(int i = 0; i < highScoreNames.Count; i++)
+			names[i] = highScoreNames[i];
+
+		for(int i = 0; i < highScoreNames.Count; i++)
+		{
+			string[] namesSplit = highScoreNames[i].Split('|');
+
+			if(namesSplit.Length > 1)
+				names[highScores.IndexOf(int.Parse(namesSplit[1]))] = highScoreNames[i];
+		}
+
+		for(int i = 0; i < highScoreNames.Count; i++)
+			highScoreNames[i] = names[i];
 	}
 
 	private void TestUtility()

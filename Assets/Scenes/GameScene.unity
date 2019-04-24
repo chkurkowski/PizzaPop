@@ -4427,7 +4427,6 @@ GameObject:
   - component: {fileID: 556613506}
   - component: {fileID: 556613505}
   - component: {fileID: 556613504}
-  - component: {fileID: 556613503}
   m_Layer: 5
   m_Name: NamePanel
   m_TagString: Untagged
@@ -4435,23 +4434,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &556613503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 556613502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1047761dcebc544fca33cb45aab369b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 1383017177}
-  currentPlayer: {fileID: 606096596}
-  name: {fileID: 506607530}
-  score: 0
-  PlayerOneHighScore: 0
-  PlayerTwoHighScore: 0
 --- !u!114 &556613504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9691,6 +9673,7 @@ GameObject:
   - component: {fileID: 1213519117}
   - component: {fileID: 1213519116}
   - component: {fileID: 1213519115}
+  - component: {fileID: 1213519119}
   m_Layer: 5
   m_Name: HighScoreScreen
   m_TagString: Untagged
@@ -9801,6 +9784,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.00012207031}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1213519119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1213519114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1047761dcebc544fca33cb45aab369b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1383017177}
+  currentPlayer: {fileID: 606096596}
+  name: {fileID: 506607530}
+  scoreP1: 0
+  scoreP2: 0
+  PlayerOneHighScore: 0
+  PlayerTwoHighScore: 0
 --- !u!1 &1270233027
 GameObject:
   m_ObjectHideFlags: 0
