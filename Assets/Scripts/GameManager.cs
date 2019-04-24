@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private float player1Timer = 0;
     [SerializeField]
     private float player2Timer = 0;
-    private const float PLAYERCOMBOMAXTIME = 3f;
+    private const float PLAYERCOMBOMAXTIME = 5f;
 
     [SerializeField]
     private float timeLeft;
@@ -168,6 +168,7 @@ public class GameManager : MonoBehaviour
             timer.text = ((int)timeLeft).ToString();
 
             player1ScoreText.text = player1ScoreTextOutline.text = "Rosso: " + player1Score.ToString();
+
 
             if (GameManager.manager.GetPlayer1Combo() > 1.0f)
             {

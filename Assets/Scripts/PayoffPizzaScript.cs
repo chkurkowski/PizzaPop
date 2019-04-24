@@ -61,6 +61,8 @@ public class PayoffPizzaScript : MonoBehaviour
 
         if (boxQuotient > 19)
             boxQuotient = 19;
+        else if (boxQuotient < 1)
+            boxQuotient = 1;
 
         float secondsToWait = (float)(3.9f / boxQuotient);
 
@@ -97,6 +99,8 @@ public class PayoffPizzaScript : MonoBehaviour
     {
         if (boxQuotient2 > 19)
             boxQuotient2 = 19;
+        else if (boxQuotient2 < 1)
+            boxQuotient2 = 1;
 
 
         float secondsToWait = (float)(3.9f / boxQuotient2);

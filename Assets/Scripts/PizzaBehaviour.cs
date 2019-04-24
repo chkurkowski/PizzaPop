@@ -81,19 +81,21 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
         {
             if(player1ComboPrev != _manager.GetPlayer1Combo() && _manager.GetPlayer1Combo() != 1)
             {
-                _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
                 DisplayScore(_manager.GetPlayer1Combo(), transform.position, 0);
-                player1ComboPrev = _manager.GetPlayer1Combo();
             }
+
+            _manager.setPlayer1Score(_manager.getPlayer1Score() + (scoreToAdd));
+            player1ComboPrev = _manager.GetPlayer1Combo();
         }
         else
         {
             if(player2ComboPrev != _manager.GetPlayer2Combo() && _manager.GetPlayer2Combo() != 1)
             {
-                _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
                 DisplayScore(_manager.GetPlayer2Combo(), transform.position, 1);
-                player2ComboPrev = _manager.GetPlayer2Combo();
             }
+
+            _manager.setPlayer2Score(_manager.getPlayer2Score() + (scoreToAdd));
+            player2ComboPrev = _manager.GetPlayer2Combo();
         }
 
     }
