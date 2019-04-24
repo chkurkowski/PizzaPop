@@ -38,7 +38,7 @@ public class HighScoreManager : MonoBehaviour {
 	void Start()
 	{
 		// TestUtility();
-		ParseHighScores();
+		// ParseHighScores();
 	}
 
 	void OnEnable()
@@ -53,6 +53,9 @@ public class HighScoreManager : MonoBehaviour {
 			PlayerPrefs.SetString("HighScoreNames", "");
 			PlayerPrefs.SetString("HighScores", "");
 		}
+
+		if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.D))
+			print(PlayerPrefs.GetString("HighScoreNames"));
 	}
 
 	public void UpdateHighScoreUI()
@@ -68,7 +71,7 @@ public class HighScoreManager : MonoBehaviour {
 
 		for(int i = 0; i < highScoreNames.Count; i++)
 		{
-			print(highScoreNames[i]);
+			// print(highScoreNames[i]);
 			string[] nameString = highScoreNames[i].Split('|');
 			print(nameString[0]);
 			if(nameString[0] != "")
@@ -140,7 +143,6 @@ public class HighScoreManager : MonoBehaviour {
 				names += highScoreNames[i] + ",";
 		}
 		PlayerPrefs.SetString("HighScoreNames", names);
-		UpdateHighScoreUI();
 	}
 
 	//Add the name string in with the score and then parse the name out seperately in a second split.
@@ -161,15 +163,15 @@ public class HighScoreManager : MonoBehaviour {
 
 		highScoreNames.Clear();
 		string tempName = PlayerPrefs.GetString("HighScoreNames");
-		string[] subNames = tempString.Split(',');
+		string[] subNames = tempName.Split(',');
 
 		if(subNames.Length != 0)
 		{
 			foreach(string s in subNames)
 			{
 				string[] names = s.Split('|');
-				if(names.Length > 1)
-					AddHighScoreName(names[0], int.Parse(names[1]));
+				print(s);
+				AddHighScoreName(names[0], int.Parse(names[1]));
 			}
 		}
 	}
@@ -180,13 +182,13 @@ public class HighScoreManager : MonoBehaviour {
 
 		if(player == 1)
 		{
-			inputBoard.GetComponent<HighScoreInput>().scoreP1 = score;
-			inputBoard.GetComponent<HighScoreInput>().PlayerOneHighScore = true;
+			GetComponent<HighScoreInput>().scoreP1 = score;
+			GetComponent<HighScoreInput>().PlayerOneHighScore = true;
 		}
 		else if(player == 2)
 		{
-			inputBoard.GetComponent<HighScoreInput>().scoreP2 = score;
-			inputBoard.GetComponent<HighScoreInput>().PlayerTwoHighScore = true;
+			GetComponent<HighScoreInput>().scoreP2 = score;
+			GetComponent<HighScoreInput>().PlayerTwoHighScore = true;
 		}
 		else
 			manager.InvokeFinalText();
