@@ -30,6 +30,8 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject cursorSprite;
 
+    public bool shootingAllowed = true;
+
     private void Awake()
     {
 
@@ -59,7 +61,7 @@ public class PlayerBehaviour : MonoBehaviour
 
        // if (_regPlayers.Axis1LeftClick() != null)
         {
-            if (Input.GetButton("P1Trigger") && player == Players.Player1)
+            if (Input.GetButton("P1Trigger") && player == Players.Player1 && shootingAllowed)
             {
                 if (ToppingSwitcher.instance.GetPlayer1Topping() == ToppingSwitcher.Toppings.Pepperoni
                     && shotTimer >= pepperoniReloadTime)
@@ -99,7 +101,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         //if (_regPlayers.Axis2LeftClick() != null)
         {
-            if (Input.GetButton("P2Trigger") && player == Players.Player2)
+            if (Input.GetButton("P2Trigger") && player == Players.Player2 && shootingAllowed)
             {
 
 

@@ -66,7 +66,7 @@ public class PizzaBehaviour : MonoBehaviour, iPoolerObject
 
     private void PlayerHits(string player)
     {
-        AudioManager.instance.PlayRandomImpactSound();
+        AudioManager.instance.Play("Hit");
 
         if (isTutorialPizza)
             return;

@@ -11,16 +11,15 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        //Play("SplashMusic");
+        Play("SplashMusic");
     }
 
-    private String[] audioLines  = { "EccoFatto", "Dont", "KeepTopping", "MoltaBella", "OttimoLavoro", "stopSittingOnHands", "wantMeToMakePizza", "watsAMatta", "wattaYouDoin" };
-    private String[] impactLines = { "Impact1", "Impact2", "Impact3", "Impact4" };
-    private String[] manjaLines  = { "manja1", "manja2", "manja3" };
+    private String[] audioLines = { "EccoFatto", "Dont", "KeepTopping", "MoltaBella", "OttimoLavoro", "stopSittingOnHands", "wantMeToMakePizza", "watsAMatta", "wattaYouDoin" };
 
 
     void Awake()
     {
+
         if (instance == null)
         {
             instance = this;
@@ -74,16 +73,6 @@ public class AudioManager : MonoBehaviour
         s.source.PlayOneShot(s.clip);
         s.source.pitch = 1.0f;
 
-    }
-
-    public void PlayRandomManja()
-    {
-        Play(manjaLines[UnityEngine.Random.Range(0, manjaLines.Length)]);
-    }
-
-    public void PlayRandomImpactSound()
-    {
-        Play(impactLines[UnityEngine.Random.Range(0, impactLines.Length)]);
     }
 
     public void Stop(string name)
