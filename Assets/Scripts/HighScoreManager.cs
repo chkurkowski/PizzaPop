@@ -73,7 +73,6 @@ public class HighScoreManager : MonoBehaviour {
 		{
 			// print(highScoreNames[i]);
 			string[] nameString = highScoreNames[i].Split('|');
-			print(nameString[0]);
 			if(nameString[0] != "")
 			{
 				nameDisplay[i].text = nameString[0];

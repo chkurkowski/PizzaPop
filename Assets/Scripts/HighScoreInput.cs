@@ -55,9 +55,12 @@ public class HighScoreInput : MonoBehaviour {
 
 		if(!PlayerOneHighScore && !PlayerTwoHighScore)
 		{
-			manager.inputBoard.SetActive(false);
-			manager.UpdateHighScoreUI();
-			gameManager.EnableFinalText();
+			if(manager.inputBoard.activeSelf)
+			{
+				manager.inputBoard.SetActive(false);
+				manager.UpdateHighScoreUI();
+				gameManager.EnableFinalText();
+			}
 		}
 	}
 
