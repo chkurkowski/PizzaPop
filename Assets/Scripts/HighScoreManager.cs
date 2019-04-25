@@ -213,7 +213,7 @@ public class HighScoreManager : MonoBehaviour {
 		{
 			string[] namesSplit = highScoreNames[i].Split('|');
 
-			if(namesSplit.Length > 1 && names[highScores.IndexOf(int.Parse(namesSplit[1]))] != null)
+			if(namesSplit.Length > 1 && highScores.IndexOf(int.Parse(namesSplit[1])) < names.Length)
 				names[highScores.IndexOf(int.Parse(namesSplit[1]))] = highScoreNames[i]; //Throws error occasionally when first player finishes input
 		}
 
