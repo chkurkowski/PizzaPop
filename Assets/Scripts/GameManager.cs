@@ -65,6 +65,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject highScorePanel;
 
+    public GameObject playerOne;
+    public GameObject playerTwo;
+
     private void Awake()
     {
         manager = this;
@@ -103,6 +106,8 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         gameStarted = false;
         endGamePanel.SetActive(true);
+        playerOne.GetComponent<PlayerBehaviour>().shootingAllowed = false;
+        playerTwo.GetComponent<PlayerBehaviour>().shootingAllowed = false;
         Invoke("EnableHighScoreScreen", 8);
         UIManagerScript.onPayoffScreen = true;
     }
@@ -199,6 +204,8 @@ public class GameManager : MonoBehaviour
         if (finalTextFill.enabled && (Input.GetButtonDown("P1Trigger") || Input.GetButtonDown("P2Trigger") || Input.GetButtonDown("P1SwitchLeft") 
                                           || Input.GetButtonDown("P2SwitchRight") || Input.GetButtonDown("P2SwitchLeft") || Input.GetButtonDown("P1SwitchRight")))
         {
+            playerOne.GetComponent<PlayerBehaviour>().shootingAllowed = true;
+            playerTwo.GetComponent<PlayerBehaviour>().shootingAllowed = true;
             ResetScene();
         }
     }
@@ -238,11 +245,11 @@ public class GameManager : MonoBehaviour
 
     void EnableHighScoreScreen()
     {
-        Invoke("EnableFinalText", 4);
+        // Invoke("EnableFinalText", 15);
 
         highScorePanel.SetActive(true);
-        HighScoreManager.inst.CheckHighScore(player1Score);
-        HighScoreManager.inst.CheckHighScore(player2Score);
+        HighScoreManager.inst.CheckHighScore(player1Score, 1);
+        HighScoreManager.inst.CheckHighScore(player2Score, 2);
         HighScoreManager.inst.UpdateHighScoreUI();
 
         highScorePanel.SetActive(true);
@@ -251,7 +258,12 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void EnableFinalText()
+    public void InvokeFinalText()
+    {
+        Invoke("EnableFinalText", 8);
+    }
+
+    public void EnableFinalText()
     {
         finalTextFill.enabled = true;
     }
