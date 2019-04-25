@@ -39,23 +39,27 @@ public class HighScoreManager : MonoBehaviour {
 
 	void Start()
 	{
-		TestUtility();
-		UpdateHighScoreUI();
+		// TestUtility();
+		// UpdateHighScoreUI();
 		// ParseHighScores(); 
 	}
 
 	void OnEnable()
 	{
+		TestUtility();
 		ParseHighScores();
 		UpdateHighScoreUI();
 	}
 
 	void Update()
 	{
-		if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.C))
+		if((Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.C)) || (Input.GetKey(KeyCode.LeftCommand) && Input.GetKey(KeyCode.C)))
 		{
+			print("Hit");
 			PlayerPrefs.SetString("HighScoreNames", "");
 			PlayerPrefs.SetString("HighScores", "");
+			highScores.Clear();
+			highScoreNames.Clear();
 		}
 
 		if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.D))
@@ -64,12 +68,24 @@ public class HighScoreManager : MonoBehaviour {
 
 	public void UpdateHighScoreUI()
 	{
+		if(highScores.Count < 1)
+		{
+			for(int i = 0; i < 8; i++)
+				scoreDisplay[i].text = "-";
+		}
+
 		for(int i = 0; i < highScores.Count; i++)
 		{
 			if(highScores.Count > 0)
 				scoreDisplay[i].text = highScores[i].ToString();
 			else
 				scoreDisplay[i].text = "-";
+		}
+
+		if(highScoreNames.Count < 1)
+		{
+			for(int i = 0; i < 8; i++)
+				nameDisplay[i].text = "AAA";
 		}
 
 		for(int i = 0; i < highScoreNames.Count; i++)
@@ -236,6 +252,7 @@ public class HighScoreManager : MonoBehaviour {
 
 	private void TestUtility()
 	{
+		print("Adding Dummy values");
 		if(PlayerPrefs.GetString("HighScores") == "")
 		{
 			foreach(int i in dummyScores)

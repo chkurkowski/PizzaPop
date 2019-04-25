@@ -9809,7 +9809,7 @@ Prefab:
     - target: {fileID: 114020273219210378, guid: 066504c626ef140c0869e1fd9379e12c,
         type: 2}
       propertyPath: dummyNames.Array.data[0]
-      value: A T
+      value: ART
       objectReference: {fileID: 0}
     - target: {fileID: 114020273219210378, guid: 066504c626ef140c0869e1fd9379e12c,
         type: 2}
@@ -9829,7 +9829,7 @@ Prefab:
     - target: {fileID: 114020273219210378, guid: 066504c626ef140c0869e1fd9379e12c,
         type: 2}
       propertyPath: dummyNames.Array.data[4]
-      value: A N
+      value: ADN
       objectReference: {fileID: 0}
     - target: {fileID: 114020273219210378, guid: 066504c626ef140c0869e1fd9379e12c,
         type: 2}
@@ -10387,6 +10387,11 @@ Prefab:
     - target: {fileID: 212156997652455786, guid: d896d80253407463d88dc9ea5011c96b,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114872566617448120, guid: d896d80253407463d88dc9ea5011c96b,
+        type: 2}
+      propertyPath: mushroom
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
