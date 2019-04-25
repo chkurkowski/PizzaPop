@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterBehaviour : MonoBehaviour
 {
+    public bool shouldPlaySounds;
 
     public ScriptedPizzaEvent[] events;
     
@@ -87,29 +88,32 @@ public class CharacterBehaviour : MonoBehaviour
                 pizza.GetComponent<Rigidbody2D>().AddForce(randomPush(), ForceMode2D.Impulse);
             }
 
-            if (GameManager.manager.GetSecondsLeft() <= 30.0f)
+            if (GameManager.manager.GetSecondsLeft() <= 30.0f && shouldPlaySounds)
             {
                 if (!vo1Played)
                 {
+                    Debug.Log("VO 1 is being played");
                     vo1Played = true;
                     AudioManager.instance.PlayRandomVO();
                 }
 
                 pizzaSpawnRate = 1.5f;
             }
-             if (GameManager.manager.GetSecondsLeft() <= 20.0f)
+            if (GameManager.manager.GetSecondsLeft() <= 20.0f && shouldPlaySounds)
             {
                 if (!vo2Played)
                 {
+                    Debug.Log("VO 2 is being played");
                     vo2Played = true;
                     AudioManager.instance.PlayRandomVO();
                 }
                 pizzaSpawnRate = 1.0f;
             }
-             if (GameManager.manager.GetSecondsLeft() <= 10.0f)
+            if (GameManager.manager.GetSecondsLeft() <= 10.0f && shouldPlaySounds)
             {
                 if (!vo3Played)
                 {
+                    Debug.Log("VO 3 is being played");
                     vo3Played = true;
                     AudioManager.instance.PlayRandomVO();
                 }

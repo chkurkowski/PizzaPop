@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         onTitleScreen = true;
+        AudioManager.instance.Play("SplashMusic");
 	}
 	
 	// Update is called once per frame
@@ -136,9 +137,14 @@ public class UIManager : MonoBehaviour {
             //onPayoffScreen = false;
         }
 
-        if (!Input.anyKeyDown && !leftStartScreen && secsSinceLastInput > 10)
+        secsSinceLastInput += Time.deltaTime;
+
+        if (!Input.anyKeyDown && !leftStartScreen && secsSinceLastInput > 20f)
         {
             titleScreen.SetActive(false);
+
+            AudioManager.instance.PlayRandomManja();
+
             if (Random.Range(0, 2) == 1)
             {
                 demoScreen.SetActive(true);
@@ -151,11 +157,12 @@ public class UIManager : MonoBehaviour {
                 onTitleScreen = false;
                 onDemoScreen = true;
             }
-            
+
+            secsSinceLastInput = 0f;
             leftStartScreen = true;
         }
 
-        if (Input.anyKeyDown && onDemoScreen)
+        if ((Input.anyKeyDown || secsSinceLastInput > 10f) && onDemoScreen)
         {
             onTitleScreen = true;
             onDemoScreen = false;
@@ -165,8 +172,6 @@ public class UIManager : MonoBehaviour {
             leftStartScreen = false;
             secsSinceLastInput = 0;
         }
-
-        secsSinceLastInput += Time.deltaTime;
 	}
 
     private IEnumerator CountDown(float timeToWait)
@@ -207,6 +212,7 @@ public class UIManager : MonoBehaviour {
 
     private void skipVideo()
     {
+        TutorialPizzas.SetActive(false);
         introVideo.SetActive(false);
         StopAllCoroutines();
         StartCoroutine(CountDown(0.1f));
