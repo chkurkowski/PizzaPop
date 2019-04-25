@@ -115,7 +115,10 @@ public class HighScoreManager : MonoBehaviour {
 		}
 		//if it has more than 8 numbers cull the last
 		if(highScores.Count > 8)
+		{
+			RemoveFromNameList(highScores[8]);
 			highScores.RemoveAt(8);
+		}
 		//Add all values into PlayerPrefs
 		string scores = "";
 		for(int i = 0; i < highScores.Count; i++)
@@ -210,12 +213,22 @@ public class HighScoreManager : MonoBehaviour {
 		{
 			string[] namesSplit = highScoreNames[i].Split('|');
 
-			if(namesSplit.Length > 1)
-				names[highScores.IndexOf(int.Parse(namesSplit[1]))] = highScoreNames[i];
+			if(namesSplit.Length > 1 && names[highScores.IndexOf(int.Parse(namesSplit[1]))] != null)
+				names[highScores.IndexOf(int.Parse(namesSplit[1]))] = highScoreNames[i]; //Throws error occasionally when first player finishes input
 		}
 
 		for(int i = 0; i < highScoreNames.Count; i++)
 			highScoreNames[i] = names[i];
+	}
+
+	private void RemoveFromNameList(int target)
+	{
+		for(int i = 0; i < highScoreNames.Count; i++)
+		{
+			string[] str = highScoreNames[i].Split('|');
+			if(target == int.Parse(str[1]))
+				highScoreNames.RemoveAt(i);
+		}
 	}
 
 	private void TestUtility()
