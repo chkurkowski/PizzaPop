@@ -32,12 +32,15 @@ public class HighScoreManager : MonoBehaviour {
 
 	public int[] dummyScores;
 
+	public string[] dummyNames;
+
 	public List<int> highScores;
 	public List<string> highScoreNames; //Needs further logic to hold names
 
 	void Start()
 	{
-		// TestUtility();
+		TestUtility();
+		UpdateHighScoreUI();
 		// ParseHighScores(); 
 	}
 
@@ -233,8 +236,14 @@ public class HighScoreManager : MonoBehaviour {
 
 	private void TestUtility()
 	{
-		foreach(int i in dummyScores)
-			AddHighScore(i);
+		if(PlayerPrefs.GetString("HighScores") == "")
+		{
+			foreach(int i in dummyScores)
+				AddHighScore(i);
+
+			for(int i = 0; i < highScores.Count; i++)
+				AddHighScoreName(dummyNames[i], dummyScores[i]);
+		}
 	}
 
 	private void PrintUtility()
