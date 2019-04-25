@@ -26,6 +26,10 @@ public class HighScoreManager : MonoBehaviour {
 
 	[Space(10)]
 
+	public GameManager manager;
+
+	public GameObject inputBoard;
+
 	public int[] dummyScores;
 
 	public List<int> highScores;
@@ -34,35 +38,67 @@ public class HighScoreManager : MonoBehaviour {
 	void Start()
 	{
 		// TestUtility();
-		ParseHighScores();
+		// ParseHighScores(); 
 	}
 
 	void OnEnable()
 	{
+		ParseHighScores();
 		UpdateHighScoreUI();
+	}
+
+	void Update()
+	{
+		if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.C))
+		{
+			PlayerPrefs.SetString("HighScoreNames", "");
+			PlayerPrefs.SetString("HighScores", "");
+		}
+
+		if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.D))
+			print(PlayerPrefs.GetString("HighScoreNames"));
 	}
 
 	public void UpdateHighScoreUI()
 	{
-		ParseHighScores();
 		for(int i = 0; i < highScores.Count; i++)
 		{
-			scoreDisplay[i].text = highScores[i].ToString();
+			if(highScores.Count > 0)
+				scoreDisplay[i].text = highScores[i].ToString();
+			else
+				scoreDisplay[i].text = "-";
+		}
+
+		for(int i = 0; i < highScoreNames.Count; i++)
+		{
+			// print(highScoreNames[i]);
+			string[] nameString = highScoreNames[i].Split('|');
+			print(nameString[0]);
+			if(nameString[0] != "")
+			{
+				nameDisplay[i].text = nameString[0];
+			}
+			else
+				nameDisplay[i].text = "-";
 		}
 		// PrintUtility(); //For Debugging only
 	}
 
-	public void CheckHighScore(int score)
+	public void CheckHighScore(int score, int player)
 	{
 		//Check against the lowest of the high scores.
 		//if it is a high score AddHighScore(score);
 		if(highScores.Count < 8)
 		{
+			//Activate Panel for name typing
+			TypingOnGuns(player, score);
 			AddHighScore(score);
 			return;
 		}
 		else if(score > highScores[7])
 		{
+			//Activate Panel for Typing
+			TypingOnGuns(player, score);
 			AddHighScore(score);
 		}
 	}
@@ -79,7 +115,10 @@ public class HighScoreManager : MonoBehaviour {
 		}
 		//if it has more than 8 numbers cull the last
 		if(highScores.Count > 8)
+		{
+			RemoveFromNameList(highScores[8]);
 			highScores.RemoveAt(8);
+		}
 		//Add all values into PlayerPrefs
 		string scores = "";
 		for(int i = 0; i < highScores.Count; i++)
@@ -93,6 +132,27 @@ public class HighScoreManager : MonoBehaviour {
 		PlayerPrefs.SetString("HighScores", scores);
 	}
 
+	//highScores.IndexOf(score);
+	public void AddHighScoreName(string name, int score)
+	{
+		highScoreNames.Add(name + "|" + score);
+
+		SortNames();
+
+		if(highScoreNames.Count > highScores.Count)
+			highScoreNames.RemoveAt(highScores.Count);
+
+		string names = "";
+		for(int i = 0; i < highScoreNames.Count; i++)
+		{
+			if((i + 1) == highScoreNames.Count)
+				names += highScoreNames[i];
+			else
+				names += highScoreNames[i] + ",";
+		}
+		PlayerPrefs.SetString("HighScoreNames", names);
+	}
+
 	//Add the name string in with the score and then parse the name out seperately in a second split.
 	private void ParseHighScores()
 	{
@@ -101,18 +161,75 @@ public class HighScoreManager : MonoBehaviour {
 		string tempString = PlayerPrefs.GetString("HighScores");
 		string[] subStrings = tempString.Split(',');
 
-		if(subStrings.Length != 0)
+		if(subStrings.Length != 0 && tempString != "")
 		{
 			//Add second split here
 			foreach(string s in subStrings)
 				// if(!highScores.Contains(int.Parse(s)))
 					AddHighScore(int.Parse(s));
 		}
+
+		highScoreNames.Clear();
+		string tempName = PlayerPrefs.GetString("HighScoreNames");
+		string[] subNames = tempName.Split(',');
+
+		if(subNames.Length != 0 && tempName != "")
+		{
+			foreach(string s in subNames)
+			{
+				string[] names = s.Split('|');
+				print(s);
+				AddHighScoreName(names[0], int.Parse(names[1]));
+			}
+		}
 	}
 
-	public void TypingOnGuns()
+	public void TypingOnGuns(int player, int score)
 	{
+		inputBoard.SetActive(true);
+		print("hit");
 
+		if(player == 1)
+		{
+			GetComponent<HighScoreInput>().scoreP1 = score;
+			GetComponent<HighScoreInput>().PlayerOneHighScore = true;
+		}
+		else if(player == 2)
+		{
+			GetComponent<HighScoreInput>().scoreP2 = score;
+			GetComponent<HighScoreInput>().PlayerTwoHighScore = true;
+		}
+		else
+			manager.InvokeFinalText();
+	}
+
+	private void SortNames()
+	{
+		string[] names = new string[highScoreNames.Count];
+
+		for(int i = 0; i < highScoreNames.Count; i++)
+			names[i] = highScoreNames[i];
+
+		for(int i = 0; i < highScoreNames.Count; i++)
+		{
+			string[] namesSplit = highScoreNames[i].Split('|');
+
+			if(namesSplit.Length > 1 && highScores.IndexOf(int.Parse(namesSplit[1])) < names.Length)
+				names[highScores.IndexOf(int.Parse(namesSplit[1]))] = highScoreNames[i]; //Throws error occasionally when first player finishes input
+		}
+
+		for(int i = 0; i < highScoreNames.Count; i++)
+			highScoreNames[i] = names[i];
+	}
+
+	private void RemoveFromNameList(int target)
+	{
+		for(int i = 0; i < highScoreNames.Count; i++)
+		{
+			string[] str = highScoreNames[i].Split('|');
+			if(target == int.Parse(str[1]))
+				highScoreNames.RemoveAt(i);
+		}
 	}
 
 	private void TestUtility()
