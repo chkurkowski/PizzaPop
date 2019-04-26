@@ -59,8 +59,8 @@ public class HighScoreInput : MonoBehaviour {
 			{
 				manager.inputBoard.SetActive(false);
 				manager.UpdateHighScoreUI();
-				gameManager.EnableFinalText();
 			}
+			gameManager.EnableFinalText();
 		}
 	}
 
